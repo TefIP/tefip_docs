@@ -1,1 +1,55 @@
-site_name: My Docs
+site_name: TefIP Documentation
+
+theme:
+  name: material
+  language: pt-BR
+  palette:
+    - scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-4
+        name: Mudar para modo claro
+    - scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-7
+        name: Mudar para modo escuro
+  font:
+    text: DM Sans
+    code: DM Mono
+  features:
+    - content.tabs.link
+    - navigation.tabs
+    - navigation.sections
+    - search.highlight
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/extra.js
+
+markdown_extensions:
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - admonition
+  - pymdownx.details
+  - tables
+  - attr_list
+
+nav:
+  - Início: index.md
+  - Primeiros Passos: getting-started.md
+  - API Reference:
+    - ask: api/ask.md
+    - display: api/display.md
+    - sale: api/sale.md
+    - print: api/print.md
+    - status: api/status.md
+    - transaction: api/transaction.md
+    - swagger: api/swagger.md
