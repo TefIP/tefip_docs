@@ -7,9 +7,7 @@ O TefIP inclui um **modo emulador** que simula o hardware do adquirente localmen
 
 Veja abaixo um pagamento sendo processado no emulador:
 
-<p align="center">
-  <img src="/assets/gif/emulador-terminal-pagamento-manual.gif" alt="GIF do terminal processando pagamento manual" />
-</p>
+![GIF do terminal processando pagamento manual](assets/gif/emulador-terminal-pagamento-manual.gif){ style="display: block; margin: 0 auto;" }
 
 ---
 
@@ -34,9 +32,7 @@ Escolha a plataforma para desenvolvimento e testes:
 3. Ao final, o TefIP é registrado como **serviço do Windows** e inicia automaticamente com o sistema.
 4. Um ícone aparecerá na bandeja do sistema — clique nele para abrir o painel de controle.
 
-<p align="center">
-  <img src="/assets/gif/emulador-windows-instalacao.gif" alt="GIF de assistente de instalação Windows" />
-</p>
+![GIF de instalação no Windows](assets/gif/emulador-windows-instalacao.gif){ style="display: block; margin: 0 auto;" }
 ---
 
 ## Instalação do APK Android

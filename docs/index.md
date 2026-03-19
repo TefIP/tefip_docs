@@ -41,9 +41,7 @@ e retorna o resultado em JSON — sem nenhuma SDK proprietária no seu lado.
 
 Veja abaixo um pagamento sendo processado no emulador:
 
-<p align="center">
-  <img src="/assets/gif/emulador-terminal-pagamento-manual.gif" alt="GIF do terminal processando pagamento manual" />
-</p>
+![GIF do terminal processando pagamento manual](assets/gif/emulador-terminal-pagamento-manual.gif){ style="display: block; margin: 0 auto;" }
 
 ---
 

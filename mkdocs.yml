@@ -1,4 +1,5 @@
 site_name: TefIP Docs
+site_url: https://tefip.github.io/tefip_docs/
 
 theme:
   name: material

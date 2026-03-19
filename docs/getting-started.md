@@ -49,9 +49,7 @@ Se for o primeiro acesso, a inicialização automática já estará ativa.
 
 Nessa tela é possível visualizar os IPs detectados e executar ações como reiniciar ou parar os serviços.
 
-<p align="center">
-  <img src="/assets/gif/emulador-terminal-entrar-servidores.gif" alt="GIF do TefIP entrando nos servidores ativos" />
-</p>
+![GIF do TefIP entrando nos servidores ativos](assets/gif/emulador-terminal-entrar-servidores.gif){ style="display: block; margin: 0 auto;" }
 
 ## Verificando a conexão
 
