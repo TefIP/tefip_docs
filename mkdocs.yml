@@ -26,10 +26,10 @@ theme:
     - search.highlight
 
 extra_css:
-  - stylesheets/extra.css
+  - styles/extra.css
 
 extra_javascript:
-  - javascripts/extra.js
+  - scripts/extra.js
 
 markdown_extensions:
   - pymdownx.tabbed:
@@ -49,6 +49,7 @@ markdown_extensions:
 nav:
   - Início: index.md
   - Primeiros Passos: getting-started.md
+  - Emulador: emulator.md
   - API Reference:
     - ask: api/ask.md
     - display: api/display.md

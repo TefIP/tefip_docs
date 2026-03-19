@@ -42,7 +42,7 @@ e retorna o resultado em JSON — sem nenhuma SDK proprietária no seu lado.
 Veja abaixo um pagamento sendo processado no emulador:
 
 <p align="center">
-  <img src="../assets/gif/emulador-terminal-pagamento-manual.gif" alt="GIF do terminal processando pagamento manual" />
+  <img src="/assets/gif/emulador-terminal-pagamento-manual.gif" alt="GIF do terminal processando pagamento manual" />
 </p>
 
 ---
@@ -65,7 +65,6 @@ Exemplo de ponta a ponta: processar um PIX de R$ 50,00.
     ```dart
     import 'package:dart_tefip/dart_tefip.dart';
 
-    // pub.dev/packages/dart_tefip
     TefIP.baseUrl = 'http://localhost:9050';
     TefIP.username = 'admin';
     TefIP.password = '1234';
@@ -178,4 +177,5 @@ Qualquer cliente HTTP funciona diretamente — os SDKs são conveniência, não 
 
 - [Primeiros Passos](getting-started.md) — Instale o TefIP e faça sua primeira requisição.
 - [Referência da API: Transações](api/transaction.md) — Documentação completa dos endpoints de pagamento.
-- [Swagger Docs](http://djsystem.com.br) — Swagger UI interativo no próprio terminal
+- [Swagger Docs](api/swagger.md) — Swagger UI interativo no próprio terminal
+- [Outros produtos](http://djsystem.com.br) — Conheça outras soluções disponíveis
