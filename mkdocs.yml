@@ -1,4 +1,4 @@
-site_name: TefIP Documentation
+site_name: TefIP Docs
 
 theme:
   name: material
@@ -34,7 +34,11 @@ extra_javascript:
 markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.highlight:
       anchor_linenums: true
   - admonition
