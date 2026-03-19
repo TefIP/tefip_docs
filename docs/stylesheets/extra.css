@@ -126,7 +126,13 @@ body::before {
   border-radius: 6px;
 }
 
-/* 13. Scroll-reveal utility class (JS will toggle .reveal.visible) */
+/* 13. Grid cards — força texto laranja em modo escuro (links somem no slate) */
+.md-typeset .grid.cards li a strong,
+.md-typeset .grid.cards li a:hover strong {
+  color: var(--tefip-orange);
+}
+
+/* 14. Scroll-reveal utility class (JS will toggle .reveal.visible) */
 .reveal {
   opacity: 0;
   transform: translateY(18px);

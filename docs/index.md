@@ -41,7 +41,9 @@ e retorna o resultado em JSON — sem nenhuma SDK proprietária no seu lado.
 
 Veja abaixo um pagamento sendo processado no emulador:
 
-![GIF do terminal processando pagamento manual](assets/gif/emulador-terminal-pagamento-manual.gif)
+<p align="center">
+  <img src="../assets/gif/emulador-terminal-pagamento-manual.gif" alt="GIF do terminal processando pagamento manual" />
+</p>
 
 ---
 
@@ -134,10 +136,26 @@ Cada build do TefIP é compilado para um adquirente específico.
 
 <div class="grid cards">
   <ul>
-    <li><p><a href="https://www.stone.com.br" target="_blank"><strong>Stone</strong></a></p></li>
-    <li><p><a href="https://www.getnet.com.br" target="_blank"><strong>Getnet</strong></a></p></li>
-    <li><p><a href="https://www.userede.com.br" target="_blank"><strong>Rede</strong></a></p></li>
-    <li><p><a href="https://pagseguro.uol.com.br" target="_blank"><strong>PagSeguro</strong></a></p></li>
+   <li>
+        <a href="https://www.stone.com.br" target="_blank" style="display: block;">
+            <strong>Stone</strong>
+        </a>
+    </li>
+    <li>
+        <a href="https://www.getnet.com.br" target="_blank" style="display: block;">
+            <strong>Getnet</strong>
+        </a>
+    </li>
+    <li>
+        <a href="https://www.userede.com.br" target="_blank" style="display: block;">
+            <strong>Rede</strong>
+        </a>
+    </li>
+    <li>
+        <a href="https://pagseguro.uol.com.br" target="_blank" style="display: block;">
+            <strong>PagSeguro</strong>
+        </a>
+    </li>
   </ul>
 </div>
 
