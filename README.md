@@ -1,3 +1,5 @@
+<a name="readme-top"></a>
+
 # TefIP Docs
 
 Site de documentação pública da API do TefIP, construído com [MkDocs Material](https://squidfunk.github.io/mkdocs-material/).
