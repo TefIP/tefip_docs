@@ -1,6 +1,6 @@
-# TefIP Docs
+# TEF IP Docs
 
-Site de documentação pública da API do TefIP, construído com [MkDocs Material](https://squidfunk.github.io/mkdocs-material/).
+Site de documentação pública da API do TEF IP, construído com [MkDocs Material](https://squidfunk.github.io/mkdocs-material/).
 
 ## Pré-requisitos
 
@@ -52,7 +52,7 @@ docs/
 
 ## Contato
 
-* GitHub: [TefIP](https://github.com/TefIP)
+* GitHub: [TEF IP](https://github.com/TefIP)
 * Site: [https://www.djsystem.com.br](https://www.djsystem.com.br)
 
 ---

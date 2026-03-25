@@ -25,7 +25,7 @@
     
     
       
-        <title>Primeiros Passos - TefIP Docs</title>
+        <title>Primeiros Passos - TEF IP Docs</title>
       
     
     
@@ -92,7 +92,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
-    <a href=".." title="TefIP Docs" class="md-header__button md-logo" aria-label="TefIP Docs" data-md-component="logo">
+    <a href=".." title="TEF IP Docs" class="md-header__button md-logo" aria-label="TEF IP Docs" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -106,7 +106,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            TefIP Docs
+            TEF IP Docs
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -306,13 +306,13 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="TefIP Docs" class="md-nav__button md-logo" aria-label="TefIP Docs" data-md-component="logo">
+    <a href=".." title="TEF IP Docs" class="md-nav__button md-logo" aria-label="TEF IP Docs" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    TefIP Docs
+    TEF IP Docs
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -932,11 +932,11 @@
 
 
 <h1 id="primeiros-passos">Primeiros Passos</h1>
-<p>Este guia mostra como instalar o TefIP, configurar o servidor e fazer a primeira requisição ao terminal de pagamento — tudo em menos de 10 minutos.</p>
+<p>Este guia mostra como instalar o TEF IP, configurar o servidor e fazer a primeira requisição ao terminal de pagamento — tudo em menos de 10 minutos.</p>
 <h2 id="pre-requisitos">Pré-requisitos</h2>
 <ul>
 <li><strong>Hardware:</strong> terminal Android compatível (Stone, Getnet ou Rede) <strong>ou</strong> computador com Windows 10 ou superior</li>
-<li><strong>Rede local:</strong> o PDV e o terminal devem estar na mesma rede (ou usar <code>localhost</code> quando o TefIP rodar na mesma máquina)</li>
+<li><strong>Rede local:</strong> o PDV e o terminal devem estar na mesma rede (ou usar <code>localhost</code> quando o TEF IP rodar na mesma máquina)</li>
 </ul>
 <h2 id="instalacao">Instalação</h2>
 <h3 id="terminais-android-adquirentes">Terminais Android (Adquirentes)</h3>
@@ -951,7 +951,7 @@
 <ol>
 <li>Baixe o instalador <code>.exe</code> na <a href="../emulator/#download">página do Emulador</a>.</li>
 <li>Execute o instalador e siga o assistente de instalação.</li>
-<li>Ao final, o TefIP será registrado como serviço do Windows e iniciará automaticamente.</li>
+<li>Ao final, o TEF IP será registrado como serviço do Windows e iniciará automaticamente.</li>
 </ol>
 <div class="admonition info">
 <p class="admonition-title">Build com emulador</p>
@@ -970,7 +970,7 @@
 <p>Para verificar os servidores:</p>
 </li>
 <li>
-<p>Abra o aplicativo TefIP no terminal.</p>
+<p>Abra o aplicativo TEF IP no terminal.</p>
 </li>
 <li>
 <p>Acesse a seção Servidores.</p>
@@ -980,7 +980,7 @@
 </li>
 </ol>
 <p>Nessa tela é possível visualizar os IPs detectados e executar ações como reiniciar ou parar os serviços.</p>
-<p><img alt="GIF do TefIP entrando nos servidores ativos" src="../assets/gif/emulador-terminal-entrar-servidores.gif" style="display: block; margin: 0 auto;" /></p>
+<p><img alt="GIF do TEF IP entrando nos servidores ativos" src="../assets/gif/emulador-terminal-entrar-servidores.gif" style="display: block; margin: 0 auto;" /></p>
 <h2 id="verificando-a-conexao">Verificando a conexão</h2>
 <div class="admonition warning">
 <p class="admonition-title">Autenticação</p>
@@ -998,11 +998,11 @@ Se habilitada, todas as requisições devem incluir as credenciais configuradas.
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">import</span><span class="w"> </span><span class="s1">&#39;package:dart_tefip/dart_tefip.dart&#39;</span><span class="p">;</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">TefIP</span><span class="p">.</span><span class="n">baseUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;http://localhost:9050&#39;</span><span class="p">;</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">TefIP</span><span class="p">.</span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="p">;</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">TefIP</span><span class="p">.</span><span class="n">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;1234&#39;</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">TEF IP</span><span class="p">.</span><span class="n">baseUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;http://localhost:9050&#39;</span><span class="p">;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">TEF IP</span><span class="p">.</span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="p">;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">TEF IP</span><span class="p">.</span><span class="n">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;1234&#39;</span><span class="p">;</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="kd">final</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">await</span><span class="w"> </span><span class="n">TefIP</span><span class="p">.</span><span class="n">instance</span><span class="p">.</span><span class="n">status</span><span class="p">.</span><span class="kd">get</span><span class="p">();</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="kd">final</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">await</span><span class="w"> </span><span class="n">TEF IP</span><span class="p">.</span><span class="n">instance</span><span class="p">.</span><span class="n">status</span><span class="p">.</span><span class="kd">get</span><span class="p">();</span>
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">print</span><span class="p">(</span><span class="n">status</span><span class="p">);</span>
 </code></pre></div>
 </div>

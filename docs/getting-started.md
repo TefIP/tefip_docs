@@ -1,11 +1,11 @@
 # Primeiros Passos
 
-Este guia mostra como instalar o TefIP, configurar o servidor e fazer a primeira requisição ao terminal de pagamento — tudo em menos de 10 minutos.
+Este guia mostra como instalar o TEF IP, configurar o servidor e fazer a primeira requisição ao terminal de pagamento — tudo em menos de 10 minutos.
 
 ## Pré-requisitos
 
 - **Hardware:** terminal Android compatível (Stone, Getnet ou Rede) **ou** computador com Windows 10 ou superior
-- **Rede local:** o PDV e o terminal devem estar na mesma rede (ou usar `localhost` quando o TefIP rodar na mesma máquina)
+- **Rede local:** o PDV e o terminal devem estar na mesma rede (ou usar `localhost` quando o TEF IP rodar na mesma máquina)
 
 ## Instalação
 
@@ -23,7 +23,7 @@ Caso encontre alguma dificuldade, entre em contato com o nosso [SUPORTE](https:/
 
 1. Baixe o instalador `.exe` na [página do Emulador](emulator.md#download).
 2. Execute o instalador e siga o assistente de instalação.
-3. Ao final, o TefIP será registrado como serviço do Windows e iniciará automaticamente.
+3. Ao final, o TEF IP será registrado como serviço do Windows e iniciará automaticamente.
 
 !!! info "Build com emulador"
     O instalador Windows disponível nas releases inclui o emulador de hardware — ideal para desenvolvimento e testes sem terminal físico. Para uso em produção, utilize o app distribuído pelo seu adquirente no terminal Android correspondente.
@@ -41,7 +41,7 @@ Se for o primeiro acesso, a inicialização automática já estará ativa.
 
 1. Para verificar os servidores:
 
-2. Abra o aplicativo TefIP no terminal.
+2. Abra o aplicativo TEF IP no terminal.
 
 3. Acesse a seção Servidores.
 
@@ -49,7 +49,7 @@ Se for o primeiro acesso, a inicialização automática já estará ativa.
 
 Nessa tela é possível visualizar os IPs detectados e executar ações como reiniciar ou parar os serviços.
 
-![GIF do TefIP entrando nos servidores ativos](assets/gif/emulador-terminal-entrar-servidores.gif){ style="display: block; margin: 0 auto;" }
+![GIF do TEF IP entrando nos servidores ativos](assets/gif/emulador-terminal-entrar-servidores.gif){ style="display: block; margin: 0 auto;" }
 
 ## Verificando a conexão
 
@@ -71,11 +71,11 @@ Use o endpoint `GET /status` para confirmar que o servidor está respondendo:
     ```dart
     import 'package:dart_tefip/dart_tefip.dart';
 
-    TefIP.baseUrl = 'http://localhost:9050';
-    TefIP.username = 'admin';
-    TefIP.password = '1234';
+    TEF IP.baseUrl = 'http://localhost:9050';
+    TEF IP.username = 'admin';
+    TEF IP.password = '1234';
 
-    final status = await TefIP.instance.status.get();
+    final status = await TEF IP.instance.status.get();
     print(status);
     ```
 

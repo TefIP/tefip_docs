@@ -4,16 +4,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**TefIP** is a Flutter app that runs an embedded [shelf](https://pub.dev/packages/shelf)-based HTTP server. POS/PDV systems send HTTP requests to it; TefIP routes them through payment hardware (Stone, Getnet, Rede) and returns results.
+**TEF IP** is a Flutter app that runs an embedded [shelf](https://pub.dev/packages/shelf)-based HTTP server. POS/PDV systems send HTTP requests to it; TEF IP routes them through payment hardware (Stone, Getnet, Rede) and returns results.
 
-`tefip_docs` is TefIP's public API documentation site, built with MkDocs Material.
+`tefip_docs` is TEF IP's public API documentation site, built with MkDocs Material.
 
 ## App Flow
 
 ```
 POS/PDV System
   → dart_tefip SDK (ou curl / qualquer cliente HTTP)
-  → TefIP HTTP Server (Basic Auth obrigatório)
+  → TEF IP HTTP Server (Basic Auth obrigatório)
   → Middleware: auth → cors → json → busy → notification → error handler
   → Resources: ask | display | sale | print | status | transaction | swagger
   → Hardware: Stone, Getnet, Rede
@@ -107,7 +107,7 @@ Every endpoint page must include an **Integration Examples** section using `pymd
 2. **Autenticação:** adicione um admonition antes do primeiro endpoint de cada página:
    ```markdown
    !!! warning "Autenticação"
-       Todas as requisições exigem Basic Auth. Use as credenciais configuradas no TefIP (`admin` / senha definida na instalação).
+       Todas as requisições exigem Basic Auth. Use as credenciais configuradas no TEF IP (`admin` / senha definida na instalação).
    ```
 3. **Nomes de tab consistentes:** use exatamente `cURL`, `Dart`, `JavaScript`, `PHP`, `Ruby` em todo o site para que o `content.tabs.link` sincronize corretamente.
 4. **Idioma:** toda a documentação é escrita em **português do Brasil**.

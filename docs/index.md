@@ -1,4 +1,4 @@
-# TefIP
+# TEF IP
 
 Aceite pagamentos com qualquer adquirente! Usando uma única API HTTP local.
 Instale no terminal e comece a processar.
@@ -22,20 +22,20 @@ Instale no terminal e comece a processar.
 ```mermaid
 flowchart LR
     PDV["Seu sistema\n(qualquer linguagem)"]
-    TefIP["TefIP\nIP Local"]
+    TEF IP["TEF IP\nIP Local"]
     HW["Adquirente"]
 
-    PDV -- "HTTP + Basic Auth" --> TefIP
-    TefIP -- "SDK do adquirente" --> HW
-    HW -- "aprovação / erro" --> TefIP
-    TefIP -- "JSON" --> PDV
+    PDV -- "HTTP + Basic Auth" --> TEF IP
+    TEF IP -- "SDK do adquirente" --> HW
+    HW -- "aprovação / erro" --> TEF IP
+    TEF IP -- "JSON" --> PDV
 ```
 
-Seu sistema faz chamadas HTTP para o TefIP. O TefIP se comunica com o hardware do adquirente
+Seu sistema faz chamadas HTTP para o TEF IP. O TEF IP se comunica com o hardware do adquirente
 e retorna o resultado em JSON — sem nenhuma SDK proprietária no seu lado.
 
 !!! tip "Sem maquininha? Use o emulador!"
-    O TefIP inclui um **modo emulador** que simula o hardware do adquirente localmente.
+    O TEF IP inclui um **modo emulador** que simula o hardware do adquirente localmente.
     Você pode desenvolver e testar toda a integração sem nenhum terminal físico.
     [Clique aqui para saber como usar o emulador](getting-started.md#emulador)
 
@@ -63,11 +63,11 @@ Exemplo de ponta a ponta: processar um PIX de R$ 50,00.
     ```dart
     import 'package:dart_tefip/dart_tefip.dart';
 
-    TefIP.baseUrl = 'http://localhost:9050';
-    TefIP.username = 'admin';
-    TefIP.password = '1234';
+    TEF IP.baseUrl = 'http://localhost:9050';
+    TEF IP.username = 'admin';
+    TEF IP.password = '1234';
 
-    final result = await TefIP.instance.transaction.post(
+    final result = await TEF IP.instance.transaction.post(
       transactionRequest: TransactionRequestModel(
         type: TefIPTransactionType.pix,
         amount: 50.00,
@@ -129,7 +129,7 @@ Exemplo de ponta a ponta: processar um PIX de R$ 50,00.
 
 ## Adquirentes suportados
 
-Cada build do TefIP é compilado para um adquirente específico.
+Cada build do TEF IP é compilado para um adquirente específico.
 
 <div class="grid cards">
   <ul>
@@ -173,7 +173,7 @@ Qualquer cliente HTTP funciona diretamente — os SDKs são conveniência, não 
 
 ## Próximos Passos
 
-- [Primeiros Passos](getting-started.md) — Instale o TefIP e faça sua primeira requisição.
+- [Primeiros Passos](getting-started.md) — Instale o TEF IP e faça sua primeira requisição.
 - [Referência da API: Transações](api/transaction.md) — Documentação completa dos endpoints de pagamento.
 - [Swagger Docs](api/swagger.md) — Swagger UI interativo no próprio terminal
 - [Outros produtos](http://djsystem.com.br) — Conheça outras soluções disponíveis
