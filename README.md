@@ -1,3 +1,5 @@
+<a name="readme-top"></a>
+
 # TEF IP Docs
 
 Site de documentação pública da API do TEF IP, construído com [MkDocs Material](https://squidfunk.github.io/mkdocs-material/).
