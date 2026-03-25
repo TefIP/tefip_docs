@@ -23,7 +23,7 @@
     
     
       
-        <title>TefIP Docs</title>
+        <title>TEF IP Docs</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tefip" class="md-skip">
+        <a href="#tef-ip" class="md-skip">
           Pular para conteúdo
         </a>
       
@@ -90,7 +90,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
-    <a href="." title="TefIP Docs" class="md-header__button md-logo" aria-label="TefIP Docs" data-md-component="logo">
+    <a href="." title="TEF IP Docs" class="md-header__button md-logo" aria-label="TEF IP Docs" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -104,7 +104,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            TefIP Docs
+            TEF IP Docs
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -304,13 +304,13 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="TefIP Docs" class="md-nav__button md-logo" aria-label="TefIP Docs" data-md-component="logo">
+    <a href="." title="TEF IP Docs" class="md-nav__button md-logo" aria-label="TEF IP Docs" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    TefIP Docs
+    TEF IP Docs
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -873,7 +873,7 @@
 
 
 
-<h1 id="tefip">TefIP</h1>
+<h1 id="tef-ip">TEF IP</h1>
 <p>Aceite pagamentos com qualquer adquirente! Usando uma única API HTTP local.
 Instale no terminal e comece a processar.</p>
 <hr />
@@ -891,18 +891,18 @@ Instale no terminal e comece a processar.</p>
 <h2 id="como-funciona">Como funciona</h2>
 <pre class="mermaid"><code>flowchart LR
     PDV["Seu sistema\n(qualquer linguagem)"]
-    TefIP["TefIP\nIP Local"]
+    TEF IP["TEF IP\nIP Local"]
     HW["Adquirente"]
 
-    PDV -- "HTTP + Basic Auth" --&gt; TefIP
-    TefIP -- "SDK do adquirente" --&gt; HW
-    HW -- "aprovação / erro" --&gt; TefIP
-    TefIP -- "JSON" --&gt; PDV</code></pre>
-<p>Seu sistema faz chamadas HTTP para o TefIP. O TefIP se comunica com o hardware do adquirente
+    PDV -- "HTTP + Basic Auth" --&gt; TEF IP
+    TEF IP -- "SDK do adquirente" --&gt; HW
+    HW -- "aprovação / erro" --&gt; TEF IP
+    TEF IP -- "JSON" --&gt; PDV</code></pre>
+<p>Seu sistema faz chamadas HTTP para o TEF IP. O TEF IP se comunica com o hardware do adquirente
 e retorna o resultado em JSON — sem nenhuma SDK proprietária no seu lado.</p>
 <div class="admonition tip">
 <p class="admonition-title">Sem maquininha? Use o emulador!</p>
-<p>O TefIP inclui um <strong>modo emulador</strong> que simula o hardware do adquirente localmente.
+<p>O TEF IP inclui um <strong>modo emulador</strong> que simula o hardware do adquirente localmente.
 Você pode desenvolver e testar toda a integração sem nenhum terminal físico.
 <a href="getting-started/#emulador">Clique aqui para saber como usar o emulador</a></p>
 </div>
@@ -923,11 +923,11 @@ Você pode desenvolver e testar toda a integração sem nenhum terminal físico.
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">import</span><span class="w"> </span><span class="s1">&#39;package:dart_tefip/dart_tefip.dart&#39;</span><span class="p">;</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">TefIP</span><span class="p">.</span><span class="n">baseUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;http://localhost:9050&#39;</span><span class="p">;</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">TefIP</span><span class="p">.</span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="p">;</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">TefIP</span><span class="p">.</span><span class="n">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;1234&#39;</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">TEF</span><span class="w"> </span><span class="n">IP</span><span class="p">.</span><span class="n">baseUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;http://localhost:9050&#39;</span><span class="p">;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">TEF</span><span class="w"> </span><span class="n">IP</span><span class="p">.</span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="p">;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">TEF</span><span class="w"> </span><span class="n">IP</span><span class="p">.</span><span class="n">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;1234&#39;</span><span class="p">;</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="kd">final</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">await</span><span class="w"> </span><span class="n">TefIP</span><span class="p">.</span><span class="n">instance</span><span class="p">.</span><span class="n">transaction</span><span class="p">.</span><span class="n">post</span><span class="p">(</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="kd">final</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">await</span><span class="w"> </span><span class="n">TEF</span><span class="w"> </span><span class="n">IP</span><span class="p">.</span><span class="n">instance</span><span class="p">.</span><span class="n">transaction</span><span class="p">.</span><span class="n">post</span><span class="p">(</span>
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="nl">transactionRequest:</span><span class="w"> </span><span class="n">TransactionRequestModel</span><span class="p">(</span>
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="nl">type:</span><span class="w"> </span><span class="n">TefIPTransactionType</span><span class="p">.</span><span class="n">pix</span><span class="p">,</span>
 <a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="nl">amount:</span><span class="w"> </span><span class="m">50.00</span><span class="p">,</span>
@@ -983,7 +983,7 @@ Você pode desenvolver e testar toda a integração sem nenhum terminal físico.
 </div>
 <hr />
 <h2 id="adquirentes-suportados">Adquirentes suportados</h2>
-<p>Cada build do TefIP é compilado para um adquirente específico.</p>
+<p>Cada build do TEF IP é compilado para um adquirente específico.</p>
 <div class="grid cards">
   <ul>
    <li>
@@ -1046,7 +1046,7 @@ Você pode desenvolver e testar toda a integração sem nenhum terminal físico.
 <hr />
 <h2 id="proximos-passos">Próximos Passos</h2>
 <ul>
-<li><a href="getting-started/">Primeiros Passos</a> — Instale o TefIP e faça sua primeira requisição.</li>
+<li><a href="getting-started/">Primeiros Passos</a> — Instale o TEF IP e faça sua primeira requisição.</li>
 <li><a href="api/transaction.md">Referência da API: Transações</a> — Documentação completa dos endpoints de pagamento.</li>
 <li><a href="api/swagger.md">Swagger Docs</a> — Swagger UI interativo no próprio terminal</li>
 <li><a href="http://djsystem.com.br">Outros produtos</a> — Conheça outras soluções disponíveis</li>
