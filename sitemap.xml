@@ -2,14 +2,78 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://tefip.github.io/tefip_docs/</loc>
-         <lastmod>2026-03-25</lastmod>
+         <lastmod>2026-03-26</lastmod>
+    </url>
+    <url>
+         <loc>https://tefip.github.io/tefip_docs/comportamento/</loc>
+         <lastmod>2026-03-26</lastmod>
     </url>
     <url>
          <loc>https://tefip.github.io/tefip_docs/emulator/</loc>
-         <lastmod>2026-03-25</lastmod>
+         <lastmod>2026-03-26</lastmod>
     </url>
     <url>
          <loc>https://tefip.github.io/tefip_docs/getting-started/</loc>
-         <lastmod>2026-03-25</lastmod>
+         <lastmod>2026-03-26</lastmod>
+    </url>
+    <url>
+         <loc>https://tefip.github.io/tefip_docs/sdk-dart/</loc>
+         <lastmod>2026-03-26</lastmod>
+    </url>
+    <url>
+         <loc>https://tefip.github.io/tefip_docs/sdk-js/</loc>
+         <lastmod>2026-03-26</lastmod>
+    </url>
+    <url>
+         <loc>https://tefip.github.io/tefip_docs/sdk-php/</loc>
+         <lastmod>2026-03-26</lastmod>
+    </url>
+    <url>
+         <loc>https://tefip.github.io/tefip_docs/sdk-ruby/</loc>
+         <lastmod>2026-03-26</lastmod>
+    </url>
+    <url>
+         <loc>https://tefip.github.io/tefip_docs/sdks/</loc>
+         <lastmod>2026-03-26</lastmod>
+    </url>
+    <url>
+         <loc>https://tefip.github.io/tefip_docs/api/ask/</loc>
+         <lastmod>2026-03-26</lastmod>
+    </url>
+    <url>
+         <loc>https://tefip.github.io/tefip_docs/api/display/</loc>
+         <lastmod>2026-03-26</lastmod>
+    </url>
+    <url>
+         <loc>https://tefip.github.io/tefip_docs/api/erros/</loc>
+         <lastmod>2026-03-26</lastmod>
+    </url>
+    <url>
+         <loc>https://tefip.github.io/tefip_docs/api/print/</loc>
+         <lastmod>2026-03-26</lastmod>
+    </url>
+    <url>
+         <loc>https://tefip.github.io/tefip_docs/api/sale/</loc>
+         <lastmod>2026-03-26</lastmod>
+    </url>
+    <url>
+         <loc>https://tefip.github.io/tefip_docs/api/status/</loc>
+         <lastmod>2026-03-26</lastmod>
+    </url>
+    <url>
+         <loc>https://tefip.github.io/tefip_docs/api/swagger/</loc>
+         <lastmod>2026-03-26</lastmod>
+    </url>
+    <url>
+         <loc>https://tefip.github.io/tefip_docs/api/transaction/</loc>
+         <lastmod>2026-03-26</lastmod>
+    </url>
+    <url>
+         <loc>https://tefip.github.io/tefip_docs/suporte/resolucao-de-problemas/</loc>
+         <lastmod>2026-03-26</lastmod>
+    </url>
+    <url>
+         <loc>https://tefip.github.io/tefip_docs/suporte/versoes-requisitos/</loc>
+         <lastmod>2026-03-26</lastmod>
     </url>
 </urlset>
