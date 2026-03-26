@@ -71,11 +71,11 @@ Use o endpoint `GET /status` para confirmar que o servidor está respondendo:
     ```dart
     import 'package:dart_tefip/dart_tefip.dart';
 
-    TEF IP.baseUrl = 'http://localhost:9050';
-    TEF IP.username = 'admin';
-    TEF IP.password = '1234';
+    TefIP.baseUrl = 'http://localhost:9050';
+    TefIP.username = 'admin';
+    TefIP.password = '1234';
 
-    final status = await TEF IP.instance.status.get();
+    final status = await TefIP.instance.status.get();
     print(status);
     ```
 

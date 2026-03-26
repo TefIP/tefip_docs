@@ -22,15 +22,15 @@ POS/PDV System
 
 ## API Endpoint Groups
 
-| Grupo        | Endpoints                                                                                                                                      |
-|--------------|------------------------------------------------------------------------------------------------------------------------------------------------|
-| `ask`        | POST /ask · POST /ask/form · POST /ask/cancel                                                                                                  |
-| `display`    | POST /display/image · POST /display/text · POST /display/carousel · POST /display/clear                                                        |
-| `sale`       | POST /sale · POST /sale/item · PATCH /sale/item/{id} · DELETE /sale/item/{id} · POST /sale/payment · DELETE /sale/payment/{id} · POST /sale/finalize · POST /sale/cancel |
-| `print`      | POST /print/image · POST /print/text · POST /print/xml                                                                                         |
-| `status`     | GET /status · GET /info · POST /restart                                                                                                        |
-| `transaction`| POST /transaction · GET /transaction/{referenceId} · POST /transaction/{referenceId}/reversal                                                  |
-| `swagger`    | GET /docs · GET /openapi.bundle.yaml                                                                                                           |
+| Grupo        | Endpoints                                                                                                                                                                                                                        |
+|--------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `ask`        | POST /ask · POST /ask/form · POST /ask/cancel                                                                                                                                                                                    |
+| `display`    | POST /display/image · POST /display/text · POST /display/carousel · POST /display/clear · POST /display/pop                                                                                                                      |
+| `sale`       | POST /sale · PATCH /sale · POST /sale/item · PATCH /sale/item/{id} · DELETE /sale/item/{id} · POST /sale/item/{id}/cancel · POST /sale/payment · PATCH /sale/payment/{id} · DELETE /sale/payment/{id} · POST /sale/finalize · POST /sale/cancel |
+| `print`      | POST /print/image · POST /print/text · POST /print/xml                                                                                                                                                                           |
+| `status`     | GET /status · GET /info · POST /restart                                                                                                                                                                                          |
+| `transaction`| POST /transaction · GET /transaction · GET /transaction/{referenceId} · POST /transaction/{referenceId}/reversal                                                                                                                  |
+| `swagger`    | GET /docs · GET /openapi.bundle.yaml                                                                                                                                                                                             |
 
 ## Integration Tab Template
 
@@ -42,7 +42,7 @@ Every endpoint page must include an **Integration Examples** section using `pymd
     ```bash
     curl -u admin:1234 \
          -H "Content-Type: application/json" \
-         -X POST http://localhost:8080/endpoint \
+         -X POST http://localhost:9050/endpoint \
          -d '{"key": "value"}'
     ```
 
@@ -50,15 +50,17 @@ Every endpoint page must include an **Integration Examples** section using `pymd
 
     ```dart
     // pub.dev/packages/dart_tefip
-    final client = TefipClient(host: 'localhost', port: 8080, password: '1234');
-    final result = await client.endpoint(/* params */);
+    TefIP.baseUrl = 'http://localhost:9050';
+    TefIP.username = 'admin';
+    TefIP.password = '1234';
+    final result = await TefIP.instance.endpoint.method(/* params */);
     ```
 
 === "JavaScript"
 
     ```js
     // TODO: pacote JavaScript ainda não criado — usando fetch diretamente
-    const res = await fetch('http://localhost:8080/endpoint', {
+    const res = await fetch('http://localhost:9050/endpoint', {
       method: 'POST',
       headers: {
         'Authorization': 'Basic ' + btoa('admin:1234'),
@@ -73,7 +75,7 @@ Every endpoint page must include an **Integration Examples** section using `pymd
 
     ```php
     // TODO: pacote PHP ainda não criado — usando curl diretamente
-    $ch = curl_init('http://localhost:8080/endpoint');
+    $ch = curl_init('http://localhost:9050/endpoint');
     curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
     curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
     curl_setopt($ch, CURLOPT_POST, true);
@@ -90,7 +92,7 @@ Every endpoint page must include an **Integration Examples** section using `pymd
     require 'net/http'
     require 'json'
 
-    uri = URI('http://localhost:8080/endpoint')
+    uri = URI('http://localhost:9050/endpoint')
     req = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
     req.basic_auth('admin', '1234')
     req.body = { key: 'value' }.to_json
@@ -101,9 +103,29 @@ Every endpoint page must include an **Integration Examples** section using `pymd
 
 > **Indentação:** o conteúdo dentro de cada `=== "Tab"` deve usar **4 espaços**. Misturar tabs e espaços quebra a renderização.
 
+## Dart SDK
+
+O SDK oficial para Dart/Flutter é o [`dart_tefip`](https://pub.dev/packages/dart_tefip). Ele usa o padrão **singleton** com setters estáticos:
+
+```dart
+import 'package:dart_tefip/dart_tefip.dart';
+
+// Configurar uma vez (ex.: no main ou antes da primeira chamada)
+TefIP.baseUrl = 'http://localhost:9050';
+TefIP.username = 'admin';
+TefIP.password = '1234';
+
+// Chamar endpoints via TefIP.instance.<grupo>.<método>(...)
+final result = await TefIP.instance.transaction.post(
+  transactionRequest: TransactionRequestModel(type: TefIPTransactionType.pix, amount: 50.00),
+);
+```
+
+> **Atenção:** `TefIPClient` **não existe** no SDK. Use sempre `TefIP.instance`.
+
 ## Authoring Rules
 
-1. **Estrutura de página de endpoint:** intro curta em prosa → tabela/bloco JSON de request e response → seção `## Integration Examples` com o tab template acima.
+1. **Estrutura de página de endpoint:** intro curta em prosa → tabela/bloco JSON de request e response → seção `### Exemplos de integração` (H3, por endpoint) com o tab template acima.
 2. **Autenticação:** adicione um admonition antes do primeiro endpoint de cada página:
    ```markdown
    !!! warning "Autenticação"
@@ -150,15 +172,16 @@ mkdocs.yml
 docs/
   index.md              homepage
   getting-started.md    instalação e primeira requisição
+  emulator.md           emulador local para testes sem hardware
   assets/               imagens, GIFs, diagramas
   api/
-    ask.md
-    display.md
-    sale.md
-    print.md
-    status.md
-    transaction.md
-    swagger.md
+    ask.md              POST /ask · POST /ask/form · POST /ask/cancel
+    display.md          POST /display/image · text · carousel · clear · pop
+    sale.md             POST/PATCH /sale · item · payment · finalize · cancel
+    print.md            POST /print/image · text · xml
+    status.md           GET /status · /info · POST /restart
+    transaction.md      POST/GET /transaction · reversal
+    swagger.md          GET /docs · /openapi.bundle.yaml
 ```
 
 ## Media Assets

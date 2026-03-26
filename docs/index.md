@@ -63,11 +63,11 @@ Exemplo de ponta a ponta: processar um PIX de R$ 50,00.
     ```dart
     import 'package:dart_tefip/dart_tefip.dart';
 
-    TEF IP.baseUrl = 'http://localhost:9050';
-    TEF IP.username = 'admin';
-    TEF IP.password = '1234';
+    TefIP.baseUrl = 'http://localhost:9050';
+    TefIP.username = 'admin';
+    TefIP.password = '1234';
 
-    final result = await TEF IP.instance.transaction.post(
+    final result = await TefIP.instance.transaction.post(
       transactionRequest: TransactionRequestModel(
         type: TefIPTransactionType.pix,
         amount: 50.00,

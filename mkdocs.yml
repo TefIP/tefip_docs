@@ -50,7 +50,9 @@ markdown_extensions:
 nav:
   - Início: index.md
   - Primeiros Passos: getting-started.md
+  - Conceitos: conceitos.md
   - Emulador: emulator.md
+  - SDK Dart: sdk-dart.md
   - API Reference:
     - ask: api/ask.md
     - display: api/display.md
