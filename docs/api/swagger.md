@@ -17,9 +17,7 @@ O spec é carregado automaticamente e os servidores disponíveis são detectados
 
 Abra o navegador e acesse `http://<ip-do-terminal>:9050/docs`.
 
-![TODO: adicionar screenshot da Swagger UI do TEF IP](../assets/screenshot-swagger-ui.png)
-
-> **Ação necessária:** adicione o arquivo `docs/assets/screenshot-swagger-ui.png` aqui com um screenshot da interface Swagger UI em funcionamento.
+![TODO: adicionar screenshot da Swagger UI do TEF IP](../assets/images/screenshot-swagger-ui.png)
 
 ---
 

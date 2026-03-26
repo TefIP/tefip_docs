@@ -12,8 +12,7 @@ Endpoints para processar pagamentos, consultar histórico e realizar estornos.
 Inicia um pagamento no terminal. O TEF IP aguarda o app estar em primeiro plano por até **15 segundos** antes de processar — se o app estiver minimizado, o endpoint retorna `503`.
 
 !!! info "App em segundo plano"
-    Ao receber uma transação, o TEF IP verifica se o app está em foreground (`isActive = true`). Se não estiver, aguarda até **15 segundos** — nesse tempo o push notification enviado ao dispositivo alerta o operador para abrir o app. Se o app não voltar, retorna `503`.
-    Usando o SDK Dart, o timeout padrão é **sem limite** (adequado para pagamentos). Para definir: `TefIP.requestsTimeOut = const Duration(minutes: 2);`
+    Se o TEF IP estiver minimizado, aguarda até **15 s** pelo retorno ao primeiro plano antes de processar — caso contrário retorna `503`. Veja [Comportamento → App em segundo plano](../comportamento.md#app-em-segundo-plano).
 
 **Corpo da requisição**
 
@@ -32,10 +31,13 @@ Inicia um pagamento no terminal. O TEF IP aguarda o app estar em primeiro plano 
 |-------|------|:-----------:|-----------|
 | `tPag` | string | Sim | Tipo de pagamento (ver tabela abaixo) |
 | `amount` | number | Sim | Valor da transação |
-| `referenceId` | string | Não | Identificador externo para conciliação |
+| `referenceId` | string | Não | Identificador externo para conciliação. **Sem este campo, a transação não pode ser estornada individualmente** — aparece apenas na listagem geral. Use o número do pedido ou UUID da venda. |
 | `installments` | int | Não | Número de parcelas (padrão: `1`) |
 | `installmentType` | string | Não | Modalidade de parcelamento (padrão: `"single"`) |
 | `details` | object | Não | Metadados adicionais da transação |
+
+!!! warning "referenceId é necessário para estornos"
+    Sem `referenceId`, a transação só aparece na listagem geral (`GET /transaction`) e não pode ser estornada individualmente. Defina-o sempre que a operação puder precisar de estorno futuro.
 
 **Valores de `tPag`**
 
@@ -93,7 +95,7 @@ Inicia um pagamento no terminal. O TEF IP aguarda o app estar em primeiro plano 
 === "Dart"
 
     ```dart
-    // pub.dev/packages/dart_tefip
+    // pub.dev/packages/dart_tefip — configure uma vez; demais exemplos nesta página omitem esta etapa
     TefIP.baseUrl = 'http://localhost:9050';
     TefIP.username = 'admin';
     TefIP.password = '1234';
@@ -125,6 +127,7 @@ Inicia um pagamento no terminal. O TEF IP aguarda o app estar em primeiro plano 
 === "PHP"
 
     ```php
+    <?php
     // TODO: pacote PHP ainda não criado — usando curl diretamente
     $ch = curl_init('http://localhost:9050/transaction');
     curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
@@ -187,10 +190,6 @@ Array de transações, cada uma com a mesma estrutura do retorno de `POST /trans
 === "Dart"
 
     ```dart
-    // pub.dev/packages/dart_tefip
-    TefIP.baseUrl = 'http://localhost:9050';
-    TefIP.username = 'admin';
-    TefIP.password = '1234';
     final transactions = await TefIP.instance.transaction.getAll();
     for (final t in transactions) {
       print(t.nsu);
@@ -212,6 +211,7 @@ Array de transações, cada uma com a mesma estrutura do retorno de `POST /trans
 === "PHP"
 
     ```php
+    <?php
     // TODO: pacote PHP ainda não criado — usando curl diretamente
     $ch = curl_init('http://localhost:9050/transaction');
     curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
@@ -268,10 +268,6 @@ Busca uma transação específica pelo identificador externo informado no moment
 === "Dart"
 
     ```dart
-    // pub.dev/packages/dart_tefip
-    TefIP.baseUrl = 'http://localhost:9050';
-    TefIP.username = 'admin';
-    TefIP.password = '1234';
     final transaction = await TefIP.instance.transaction.get(referenceId: 'pedido-001');
     print(transaction.nsu);
     ```
@@ -291,6 +287,7 @@ Busca uma transação específica pelo identificador externo informado no moment
 === "PHP"
 
     ```php
+    <?php
     // TODO: pacote PHP ainda não criado — usando curl diretamente
     $referenceId = 'pedido-001';
     $ch = curl_init("http://localhost:9050/transaction/{$referenceId}");
@@ -362,10 +359,6 @@ Mesma estrutura de `POST /transaction`.
 === "Dart"
 
     ```dart
-    // pub.dev/packages/dart_tefip
-    TefIP.baseUrl = 'http://localhost:9050';
-    TefIP.username = 'admin';
-    TefIP.password = '1234';
     final result = await TefIP.instance.reversal.post(referenceId: 'pedido-001');
     print(result.message);
     ```
@@ -386,6 +379,7 @@ Mesma estrutura de `POST /transaction`.
 === "PHP"
 
     ```php
+    <?php
     // TODO: pacote PHP ainda não criado — usando curl diretamente
     $referenceId = 'pedido-001';
     $ch = curl_init("http://localhost:9050/transaction/{$referenceId}/reversal");

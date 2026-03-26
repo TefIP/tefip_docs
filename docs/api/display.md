@@ -7,6 +7,19 @@ Endpoints para controlar a tela do terminal — exibir imagens, textos formatado
 
 ---
 
+## Quando usar o display
+
+O display é um canal independente do fluxo de pagamento — exibir conteúdo não bloqueia nem interfere com transações. Use-o para comunicação visual com o cliente:
+
+- **Antes do pagamento:** exibir o valor total, promoção ou instruções de atendimento.
+- **Durante a espera:** o TEF IP assume o controle da tela ao processar um pagamento (QR Code do PIX, tela de inserção de cartão). Não envie comandos de display enquanto `isBusy=true`.
+- **Após o pagamento:** exibir confirmação, agradecimento ou próxima promoção.
+- **Modo idle:** exibir carrossel de imagens enquanto o terminal aguarda o próximo cliente.
+
+Ao finalizar ou cancelar uma venda (`POST /sale/finalize` / `POST /sale/cancel`), o TEF IP limpa o display automaticamente.
+
+---
+
 ## POST /display/image
 
 Exibe uma imagem em tela cheia na tela do terminal.
@@ -51,7 +64,7 @@ Bytes binários da imagem, enviados diretamente no corpo da requisição.
 === "Dart"
 
     ```dart
-    // pub.dev/packages/dart_tefip
+    // pub.dev/packages/dart_tefip — configure uma vez; demais exemplos nesta página omitem esta etapa
     import 'dart:io';
 
     TefIP.baseUrl = 'http://localhost:9050';
@@ -80,6 +93,7 @@ Bytes binários da imagem, enviados diretamente no corpo da requisição.
 === "PHP"
 
     ```php
+    <?php
     // TODO: pacote PHP ainda não criado — usando curl diretamente
     $imageData = file_get_contents('imagem.png');
     $ch = curl_init('http://localhost:9050/display/image');
@@ -112,7 +126,7 @@ Bytes binários da imagem, enviados diretamente no corpo da requisição.
 
 ## POST /display/text
 
-Exibe conteúdo de texto formatado na tela do terminal. O conteúdo é renderizado como um layout de comprovante usando o formato do `printer_gateway`.
+Exibe conteúdo de texto formatado na tela do terminal.
 
 **Corpo da requisição**
 
@@ -169,10 +183,6 @@ Cada item do array é um objeto com uma chave identificando o tipo de elemento:
 === "Dart"
 
     ```dart
-    // pub.dev/packages/dart_tefip
-    TefIP.baseUrl = 'http://localhost:9050';
-    TefIP.username = 'admin';
-    TefIP.password = '1234';
     await TefIP.instance.displayText.post(
       displayTextRequest: DisplayTextRequestModel(
         content: [
@@ -208,6 +218,7 @@ Cada item do array é um objeto com uma chave identificando o tipo de elemento:
 === "PHP"
 
     ```php
+    <?php
     // TODO: pacote PHP ainda não criado — usando curl diretamente
     $ch = curl_init('http://localhost:9050/display/text');
     curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
@@ -307,12 +318,8 @@ Exibe um carrossel de imagens na tela do terminal, alternando automaticamente em
 === "Dart"
 
     ```dart
-    // pub.dev/packages/dart_tefip
     import 'dart:io';
 
-    TefIP.baseUrl = 'http://localhost:9050';
-    TefIP.username = 'admin';
-    TefIP.password = '1234';
     final img1 = await File('imagem1.png').readAsBytes();
     final img2 = await File('imagem2.png').readAsBytes();
     await TefIP.instance.displayCarousel.post(
@@ -359,6 +366,7 @@ Exibe um carrossel de imagens na tela do terminal, alternando automaticamente em
 === "PHP"
 
     ```php
+    <?php
     // TODO: pacote PHP ainda não criado — usando curl diretamente
     $img1 = base64_encode(file_get_contents('imagem1.png'));
     $img2 = base64_encode(file_get_contents('imagem2.png'));
@@ -428,10 +436,6 @@ Não há corpo na requisição.
 === "Dart"
 
     ```dart
-    // pub.dev/packages/dart_tefip
-    TefIP.baseUrl = 'http://localhost:9050';
-    TefIP.username = 'admin';
-    TefIP.password = '1234';
     await TefIP.instance.displayClear.post();
     ```
 
@@ -451,6 +455,7 @@ Não há corpo na requisição.
 === "PHP"
 
     ```php
+    <?php
     // TODO: pacote PHP ainda não criado — usando curl diretamente
     $ch = curl_init('http://localhost:9050/display/clear');
     curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
@@ -500,10 +505,6 @@ Não há corpo na requisição.
 === "Dart"
 
     ```dart
-    // pub.dev/packages/dart_tefip
-    TefIP.baseUrl = 'http://localhost:9050';
-    TefIP.username = 'admin';
-    TefIP.password = '1234';
     await TefIP.instance.displayPop.post();
     ```
 
@@ -523,6 +524,7 @@ Não há corpo na requisição.
 === "PHP"
 
     ```php
+    <?php
     // TODO: pacote PHP ainda não criado — usando curl diretamente
     $ch = curl_init('http://localhost:9050/display/pop');
     curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');

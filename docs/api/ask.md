@@ -7,6 +7,15 @@ Endpoints para exibir perguntas interativas na tela do terminal e coletar respos
 
 ---
 
+## Como funciona
+
+A requisição HTTP fica **aberta** até o usuário confirmar ou cancelar no terminal — ou o PDV enviar `POST /ask/cancel`. Use **Pergunta Única** (`/ask`) para campos avulsos e **Formulário** (`/ask/form`) para coletar vários campos em sequência; as respostas chegam todas juntas ao final.
+
+!!! info "Timeout"
+    Configure o timeout do cliente para pelo menos **60 segundos**, pois a resposta depende da interação humana no terminal.
+
+---
+
 ## POST /ask
 
 Exibe uma única pergunta na tela do terminal e aguarda a resposta do cliente.
@@ -133,7 +142,7 @@ Exibe uma única pergunta na tela do terminal e aguarda a resposta do cliente.
 === "Dart"
 
     ```dart
-    // pub.dev/packages/dart_tefip
+    // pub.dev/packages/dart_tefip — configure uma vez; demais exemplos nesta página omitem esta etapa
     TefIP.baseUrl = 'http://localhost:9050';
     TefIP.username = 'admin';
     TefIP.password = '1234';
@@ -170,6 +179,7 @@ Exibe uma única pergunta na tela do terminal e aguarda a resposta do cliente.
 === "PHP"
 
     ```php
+    <?php
     // TODO: pacote PHP ainda não criado — usando curl diretamente
     $ch = curl_init('http://localhost:9050/ask');
     curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
@@ -288,10 +298,6 @@ Array com a resposta de cada pergunta, na mesma ordem.
 === "Dart"
 
     ```dart
-    // pub.dev/packages/dart_tefip
-    TefIP.baseUrl = 'http://localhost:9050';
-    TefIP.username = 'admin';
-    TefIP.password = '1234';
     final answers = await TefIP.instance.askForm.post(
       form: AskFormRequestModel(
         parameters: AskParametersModel(buttonText: 'Próximo'),
@@ -330,6 +336,7 @@ Array com a resposta de cada pergunta, na mesma ordem.
 === "PHP"
 
     ```php
+    <?php
     // TODO: pacote PHP ainda não criado — usando curl diretamente
     $ch = curl_init('http://localhost:9050/ask/form');
     curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
@@ -396,10 +403,6 @@ Não há corpo na requisição.
 === "Dart"
 
     ```dart
-    // pub.dev/packages/dart_tefip
-    TefIP.baseUrl = 'http://localhost:9050';
-    TefIP.username = 'admin';
-    TefIP.password = '1234';
     await TefIP.instance.askCancel.post();
     ```
 
@@ -419,6 +422,7 @@ Não há corpo na requisição.
 === "PHP"
 
     ```php
+    <?php
     // TODO: pacote PHP ainda não criado — usando curl diretamente
     $ch = curl_init('http://localhost:9050/ask/cancel');
     curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');

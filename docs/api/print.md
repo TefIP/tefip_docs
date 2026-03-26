@@ -10,6 +10,32 @@ Endpoints para imprimir imagens, comprovantes formatados e cupons fiscais (XML/D
 
 ---
 
+## Impressão Fiscal (DANFE/XML)
+
+O TEF IP inclui um parser avançado para documentos fiscais eletrônicos. Ao invés de o seu sistema formatar o comprovante manualmente, você pode enviar o XML original da nota e o terminal cuidará da renderização.
+
+### Funcionamento do Parser
+
+O servidor processa o XML e mapeia campos como:
+*   **Dados do Emitente**: Nome, CNPJ, Inscrição Estadual, Endereço.
+*   **Dados do Destinatário**: Nome/Razão Social, CPF/CNPJ.
+*   **Itens**: Descrição, quantidade, valor unitário e total.
+*   **Totais**: BC ICMS, Valor ICMS, Valor Total da Nota.
+*   **Informações de Pagamento**: Formas de pagamento utilizadas.
+*   **Protocolo de Autorização**: Número, data e hora da autorização.
+
+### Requisitos do XML
+
+Para que a impressão ocorra sem erros, o XML deve:
+1.  Seguir o padrão nacional de NF-e/NFC-e (versão 4.00).
+2.  Estar completo e conter as tags de protocolo de autorização (`<protNFe>` ou `<protCTe>`).
+3.  Ser enviado com o header `Content-Type: text/xml`.
+
+!!! tip "Customização"
+    Se precisar de um layout muito específico ou marcas próprias que não constam no XML, utilize o endpoint `POST /print/text` para montar o comprovante linha por linha.
+
+---
+
 ## POST /print/image
 
 Imprime uma imagem diretamente na impressora do terminal.
@@ -54,7 +80,7 @@ Bytes binários da imagem, enviados diretamente no corpo da requisição.
 === "Dart"
 
     ```dart
-    // pub.dev/packages/dart_tefip
+    // pub.dev/packages/dart_tefip — configure uma vez; demais exemplos nesta página omitem esta etapa
     import 'dart:io';
 
     TefIP.baseUrl = 'http://localhost:9050';
@@ -83,6 +109,7 @@ Bytes binários da imagem, enviados diretamente no corpo da requisição.
 === "PHP"
 
     ```php
+    <?php
     // TODO: pacote PHP ainda não criado — usando curl diretamente
     $imageData = file_get_contents('comprovante.png');
     $ch = curl_init('http://localhost:9050/print/image');
@@ -115,7 +142,7 @@ Bytes binários da imagem, enviados diretamente no corpo da requisição.
 
 ## POST /print/text
 
-Imprime um comprovante com formatação personalizada usando o formato de layout do `printer_gateway`. O corpo é um array JSON de instruções de impressão.
+Imprime um comprovante com formatação personalizada. O corpo é um array JSON de instruções de impressão.
 
 **Corpo da requisição**
 
@@ -167,10 +194,6 @@ Cada item do array define um elemento de impressão pela sua chave de tipo:
 === "Dart"
 
     ```dart
-    // pub.dev/packages/dart_tefip
-    TefIP.baseUrl = 'http://localhost:9050';
-    TefIP.username = 'admin';
-    TefIP.password = '1234';
     await TefIP.instance.printText.post(
       text: [
         {'text': {'value': 'COMPROVANTE', 'size': 20, 'bold': true,  'align': 'center'}},
@@ -202,6 +225,7 @@ Cada item do array define um elemento de impressão pela sua chave de tipo:
 === "PHP"
 
     ```php
+    <?php
     // TODO: pacote PHP ainda não criado — usando curl diretamente
     $ch = curl_init('http://localhost:9050/print/text');
     curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
@@ -289,12 +313,8 @@ String com o conteúdo do XML da NF-e.
 === "Dart"
 
     ```dart
-    // pub.dev/packages/dart_tefip
     import 'dart:io';
 
-    TefIP.baseUrl = 'http://localhost:9050';
-    TefIP.username = 'admin';
-    TefIP.password = '1234';
     final xml = await File('nota-fiscal.xml').readAsString();
     await TefIP.instance.printXml.post(xml: xml);
     ```
@@ -318,6 +338,7 @@ String com o conteúdo do XML da NF-e.
 === "PHP"
 
     ```php
+    <?php
     // TODO: pacote PHP ainda não criado — usando curl diretamente
     $xml = file_get_contents('nota-fiscal.xml');
     $ch = curl_init('http://localhost:9050/print/xml');

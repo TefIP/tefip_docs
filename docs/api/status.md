@@ -1,9 +1,12 @@
 # Status
 
-Endpoints para monitorar a saúde do servidor TEF IP, consultar informações do dispositivo e reiniciar o aplicativo remotamente.
+Endpoints para monitorar a saúde do servidor TEF IP, consultar informações do dispositivo e reiniciar o aplicativo remotamente. Estes endpoints são sempre seguros de chamar — respondem mesmo durante pagamentos em andamento.
 
 !!! warning "Autenticação"
     Todas as requisições exigem Basic Auth. Use as credenciais configuradas no TEF IP (`admin` / senha definida na instalação).
+
+!!! tip "Disponíveis mesmo durante operações"
+    `GET /status`, `GET /info` e `POST /restart` respondem normalmente mesmo quando há uma operação em andamento (`isBusy=true`). Use-os livremente para monitorar o estado do servidor sem risco de `503`.
 
 ---
 
@@ -39,7 +42,7 @@ Verifica se o servidor está no ar e retorna o tempo de atividade.
 === "Dart"
 
     ```dart
-    // pub.dev/packages/dart_tefip
+    // pub.dev/packages/dart_tefip — configure uma vez; demais exemplos nesta página omitem esta etapa
     TefIP.baseUrl = 'http://localhost:9050';
     TefIP.username = 'admin';
     TefIP.password = '1234';
@@ -62,6 +65,7 @@ Verifica se o servidor está no ar e retorna o tempo de atividade.
 === "PHP"
 
     ```php
+    <?php
     // TODO: pacote PHP ainda não criado — usando curl diretamente
     $ch = curl_init('http://localhost:9050/status');
     curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
@@ -122,7 +126,7 @@ Retorna informações detalhadas sobre o aplicativo e o dispositivo, incluindo o
     Use `isBusy` para saber se o terminal está livre antes de enviar uma nova operação. Requisições enviadas enquanto `isBusy` é `true` serão rejeitadas com `503`.
 
 !!! info "Saiba mais"
-    Veja [Conceitos → Flags isBusy e isActive](../conceitos.md#flag-isbusy) para entender como esses flags afetam o comportamento de transações e impressões.
+    Veja [Comportamento → Servidor ocupado](../comportamento.md#servidor-ocupado) para entender como o servidor lida com operações simultâneas.
 
 ### Exemplos de integração
 
@@ -136,10 +140,6 @@ Retorna informações detalhadas sobre o aplicativo e o dispositivo, incluindo o
 === "Dart"
 
     ```dart
-    // pub.dev/packages/dart_tefip
-    TefIP.baseUrl = 'http://localhost:9050';
-    TefIP.username = 'admin';
-    TefIP.password = '1234';
     final info = await TefIP.instance.info.get();
     print('${info.appName} v${info.version} — isBusy: ${info.isBusy}');
     ```
@@ -159,6 +159,7 @@ Retorna informações detalhadas sobre o aplicativo e o dispositivo, incluindo o
 === "PHP"
 
     ```php
+    <?php
     // TODO: pacote PHP ainda não criado — usando curl diretamente
     $ch = curl_init('http://localhost:9050/info');
     curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
@@ -223,10 +224,6 @@ Mesma estrutura de `GET /status`, refletindo o estado após o reinício.
 === "Dart"
 
     ```dart
-    // pub.dev/packages/dart_tefip
-    TefIP.baseUrl = 'http://localhost:9050';
-    TefIP.username = 'admin';
-    TefIP.password = '1234';
     final result = await TefIP.instance.restart.post();
     print(result.status);
     ```
@@ -247,6 +244,7 @@ Mesma estrutura de `GET /status`, refletindo o estado após o reinício.
 === "PHP"
 
     ```php
+    <?php
     // TODO: pacote PHP ainda não criado — usando curl diretamente
     $ch = curl_init('http://localhost:9050/restart');
     curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');

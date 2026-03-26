@@ -49,15 +49,25 @@ markdown_extensions:
 
 nav:
   - Início: index.md
-  - Primeiros Passos: getting-started.md
-  - Conceitos: conceitos.md
-  - Emulador: emulator.md
-  - SDK Dart: sdk-dart.md
+  - Guia de Integração:
+    - Primeiros Passos: getting-started.md
+    - Testando com Emulador: emulator.md
+    - Comportamento: comportamento.md
   - API Reference:
-    - ask: api/ask.md
-    - display: api/display.md
-    - sale: api/sale.md
-    - print: api/print.md
-    - status: api/status.md
-    - transaction: api/transaction.md
-    - swagger: api/swagger.md
+    - Visão Geral de Erros: api/erros.md
+    - Vendas: api/sale.md
+    - Coleta de Dados: api/ask.md
+    - Impressão: api/print.md
+    - Visor do Terminal: api/display.md
+    - Transações: api/transaction.md
+    - Status e Manutenção: api/status.md
+    - Especificação (Swagger): api/swagger.md
+  - SDKs:
+    - Visão geral: sdks.md
+    - Dart (Oficial): sdk-dart.md
+    - JavaScript: sdk-js.md
+    - PHP: sdk-php.md
+    - Ruby: sdk-ruby.md
+  - Suporte e Operações:
+    - Versões e Requisitos: suporte/versoes-requisitos.md
+    - Resolução de Problemas: suporte/resolucao-de-problemas.md

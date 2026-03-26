@@ -5,6 +5,34 @@ Instale no terminal e comece a processar.
 
 ---
 
+## Como funciona
+
+```mermaid
+flowchart LR
+    PDV["Seu sistema<br>(qualquer linguagem)"]
+    tefip["TEF IP<br>IP Local"]
+    HW["Adquirente"]
+
+    PDV -- "HTTP + Basic Auth" --> tefip
+    tefip -- "SDK do adquirente" --> HW
+    HW -- "aprovação / erro" --> tefip
+    tefip -- "JSON" --> PDV
+```
+
+Seu sistema faz chamadas HTTP para o TEF IP. O TEF IP se comunica com o hardware do adquirente
+e retorna o resultado em JSON — sem nenhuma SDK proprietária no seu lado.
+
+!!! tip "Sem maquininha? Use o emulador!"
+    O TEF IP inclui um **modo emulador** que simula o hardware do adquirente localmente.
+    Você pode desenvolver e testar toda a integração sem nenhum terminal físico.
+    [Clique aqui para saber como usar o emulador](emulator.md)
+
+Veja abaixo um pagamento sendo processado no emulador:
+
+![GIF do terminal processando pagamento manual](assets/gif/emulador-terminal-pagamento-manual.gif){ style="display: block; margin: 0 auto;" }
+
+---
+
 ## O que você pode fazer
 
 - **Pagamentos** — Crédito, débito, PIX, dinheiro, voucher, cartão-presente; parcelamento pelo lojista ou pela emissora.
@@ -17,37 +45,9 @@ Instale no terminal e comece a processar.
 
 ---
 
-## Como funciona
-
-```mermaid
-flowchart LR
-    PDV["Seu sistema\n(qualquer linguagem)"]
-    TEF IP["TEF IP\nIP Local"]
-    HW["Adquirente"]
-
-    PDV -- "HTTP + Basic Auth" --> TEF IP
-    TEF IP -- "SDK do adquirente" --> HW
-    HW -- "aprovação / erro" --> TEF IP
-    TEF IP -- "JSON" --> PDV
-```
-
-Seu sistema faz chamadas HTTP para o TEF IP. O TEF IP se comunica com o hardware do adquirente
-e retorna o resultado em JSON — sem nenhuma SDK proprietária no seu lado.
-
-!!! tip "Sem maquininha? Use o emulador!"
-    O TEF IP inclui um **modo emulador** que simula o hardware do adquirente localmente.
-    Você pode desenvolver e testar toda a integração sem nenhum terminal físico.
-    [Clique aqui para saber como usar o emulador](getting-started.md#emulador)
-
-Veja abaixo um pagamento sendo processado no emulador:
-
-![GIF do terminal processando pagamento manual](assets/gif/emulador-terminal-pagamento-manual.gif){ style="display: block; margin: 0 auto;" }
-
----
-
 ## Integração rápida
 
-Exemplo de ponta a ponta: processar um PIX de R$ 50,00.
+Qualquer cliente HTTP funciona. Veja um exemplo completo — um PIX de R$ 50,00 — nas linguagens mais comuns:
 
 === "cURL"
 
@@ -173,7 +173,8 @@ Qualquer cliente HTTP funciona diretamente — os SDKs são conveniência, não 
 
 ## Próximos Passos
 
-- [Primeiros Passos](getting-started.md) — Instale o TEF IP e faça sua primeira requisição.
-- [Referência da API: Transações](api/transaction.md) — Documentação completa dos endpoints de pagamento.
-- [Swagger Docs](api/swagger.md) — Swagger UI interativo no próprio terminal
-- [Outros produtos](http://djsystem.com.br) — Conheça outras soluções disponíveis
+Novo por aqui? Comece pelo guia:
+
+**[Primeiros Passos →](getting-started.md)**
+
+Instale o TEF IP, verifique a conexão e faça sua primeira requisição em menos de 10 minutos.

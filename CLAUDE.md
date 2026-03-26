@@ -49,7 +49,7 @@ Every endpoint page must include an **Integration Examples** section using `pymd
 === "Dart"
 
     ```dart
-    // pub.dev/packages/dart_tefip
+    // pub.dev/packages/dart_tefip — configure uma vez; demais exemplos nesta página omitem esta etapa
     TefIP.baseUrl = 'http://localhost:9050';
     TefIP.username = 'admin';
     TefIP.password = '1234';
@@ -126,6 +126,7 @@ final result = await TefIP.instance.transaction.post(
 ## Authoring Rules
 
 1. **Estrutura de página de endpoint:** intro curta em prosa → tabela/bloco JSON de request e response → seção `### Exemplos de integração` (H3, por endpoint) com o tab template acima.
+   - **Configuração Dart:** o bloco Dart do **primeiro endpoint da página** deve incluir as 3 linhas de configuração (`TefIP.baseUrl`, `TefIP.username`, `TefIP.password`) com o comentário `// pub.dev/packages/dart_tefip — configure uma vez; demais exemplos nesta página omitem esta etapa`. Os **demais endpoints da mesma página** omitem essas linhas e mostram apenas a chamada.
 2. **Autenticação:** adicione um admonition antes do primeiro endpoint de cada página:
    ```markdown
    !!! warning "Autenticação"

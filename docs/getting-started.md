@@ -1,6 +1,6 @@
 # Primeiros Passos
 
-Este guia mostra como instalar o TEF IP, configurar o servidor e fazer a primeira requisição ao terminal de pagamento — tudo em menos de 10 minutos.
+Este guia leva você da instalação até a primeira resposta real do terminal de pagamento. Ao final, você terá o servidor rodando e confirmará que ele responde às suas requisições — pronto para começar a integrar os endpoints de pagamento.
 
 ## Pré-requisitos
 
@@ -37,15 +37,14 @@ O APK Android disponível na [página do Emulador](emulator.md#download) é o bu
 
 
 ## Iniciando o servidor
+
 Se for o primeiro acesso, a inicialização automática já estará ativa.
 
-1. Para verificar os servidores:
+Para verificar os servidores ativos:
 
-2. Abra o aplicativo TEF IP no terminal.
-
-3. Acesse a seção Servidores.
-
-4. Se não estiver na tela inicial, abra o menu → Configurações → Servidores.
+1. Abra o aplicativo TEF IP no terminal.
+2. Acesse a seção **Servidores** na tela inicial.
+3. Se não aparecer na tela inicial, abra o menu → **Configurações → Servidores**.
 
 Nessa tela é possível visualizar os IPs detectados e executar ações como reiniciar ou parar os serviços.
 
@@ -54,9 +53,8 @@ Nessa tela é possível visualizar os IPs detectados e executar ações como rei
 ## Verificando a conexão
 
 !!! warning "Autenticação"
-    Recomendamos o uso de autenticação Basic Auth nos terminais.
-    Se habilitada, todas as requisições devem incluir as credenciais configuradas.
-  
+    Todas as requisições exigem Basic Auth. Use as credenciais configuradas no TEF IP (`admin` / senha definida na instalação). Os únicos endpoints sem autenticação são `/docs` e `/openapi.bundle.yaml`.
+
 Use o endpoint `GET /status` para confirmar que o servidor está respondendo:
 
 === "cURL"
@@ -132,7 +130,9 @@ Use o endpoint `GET /status` para confirmar que o servidor está respondendo:
 
 ## Próximos passos
 
-- [Referência da API: Transações](api/transaction.md) — realize pagamentos e estornos
-- [Referência da API: Venda](api/sale.md) — gerencie itens e pagamentos de uma venda
-- [Swagger Docs](api/swagger.md) — Swagger UI interativo no próprio terminal
-- [Outros produtos](http://djsystem.com.br) — Conheça outras soluções disponíveis
+Com o servidor respondendo, o caminho natural é:
+
+1. **[Comportamento](comportamento.md)** — entenda como o servidor lida com operações simultâneas, app em segundo plano e autenticação antes de integrar os endpoints.
+2. **[Transações](api/transaction.md)** — processe pagamentos e estornos.
+3. **[Vendas](api/sale.md)** — monte carrinho com itens e múltiplas formas de pagamento.
+4. **[Swagger UI](api/swagger.md)** — explore e teste todos os endpoints diretamente no terminal.

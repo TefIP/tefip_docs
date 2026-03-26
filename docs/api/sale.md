@@ -1,12 +1,42 @@
 # Venda
 
-Endpoints para gerenciar vendas: abrir um carrinho, adicionar itens e pagamentos, e finalizar ou cancelar a venda.
+Endpoints para gerenciar vendas: abrir um carrinho, adicionar itens e pagamentos, e finalizar ou cancelar a venda. A venda organiza o que foi vendido — o pagamento financeiro é feito separadamente via `POST /transaction`.
 
 !!! warning "Autenticação"
     Todas as requisições exigem Basic Auth. Use as credenciais configuradas no TEF IP (`admin` / senha definida na instalação).
 
 !!! info "Fluxo de venda"
     Uma venda segue a sequência: **iniciar** → **adicionar itens** → **adicionar pagamentos** → **finalizar** (ou **cancelar**). Apenas uma venda pode estar ativa por vez.
+
+---
+
+## Ciclo de Vida da Venda
+
+Diferente de uma transação avulsa, uma **Venda** no TEF IP é uma sessão que acumula itens e pagamentos antes de ser consolidada. O servidor gerencia o estado dessa venda internamente.
+
+### Fluxo de Estados
+
+```mermaid
+stateDiagram-v2
+    [*] --> Aberta: POST /sale
+    Aberta --> Aberta: POST /sale/item
+    Aberta --> Aberta: PATCH /sale/item
+    Aberta --> Aberta: DELETE /sale/item
+    Aberta --> Aberta: POST /sale/payment
+    Aberta --> Aberta: DELETE /sale/payment
+    Aberta --> Finalizada: POST /sale/finalize
+    Aberta --> Cancelada: POST /sale/cancel
+    Finalizada --> [*]
+    Cancelada --> [*]
+```
+
+### Regras Importantes
+
+1.  **Exclusividade**: Apenas uma venda pode estar ativa por vez no dispositivo. Tentar iniciar uma nova sem encerrar a anterior resulta em erro `409 Conflict`.
+2.  **Sincronização**: Operações de venda são síncronas. O servidor retorna a confirmação assim que o estado interno é atualizado.
+3.  **Documento Fiscal**: Os itens e pagamentos adicionados servem de base para a montagem de cupons fiscais e DANFE.
+4.  **Pagamento financeiro**: A venda registra **o quê** foi vendido e **como** foi pago — mas **não processa o débito financeiro**. O pagamento no cartão ou PIX é feito separadamente via [`POST /transaction`](transaction.md). Finalize a venda após confirmar a aprovação da transação.
+5.  **Limpeza**: Ao finalizar ou cancelar, o TEF IP limpa automaticamente qualquer conteúdo que esteja sendo exibido no visor do terminal (pop de displays).
 
 ---
 
@@ -58,7 +88,7 @@ Inicia uma nova venda. Retorna `409` se já existir uma venda ativa.
 === "Dart"
 
     ```dart
-    // pub.dev/packages/dart_tefip
+    // pub.dev/packages/dart_tefip — configure uma vez; demais exemplos nesta página omitem esta etapa
     TefIP.baseUrl = 'http://localhost:9050';
     TefIP.username = 'admin';
     TefIP.password = '1234';
@@ -88,6 +118,7 @@ Inicia uma nova venda. Retorna `409` se já existir uma venda ativa.
 === "PHP"
 
     ```php
+    <?php
     // TODO: pacote PHP ainda não criado — usando curl diretamente
     $ch = curl_init('http://localhost:9050/sale');
     curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
@@ -143,10 +174,6 @@ Atualiza os dados da venda ativa (cliente, vendedor, informações adicionais). 
 === "Dart"
 
     ```dart
-    // pub.dev/packages/dart_tefip
-    TefIP.baseUrl = 'http://localhost:9050';
-    TefIP.username = 'admin';
-    TefIP.password = '1234';
     await TefIP.instance.sale.patch(
       request: SaleStartRequestModel(customerName: 'Maria Souza'),
     );
@@ -170,6 +197,7 @@ Atualiza os dados da venda ativa (cliente, vendedor, informações adicionais). 
 === "PHP"
 
     ```php
+    <?php
     // TODO: pacote PHP ainda não criado — usando curl diretamente
     $ch = curl_init('http://localhost:9050/sale');
     curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
@@ -258,10 +286,6 @@ Adiciona um item ao carrinho da venda ativa.
 === "Dart"
 
     ```dart
-    // pub.dev/packages/dart_tefip
-    TefIP.baseUrl = 'http://localhost:9050';
-    TefIP.username = 'admin';
-    TefIP.password = '1234';
     final result = await TefIP.instance.saleItem.post(
       item: SaleItemModel(
         code: '7891234567890',
@@ -298,6 +322,7 @@ Adiciona um item ao carrinho da venda ativa.
 === "PHP"
 
     ```php
+    <?php
     // TODO: pacote PHP ainda não criado — usando curl diretamente
     $ch = curl_init('http://localhost:9050/sale/item');
     curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
@@ -367,10 +392,6 @@ Corpo igual ao de `POST /sale/item`.
 === "Dart"
 
     ```dart
-    // pub.dev/packages/dart_tefip
-    TefIP.baseUrl = 'http://localhost:9050';
-    TefIP.username = 'admin';
-    TefIP.password = '1234';
     await TefIP.instance.saleItem.patch(
       itemId: 'item-001',
       item: SaleItemModel(
@@ -401,6 +422,7 @@ Corpo igual ao de `POST /sale/item`.
 === "PHP"
 
     ```php
+    <?php
     // TODO: pacote PHP ainda não criado — usando curl diretamente
     $ch = curl_init('http://localhost:9050/sale/item/item-001');
     curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
@@ -464,10 +486,6 @@ Remove um item **permanentemente** do carrinho da venda ativa.
 === "Dart"
 
     ```dart
-    // pub.dev/packages/dart_tefip
-    TefIP.baseUrl = 'http://localhost:9050';
-    TefIP.username = 'admin';
-    TefIP.password = '1234';
     await TefIP.instance.saleItem.delete(itemId: 'item-001');
     ```
 
@@ -485,6 +503,7 @@ Remove um item **permanentemente** do carrinho da venda ativa.
 === "PHP"
 
     ```php
+    <?php
     // TODO: pacote PHP ainda não criado — usando curl diretamente
     $ch = curl_init('http://localhost:9050/sale/item/item-001');
     curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
@@ -538,10 +557,6 @@ Marca um item como cancelado sem removê-lo do carrinho. Útil para manter o his
 === "Dart"
 
     ```dart
-    // pub.dev/packages/dart_tefip
-    TefIP.baseUrl = 'http://localhost:9050';
-    TefIP.username = 'admin';
-    TefIP.password = '1234';
     await TefIP.instance.saleItem.cancel(itemId: 'item-001');
     ```
 
@@ -559,6 +574,7 @@ Marca um item como cancelado sem removê-lo do carrinho. Útil para manter o his
 === "PHP"
 
     ```php
+    <?php
     // TODO: pacote PHP ainda não criado — usando curl diretamente
     $ch = curl_init('http://localhost:9050/sale/item/item-001/cancel');
     curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
@@ -650,10 +666,6 @@ Adiciona uma forma de pagamento à venda ativa.
 === "Dart"
 
     ```dart
-    // pub.dev/packages/dart_tefip
-    TefIP.baseUrl = 'http://localhost:9050';
-    TefIP.username = 'admin';
-    TefIP.password = '1234';
     final result = await TefIP.instance.salePayment.post(
       payment: SalePaymentModel(
         type: TefIPSalePaymentType.pix,
@@ -681,6 +693,7 @@ Adiciona uma forma de pagamento à venda ativa.
 === "PHP"
 
     ```php
+    <?php
     // TODO: pacote PHP ainda não criado — usando curl diretamente
     $ch = curl_init('http://localhost:9050/sale/payment');
     curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
@@ -741,10 +754,6 @@ Corpo igual ao de `POST /sale/payment`.
 === "Dart"
 
     ```dart
-    // pub.dev/packages/dart_tefip
-    TefIP.baseUrl = 'http://localhost:9050';
-    TefIP.username = 'admin';
-    TefIP.password = '1234';
     await TefIP.instance.salePayment.patch(
       paymentId: 'pgto-001',
       payment: SalePaymentModel(
@@ -772,6 +781,7 @@ Corpo igual ao de `POST /sale/payment`.
 === "PHP"
 
     ```php
+    <?php
     // TODO: pacote PHP ainda não criado — usando curl diretamente
     $ch = curl_init('http://localhost:9050/sale/payment/pgto-001');
     curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
@@ -828,10 +838,6 @@ Remove uma forma de pagamento do carrinho da venda ativa.
 === "Dart"
 
     ```dart
-    // pub.dev/packages/dart_tefip
-    TefIP.baseUrl = 'http://localhost:9050';
-    TefIP.username = 'admin';
-    TefIP.password = '1234';
     await TefIP.instance.salePayment.delete(paymentId: 'pgto-001');
     ```
 
@@ -849,6 +855,7 @@ Remove uma forma de pagamento do carrinho da venda ativa.
 === "PHP"
 
     ```php
+    <?php
     // TODO: pacote PHP ainda não criado — usando curl diretamente
     $ch = curl_init('http://localhost:9050/sale/payment/pgto-001');
     curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
@@ -918,10 +925,6 @@ Finaliza a venda ativa. Todos os itens e pagamentos adicionados são consolidado
 === "Dart"
 
     ```dart
-    // pub.dev/packages/dart_tefip
-    TefIP.baseUrl = 'http://localhost:9050';
-    TefIP.username = 'admin';
-    TefIP.password = '1234';
     await TefIP.instance.saleFinalize.post(
       params: SaleActionRequestModel(message: 'Obrigado pela compra!'),
     );
@@ -945,6 +948,7 @@ Finaliza a venda ativa. Todos os itens e pagamentos adicionados são consolidado
 === "PHP"
 
     ```php
+    <?php
     // TODO: pacote PHP ainda não criado — usando curl diretamente
     $ch = curl_init('http://localhost:9050/sale/finalize');
     curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
@@ -999,10 +1003,6 @@ Mesmo formato de `POST /sale/finalize`.
 === "Dart"
 
     ```dart
-    // pub.dev/packages/dart_tefip
-    TefIP.baseUrl = 'http://localhost:9050';
-    TefIP.username = 'admin';
-    TefIP.password = '1234';
     await TefIP.instance.saleCancel.post();
     ```
 
@@ -1020,6 +1020,7 @@ Mesmo formato de `POST /sale/finalize`.
 === "PHP"
 
     ```php
+    <?php
     // TODO: pacote PHP ainda não criado — usando curl diretamente
     $ch = curl_init('http://localhost:9050/sale/cancel');
     curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
