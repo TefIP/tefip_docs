@@ -145,8 +145,8 @@ Exibe conteúdo de texto formatado na tela do terminal.
 | Campo | Tipo | Obrigatório | Descrição |
 |-------|------|:-----------:|-----------|
 | `content` | array | Sim | Instruções de layout (ver formato abaixo) |
-| `backgroundColor` | string | Sim | Cor de fundo em hex (ex.: `"#FFFFFF"`) |
-| `showCloseButton` | bool | Não | Exibe botão para fechar a tela (padrão: `true`) |
+| `backgroundColor` | string | Não | Cor de fundo em hex (padrão: `"#FFFFFF"`) |
+| `showCloseButton` | bool | Não | Exibe botão para fechar a tela |
 
 **Formato de `content`**
 
@@ -283,7 +283,7 @@ Exibe um carrossel de imagens na tela do terminal, alternando automaticamente em
 | `images` | array de string | Sim | Imagens em Base64 (pelo menos uma) |
 | `intervalMs` | int | Não | Intervalo entre imagens em ms (padrão: `3000`) |
 | `transition` | string | Não | Animação de transição (padrão: `"fade"`) |
-| `backgroundColor` | string | Sim | Cor de fundo em hex |
+| `backgroundColor` | string | Não | Cor de fundo em hex (padrão: `"#FFFFFF"`) |
 | `showCloseButton` | bool | Não | Exibe botão para fechar (padrão: `false`) |
 
 **Valores de `transition`**
@@ -292,7 +292,7 @@ Exibe um carrossel de imagens na tela do terminal, alternando automaticamente em
 |-------|-----------|
 | `"fade"` | Transição por dissolução (padrão) |
 | `"slide"` | Transição por deslizamento |
-| `"zoom"` | Transição por zoom |
+| `"none"` | Sem animação de transição |
 
 **Resposta — 200**
 

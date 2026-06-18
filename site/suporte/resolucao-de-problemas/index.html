@@ -762,6 +762,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../../api/logs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/notification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notificações
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../api/swagger/" class="md-nav__link">
         
   
@@ -1191,6 +1247,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#coletando-evidencias-com-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Coletando evidências com logs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#como-usar-o-restart" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1294,6 +1361,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#coletando-evidencias-com-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Coletando evidências com logs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#como-usar-o-restart" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1344,6 +1422,15 @@
 <li><strong>Causa</strong>: O operador minimizou o app TEF IP.</li>
 <li><strong>Solução</strong>: Abra o app TEF IP no terminal. Verifique se as notificações estão habilitadas para o app.</li>
 </ul>
+<hr />
+<h2 id="coletando-evidencias-com-logs">Coletando evidências com logs</h2>
+<p>Quando o comportamento não estiver claro, use os endpoints de logs para capturar evidências antes de reiniciar o aplicativo:</p>
+<ol>
+<li><code>GET /logs</code> para consultar erros recentes com filtros por nível, origem e texto.</li>
+<li><code>GET /logs/stream</code> para acompanhar eventos em tempo real enquanto reproduz o problema.</li>
+<li><code>GET /logs/zip/download</code> para anexar os registros a um chamado de suporte.</li>
+</ol>
+<p>Veja os exemplos completos em <a href="../../api/logs/">Logs</a>.</p>
 <hr />
 <h2 id="como-usar-o-restart">Como usar o <code>/restart</code></h2>
 <p>O endpoint <code>POST /restart</code> é uma ferramenta poderosa. Ele força a reinicialização dos serviços internos do servidor sem precisar fechar o app manualmente.</p>

@@ -27,6 +27,18 @@ Se o PDV não conseguir se comunicar com o TEF IP, verifique:
 
 ---
 
+## Coletando evidências com logs
+
+Quando o comportamento não estiver claro, use os endpoints de logs para capturar evidências antes de reiniciar o aplicativo:
+
+1. `GET /logs` para consultar erros recentes com filtros por nível, origem e texto.
+2. `GET /logs/stream` para acompanhar eventos em tempo real enquanto reproduz o problema.
+3. `GET /logs/zip/download` para anexar os registros a um chamado de suporte.
+
+Veja os exemplos completos em [Logs](../api/logs.md).
+
+---
+
 ## Como usar o `/restart`
 
 O endpoint `POST /restart` é uma ferramenta poderosa. Ele força a reinicialização dos serviços internos do servidor sem precisar fechar o app manualmente.

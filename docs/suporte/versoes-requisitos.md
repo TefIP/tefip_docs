@@ -30,6 +30,9 @@ O TEF IP é distribuído em versões específicas para cada adquirente. Cada ver
 2. **Basic Auth**: Configure o usuário e senha desejados no arquivo de configurações do app.
 3. **Visual C++ Redistributable**: Pode ser necessário para a execução do app em algumas versões do Windows.
 
+!!! tip "Validação pós-instalação"
+    Depois da instalação, confirme o ambiente com `GET /status` em `http://localhost:9050/status`. Se a API responder, a porta, o serviço e a autenticação básica já estarão operacionais.
+
 ---
 
 ## Como Identificar a Versão

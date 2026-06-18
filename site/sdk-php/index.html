@@ -764,6 +764,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../api/logs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/notification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notificações
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../api/swagger/" class="md-nav__link">
         
   
@@ -1157,12 +1213,8 @@
 
 
 <h1 id="sdk-php">SDK PHP</h1>
-<div class="admonition info">
-<p class="admonition-title">Em desenvolvimento</p>
-<p>O pacote PHP para o TEF IP ainda não está disponível.</p>
-</div>
-<p>Enquanto isso, use a API diretamente via <code>curl</code> — todas as páginas de <a href="../api/transaction/">API Reference</a> incluem exemplos prontos em PHP.</p>
-<p><strong>Exemplo rápido:</strong></p>
+<p>Não existe pacote oficial PHP para o TEF IP neste momento.</p>
+<p>Enquanto isso, a integração recomendada é chamar a API diretamente com <code>curl</code> ou outro cliente HTTP, usando Basic Auth.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">&lt;?php</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">(</span><span class="s1">&#39;http://localhost:9050/status&#39;</span><span class="p">);</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_USERPWD</span><span class="p">,</span> <span class="s1">&#39;admin:1234&#39;</span><span class="p">);</span>
@@ -1170,7 +1222,7 @@
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nv">$response</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">),</span> <span class="k">true</span><span class="p">);</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
 </code></pre></div>
-<p>Acompanhe as novidades na <a href="../sdks/">página de SDKs</a>.</p>
+<p>Os exemplos completos por endpoint estão nas páginas de <a href="../api/transaction/">API Reference</a>. O panorama geral fica em <a href="../sdks/">SDKs</a>.</p>
 
 
 

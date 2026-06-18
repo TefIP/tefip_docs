@@ -1,11 +1,8 @@
 # SDK PHP
 
-!!! info "Em desenvolvimento"
-    O pacote PHP para o TEF IP ainda não está disponível.
+Não existe pacote oficial PHP para o TEF IP neste momento.
 
-Enquanto isso, use a API diretamente via `curl` — todas as páginas de [API Reference](api/transaction.md) incluem exemplos prontos em PHP.
-
-**Exemplo rápido:**
+Enquanto isso, a integração recomendada é chamar a API diretamente com `curl` ou outro cliente HTTP, usando Basic Auth.
 
 ```php
 <?php
@@ -16,4 +13,4 @@ $response = json_decode(curl_exec($ch), true);
 curl_close($ch);
 ```
 
-Acompanhe as novidades na [página de SDKs](sdks.md).
+Os exemplos completos por endpoint estão nas páginas de [API Reference](api/transaction.md). O panorama geral fica em [SDKs](sdks.md).

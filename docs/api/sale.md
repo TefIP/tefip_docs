@@ -19,11 +19,10 @@ Diferente de uma transação avulsa, uma **Venda** no TEF IP é uma sessão que 
 ```mermaid
 stateDiagram-v2
     [*] --> Aberta: POST /sale
-    Aberta --> Aberta: POST /sale/item
-    Aberta --> Aberta: PATCH /sale/item
-    Aberta --> Aberta: DELETE /sale/item
-    Aberta --> Aberta: POST /sale/payment
-    Aberta --> Aberta: DELETE /sale/payment
+    Aberta --> Aberta: itens (POST/PATCH/DELETE /sale/item · cancel · clear)
+    Aberta --> Aberta: pagamentos (POST/PATCH/DELETE /sale/payment · clear)
+    Aberta --> Aberta: descontos (POST/PATCH/DELETE /sale/discount · clear)
+    Aberta --> Aberta: acréscimos (POST/PATCH/DELETE /sale/addition · clear)
     Aberta --> Finalizada: POST /sale/finalize
     Aberta --> Cancelada: POST /sale/cancel
     Finalizada --> [*]
@@ -37,6 +36,111 @@ stateDiagram-v2
 3.  **Documento Fiscal**: Os itens e pagamentos adicionados servem de base para a montagem de cupons fiscais e DANFE.
 4.  **Pagamento financeiro**: A venda registra **o quê** foi vendido e **como** foi pago — mas **não processa o débito financeiro**. O pagamento no cartão ou PIX é feito separadamente via [`POST /transaction`](transaction.md). Finalize a venda após confirmar a aprovação da transação.
 5.  **Limpeza**: Ao finalizar ou cancelar, o TEF IP limpa automaticamente qualquer conteúdo que esteja sendo exibido no visor do terminal (pop de displays).
+
+---
+
+## Forma das respostas
+
+As rotas de venda seguem uma convenção consistente:
+
+- **`POST`/`PATCH` de uma entidade** (item, pagamento, desconto, acréscimo) retornam **a própria entidade** criada/atualizada.
+- **`DELETE`/`clear`/`cancel` e as rotas de cabeçalho** (`GET`/`POST`/`PATCH /sale`) retornam o **cupom completo** (`SaleCoupon`) — o estado atual da venda.
+- **`POST /sale/finalize`** e **`POST /sale/cancel`** retornam apenas `{ "message": "..." }`.
+
+O **cupom completo** (`SaleCoupon`) tem o seguinte formato:
+
+```json
+{
+  "sale": {
+    "customerDocument": "123.456.789-00",
+    "customerName": "João Silva",
+    "sellerName": "Maria",
+    "additionalInfo": "Balcão 3",
+    "total": null
+  },
+  "items": [],
+  "payments": [],
+  "discounts": [],
+  "additions": [],
+  "summary": {
+    "subtotal": 0,
+    "surcharge": 0,
+    "discount": 0,
+    "itemDiscount": 0,
+    "itemAddition": 0,
+    "total": 0
+  }
+}
+```
+
+!!! note "Valores monetários em reais"
+    Todos os valores (`unitPrice`, `total`, `value`, `discount`, `addition`, etc.) trafegam em **reais decimais** (ex.: `10.50`), **não** em centavos. Descontos e acréscimos são armazenados em **módulo** (valor absoluto): enviar `-5.00` é equivalente a `5.00`.
+
+---
+
+## GET /sale
+
+Retorna o estado da venda ativa (o cupom completo). Útil para sincronizar o carrinho a qualquer momento.
+
+**Resposta — 200**
+
+Retorna o **cupom completo** (`SaleCoupon`, ver [Forma das respostas](#forma-das-respostas)).
+
+### Exemplos de integração
+
+=== "cURL"
+
+    ```bash
+    curl -u admin:1234 \
+         http://localhost:9050/sale
+    ```
+
+=== "Dart"
+
+    ```dart
+    // pub.dev/packages/dart_tefip — configure uma vez; demais exemplos nesta página omitem esta etapa
+    TefIP.baseUrl = 'http://localhost:9050';
+    TefIP.username = 'admin';
+    TefIP.password = '1234';
+    final coupon = await TefIP.instance.sale.get();
+    print('Total: ${coupon.summary.total}');
+    ```
+
+=== "JavaScript"
+
+    ```js
+    // TODO: pacote JavaScript ainda não criado — usando fetch diretamente
+    const res = await fetch('http://localhost:9050/sale', {
+      headers: { 'Authorization': 'Basic ' + btoa('admin:1234') },
+    });
+    const data = await res.json();
+    ```
+
+=== "PHP"
+
+    ```php
+    <?php
+    // TODO: pacote PHP ainda não criado — usando curl diretamente
+    $ch = curl_init('http://localhost:9050/sale');
+    curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $response = json_decode(curl_exec($ch), true);
+    curl_close($ch);
+    ```
+
+=== "Ruby"
+
+    ```ruby
+    # TODO: pacote Ruby ainda não criado — usando Net::HTTP diretamente
+    require 'net/http'
+    require 'json'
+
+    uri = URI('http://localhost:9050/sale')
+    req = Net::HTTP::Get.new(uri)
+    req.basic_auth('admin', '1234')
+    res = Net::HTTP.start(uri.hostname, uri.port) { |h| h.request(req) }
+    data = JSON.parse(res.body)
+    ```
 
 ---
 
@@ -61,12 +165,11 @@ Inicia uma nova venda. Retorna `409` se já existir uma venda ativa.
 | `customerName` | string | Não | Nome do cliente exibido no terminal |
 | `sellerName` | string | Não | Nome do vendedor exibido no terminal |
 | `additionalInfo` | string | Não | Informação adicional exibida no terminal |
+| `total` | number | Não | Valor total a exibir na tela de venda |
 
 **Resposta — 200**
 
-```json
-{ "message": "Venda iniciada com sucesso" }
-```
+Retorna o **cupom completo** (`SaleCoupon`, ver [Forma das respostas](#forma-das-respostas)).
 
 **Resposta — 409** (já existe uma venda ativa)
 
@@ -88,16 +191,13 @@ Inicia uma nova venda. Retorna `409` se já existir uma venda ativa.
 === "Dart"
 
     ```dart
-    // pub.dev/packages/dart_tefip — configure uma vez; demais exemplos nesta página omitem esta etapa
-    TefIP.baseUrl = 'http://localhost:9050';
-    TefIP.username = 'admin';
-    TefIP.password = '1234';
-    await TefIP.instance.sale.post(
+    final coupon = await TefIP.instance.sale.post(
       request: SaleStartRequestModel(
         customerName: 'João Silva',
         sellerName: 'Maria',
       ),
     );
+    print('Itens: ${coupon.items.length}');
     ```
 
 === "JavaScript"
@@ -156,9 +256,7 @@ Atualiza os dados da venda ativa (cliente, vendedor, informações adicionais). 
 
 **Resposta — 200**
 
-```json
-{ "message": "Venda atualizada com sucesso" }
-```
+Retorna o **cupom completo** (`SaleCoupon`, ver [Forma das respostas](#forma-das-respostas)).
 
 ### Exemplos de integração
 
@@ -226,6 +324,69 @@ Atualiza os dados da venda ativa (cliente, vendedor, informações adicionais). 
 
 ---
 
+## DELETE /sale/clear
+
+Esvazia a venda ativa por completo — remove todos os itens, pagamentos, descontos e acréscimos, preservando o cabeçalho (cliente/vendedor).
+
+**Resposta — 200**
+
+Retorna o **cupom completo** (`SaleCoupon`) já esvaziado (ver [Forma das respostas](#forma-das-respostas)).
+
+### Exemplos de integração
+
+=== "cURL"
+
+    ```bash
+    curl -u admin:1234 \
+         -X DELETE http://localhost:9050/sale/clear
+    ```
+
+=== "Dart"
+
+    ```dart
+    await TefIP.instance.sale.clear();
+    ```
+
+=== "JavaScript"
+
+    ```js
+    // TODO: pacote JavaScript ainda não criado — usando fetch diretamente
+    const res = await fetch('http://localhost:9050/sale/clear', {
+      method: 'DELETE',
+      headers: { 'Authorization': 'Basic ' + btoa('admin:1234') },
+    });
+    const data = await res.json();
+    ```
+
+=== "PHP"
+
+    ```php
+    <?php
+    // TODO: pacote PHP ainda não criado — usando curl diretamente
+    $ch = curl_init('http://localhost:9050/sale/clear');
+    curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $response = json_decode(curl_exec($ch), true);
+    curl_close($ch);
+    ```
+
+=== "Ruby"
+
+    ```ruby
+    # TODO: pacote Ruby ainda não criado — usando Net::HTTP diretamente
+    require 'net/http'
+    require 'json'
+
+    uri = URI('http://localhost:9050/sale/clear')
+    req = Net::HTTP::Delete.new(uri)
+    req.basic_auth('admin', '1234')
+    res = Net::HTTP.start(uri.hostname, uri.port) { |h| h.request(req) }
+    data = JSON.parse(res.body)
+    ```
+
+---
+
 ## POST /sale/item
 
 Adiciona um item ao carrinho da venda ativa.
@@ -249,21 +410,34 @@ Adiciona um item ao carrinho da venda ativa.
 
 | Campo | Tipo | Obrigatório | Descrição |
 |-------|------|:-----------:|-----------|
-| `id` | string | Não | Identificador externo do item |
+| `id` | string | **Sim** | Identificador único do item |
 | `code` | string | Sim | Código do produto (ex.: EAN/código de barras) |
 | `description` | string | Sim | Descrição exibida no terminal |
 | `canceled` | bool | Não | Item marcado como cancelado (padrão: `false`) |
 | `quantity` | number | Sim | Quantidade |
-| `unitPrice` | number | Sim | Preço unitário |
-| `discount` | number | Não | Desconto aplicado ao item |
+| `unitPrice` | number | Sim | Preço unitário (reais) |
+| `discount` | number | Não | Desconto aplicado ao item (módulo) |
 | `addition` | number | Não | Acréscimo aplicado ao item |
-| `total` | number | Sim | Valor total do item |
+| `total` | number | Sim | Valor total do item (reais) |
 | `additionalInfo` | string | Não | Informação adicional |
 
 **Resposta — 200**
 
+Retorna o **item** criado (mesmo formato do corpo da requisição).
+
 ```json
-{ "message": "Item adicionado com sucesso", "itemId": "item-001" }
+{
+  "id": "item-001",
+  "code": "7891234567890",
+  "description": "Coca-Cola 350ml",
+  "canceled": false,
+  "quantity": 2.0,
+  "unitPrice": 5.00,
+  "discount": 0.50,
+  "addition": null,
+  "total": 9.50,
+  "additionalInfo": null
+}
 ```
 
 **Resposta — 400** (item duplicado)
@@ -280,14 +454,15 @@ Adiciona um item ao carrinho da venda ativa.
     curl -u admin:1234 \
          -H "Content-Type: application/json" \
          -X POST http://localhost:9050/sale/item \
-         -d '{"code":"7891234567890","description":"Coca-Cola 350ml","quantity":2,"unitPrice":5.00,"total":9.50}'
+         -d '{"id":"item-001","code":"7891234567890","description":"Coca-Cola 350ml","quantity":2,"unitPrice":5.00,"total":9.50}'
     ```
 
 === "Dart"
 
     ```dart
-    final result = await TefIP.instance.saleItem.post(
+    final item = await TefIP.instance.saleItem.post(
       item: SaleItemModel(
+        id: 'item-001',
         code: '7891234567890',
         description: 'Coca-Cola 350ml',
         quantity: 2,
@@ -295,7 +470,7 @@ Adiciona um item ao carrinho da venda ativa.
         total: 9.50,
       ),
     );
-    print(result.itemId);
+    print(item.id);
     ```
 
 === "JavaScript"
@@ -309,6 +484,7 @@ Adiciona um item ao carrinho da venda ativa.
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
+        id: 'item-001',
         code: '7891234567890',
         description: 'Coca-Cola 350ml',
         quantity: 2,
@@ -329,6 +505,7 @@ Adiciona um item ao carrinho da venda ativa.
     curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([
+        'id'          => 'item-001',
         'code'        => '7891234567890',
         'description' => 'Coca-Cola 350ml',
         'quantity'    => 2,
@@ -351,7 +528,7 @@ Adiciona um item ao carrinho da venda ativa.
     req = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
     req.basic_auth('admin', '1234')
     req.body = {
-      code: '7891234567890', description: 'Coca-Cola 350ml',
+      id: 'item-001', code: '7891234567890', description: 'Coca-Cola 350ml',
       quantity: 2, unitPrice: 5.00, total: 9.50,
     }.to_json
     res = Net::HTTP.start(uri.hostname, uri.port) { |h| h.request(req) }
@@ -370,13 +547,11 @@ Atualiza os dados de um item já adicionado à venda. O `id` no corpo é ignorad
 |-----------|------|-----------|
 | `itemId` | string | Identificador do item a atualizar |
 
-Corpo igual ao de `POST /sale/item`.
+Corpo igual ao de `POST /sale/item`. O `id` no corpo é ignorado — o identificador vem do parâmetro de rota.
 
 **Resposta — 200**
 
-```json
-{ "message": "Item atualizado com sucesso", "itemId": "item-001" }
-```
+Retorna o **item** atualizado (mesmo formato do corpo da requisição).
 
 ### Exemplos de integração
 
@@ -454,6 +629,69 @@ Corpo igual ao de `POST /sale/item`.
 
 ---
 
+## DELETE /sale/item/clear
+
+Remove **todos** os itens da venda ativa, preservando pagamentos, descontos e acréscimos.
+
+**Resposta — 200**
+
+Retorna o **cupom completo** (`SaleCoupon`, ver [Forma das respostas](#forma-das-respostas)).
+
+### Exemplos de integração
+
+=== "cURL"
+
+    ```bash
+    curl -u admin:1234 \
+         -X DELETE http://localhost:9050/sale/item/clear
+    ```
+
+=== "Dart"
+
+    ```dart
+    await TefIP.instance.saleItem.clear();
+    ```
+
+=== "JavaScript"
+
+    ```js
+    // TODO: pacote JavaScript ainda não criado — usando fetch diretamente
+    const res = await fetch('http://localhost:9050/sale/item/clear', {
+      method: 'DELETE',
+      headers: { 'Authorization': 'Basic ' + btoa('admin:1234') },
+    });
+    const data = await res.json();
+    ```
+
+=== "PHP"
+
+    ```php
+    <?php
+    // TODO: pacote PHP ainda não criado — usando curl diretamente
+    $ch = curl_init('http://localhost:9050/sale/item/clear');
+    curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $response = json_decode(curl_exec($ch), true);
+    curl_close($ch);
+    ```
+
+=== "Ruby"
+
+    ```ruby
+    # TODO: pacote Ruby ainda não criado — usando Net::HTTP diretamente
+    require 'net/http'
+    require 'json'
+
+    uri = URI('http://localhost:9050/sale/item/clear')
+    req = Net::HTTP::Delete.new(uri)
+    req.basic_auth('admin', '1234')
+    res = Net::HTTP.start(uri.hostname, uri.port) { |h| h.request(req) }
+    data = JSON.parse(res.body)
+    ```
+
+---
+
 ## DELETE /sale/item/{itemId}
 
 Remove um item **permanentemente** do carrinho da venda ativa.
@@ -470,9 +708,7 @@ Remove um item **permanentemente** do carrinho da venda ativa.
 
 **Resposta — 200**
 
-```json
-{ "message": "Item removido com sucesso", "itemId": "item-001" }
-```
+Retorna o **cupom completo** (`SaleCoupon`, ver [Forma das respostas](#forma-das-respostas)).
 
 ### Exemplos de integração
 
@@ -541,9 +777,7 @@ Marca um item como cancelado sem removê-lo do carrinho. Útil para manter o his
 
 **Resposta — 200**
 
-```json
-{ "message": "Item cancelado com sucesso", "itemId": "item-001" }
-```
+Retorna o **cupom completo** (`SaleCoupon`) com o item marcado como `canceled: true` (ver [Forma das respostas](#forma-das-respostas)).
 
 ### Exemplos de integração
 
@@ -609,7 +843,7 @@ Adiciona uma forma de pagamento à venda ativa.
 ```json
 {
   "id": "pgto-001",
-  "tPag": "pix",
+  "tPag": "17",
   "description": null,
   "value": 50.00,
   "additionalInfo": null
@@ -618,32 +852,38 @@ Adiciona uma forma de pagamento à venda ativa.
 
 | Campo | Tipo | Obrigatório | Descrição |
 |-------|------|:-----------:|-----------|
-| `id` | string | Não | Identificador externo do pagamento |
-| `tPag` | string | Não | Tipo de pagamento (ver tabela abaixo) |
+| `id` | string | **Sim** | Identificador único do pagamento |
+| `tPag` | string | Não | Código do tipo de pagamento (ver tabela abaixo; padrão `"99"`) |
 | `description` | string | Não | Descrição exibida no terminal |
-| `value` | number | Sim | Valor do pagamento |
+| `value` | number | Sim | Valor do pagamento (reais) |
 | `additionalInfo` | string | Não | Informação adicional |
 
-**Valores de `tPag`**
+**Valores de `tPag`** (código numérico — o mesmo código da adquirente)
 
-| Valor | Descrição |
-|-------|-----------|
-| `"credit"` | Crédito |
-| `"debit"` | Débito |
-| `"pix"` | PIX |
-| `"money"` | Dinheiro |
-| `"voucher"` | Voucher/ticket |
-| `"gift"` | Cartão-presente |
-| `"veroWallet"` | Carteira digital Vero |
-| `"adm"` | Operação administrativa |
-| `"cancel"` | Cancelamento de pagamento |
-| `"cancelDigitalWallet"` | Cancelamento de carteira digital |
-| `"unknown"` | Desconhecido |
+| Código (`tPag`) | Enum SDK | Descrição |
+|-----------------|----------|-----------|
+| `"01"` | `money` | Dinheiro |
+| `"03"` | `credit` | Crédito |
+| `"04"` | `debit` | Débito |
+| `"05"` | `gift` | Cartão-presente |
+| `"17"` | `pix` · `veroWallet` | PIX / Carteira digital Vero |
+| `"99"` | `unknown` · `voucher` · `adm` · `cancel` · `cancelDigitalWallet` | Demais tipos |
+
+!!! warning "Envie o código numérico, não o nome"
+    No JSON cru, `tPag` deve ser o **código numérico** (`"17"`), não o nome (`"pix"`). Um nome não reconhecido é interpretado como `"99"` (desconhecido). No SDK Dart, use o enum `TefIPSalePaymentType.pix` — ele converte para o código automaticamente.
 
 **Resposta — 200**
 
+Retorna o **pagamento** criado (mesmo formato do corpo, com `tPag` numérico).
+
 ```json
-{ "message": "Pagamento adicionado com sucesso", "paymentId": "pgto-001" }
+{
+  "id": "pgto-001",
+  "tPag": "17",
+  "description": null,
+  "value": 50.00,
+  "additionalInfo": null
+}
 ```
 
 **Resposta — 400** (pagamento duplicado)
@@ -660,19 +900,20 @@ Adiciona uma forma de pagamento à venda ativa.
     curl -u admin:1234 \
          -H "Content-Type: application/json" \
          -X POST http://localhost:9050/sale/payment \
-         -d '{"tPag":"pix","value":50.00}'
+         -d '{"id":"pgto-001","tPag":"17","value":50.00}'
     ```
 
 === "Dart"
 
     ```dart
-    final result = await TefIP.instance.salePayment.post(
+    final payment = await TefIP.instance.salePayment.post(
       payment: SalePaymentModel(
+        id: 'pgto-001',
         type: TefIPSalePaymentType.pix,
         value: 50.00,
       ),
     );
-    print(result.paymentId);
+    print(payment.id);
     ```
 
 === "JavaScript"
@@ -685,7 +926,7 @@ Adiciona uma forma de pagamento à venda ativa.
         'Authorization': 'Basic ' + btoa('admin:1234'),
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ tPag: 'pix', value: 50.00 }),
+      body: JSON.stringify({ id: 'pgto-001', tPag: '17', value: 50.00 }),
     });
     const data = await res.json();
     ```
@@ -699,7 +940,7 @@ Adiciona uma forma de pagamento à venda ativa.
     curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
     curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
     curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(['tPag' => 'pix', 'value' => 50.00]));
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(['id' => 'pgto-001', 'tPag' => '17', 'value' => 50.00]));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     $response = json_decode(curl_exec($ch), true);
     curl_close($ch);
@@ -715,7 +956,7 @@ Adiciona uma forma de pagamento à venda ativa.
     uri = URI('http://localhost:9050/sale/payment')
     req = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
     req.basic_auth('admin', '1234')
-    req.body = { tPag: 'pix', value: 50.00 }.to_json
+    req.body = { id: 'pgto-001', tPag: '17', value: 50.00 }.to_json
     res = Net::HTTP.start(uri.hostname, uri.port) { |h| h.request(req) }
     data = JSON.parse(res.body)
     ```
@@ -732,13 +973,11 @@ Atualiza os dados de um pagamento já adicionado à venda.
 |-----------|------|-----------|
 | `paymentId` | string | Identificador do pagamento a atualizar |
 
-Corpo igual ao de `POST /sale/payment`.
+Corpo igual ao de `POST /sale/payment`. O `id` no corpo é ignorado — vem do parâmetro de rota.
 
 **Resposta — 200**
 
-```json
-{ "message": "Pagamento atualizado com sucesso", "paymentId": "pgto-001" }
-```
+Retorna o **pagamento** atualizado (com `tPag` numérico).
 
 ### Exemplos de integração
 
@@ -748,7 +987,7 @@ Corpo igual ao de `POST /sale/payment`.
     curl -u admin:1234 \
          -H "Content-Type: application/json" \
          -X PATCH http://localhost:9050/sale/payment/pgto-001 \
-         -d '{"tPag":"credit","value":50.00}'
+         -d '{"tPag":"03","value":50.00}'
     ```
 
 === "Dart"
@@ -773,7 +1012,7 @@ Corpo igual ao de `POST /sale/payment`.
         'Authorization': 'Basic ' + btoa('admin:1234'),
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ tPag: 'credit', value: 50.00 }),
+      body: JSON.stringify({ tPag: '03', value: 50.00 }),
     });
     const data = await res.json();
     ```
@@ -787,7 +1026,7 @@ Corpo igual ao de `POST /sale/payment`.
     curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
     curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PATCH');
-    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(['tPag' => 'credit', 'value' => 50.00]));
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(['tPag' => '03', 'value' => 50.00]));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     $response = json_decode(curl_exec($ch), true);
     curl_close($ch);
@@ -803,7 +1042,70 @@ Corpo igual ao de `POST /sale/payment`.
     uri = URI('http://localhost:9050/sale/payment/pgto-001')
     req = Net::HTTP::Patch.new(uri, 'Content-Type' => 'application/json')
     req.basic_auth('admin', '1234')
-    req.body = { tPag: 'credit', value: 50.00 }.to_json
+    req.body = { tPag: '03', value: 50.00 }.to_json
+    res = Net::HTTP.start(uri.hostname, uri.port) { |h| h.request(req) }
+    data = JSON.parse(res.body)
+    ```
+
+---
+
+## DELETE /sale/payment/clear
+
+Remove **todos** os pagamentos da venda ativa, preservando itens, descontos e acréscimos.
+
+**Resposta — 200**
+
+Retorna o **cupom completo** (`SaleCoupon`, ver [Forma das respostas](#forma-das-respostas)).
+
+### Exemplos de integração
+
+=== "cURL"
+
+    ```bash
+    curl -u admin:1234 \
+         -X DELETE http://localhost:9050/sale/payment/clear
+    ```
+
+=== "Dart"
+
+    ```dart
+    await TefIP.instance.salePayment.clear();
+    ```
+
+=== "JavaScript"
+
+    ```js
+    // TODO: pacote JavaScript ainda não criado — usando fetch diretamente
+    const res = await fetch('http://localhost:9050/sale/payment/clear', {
+      method: 'DELETE',
+      headers: { 'Authorization': 'Basic ' + btoa('admin:1234') },
+    });
+    const data = await res.json();
+    ```
+
+=== "PHP"
+
+    ```php
+    <?php
+    // TODO: pacote PHP ainda não criado — usando curl diretamente
+    $ch = curl_init('http://localhost:9050/sale/payment/clear');
+    curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $response = json_decode(curl_exec($ch), true);
+    curl_close($ch);
+    ```
+
+=== "Ruby"
+
+    ```ruby
+    # TODO: pacote Ruby ainda não criado — usando Net::HTTP diretamente
+    require 'net/http'
+    require 'json'
+
+    uri = URI('http://localhost:9050/sale/payment/clear')
+    req = Net::HTTP::Delete.new(uri)
+    req.basic_auth('admin', '1234')
     res = Net::HTTP.start(uri.hostname, uri.port) { |h| h.request(req) }
     data = JSON.parse(res.body)
     ```
@@ -822,9 +1124,7 @@ Remove uma forma de pagamento do carrinho da venda ativa.
 
 **Resposta — 200**
 
-```json
-{ "message": "Pagamento removido com sucesso", "paymentId": "pgto-001" }
-```
+Retorna o **cupom completo** (`SaleCoupon`, ver [Forma das respostas](#forma-das-respostas)).
 
 ### Exemplos de integração
 
@@ -881,6 +1181,460 @@ Remove uma forma de pagamento do carrinho da venda ativa.
 
 ---
 
+## Descontos da venda
+
+Descontos são valores subtraídos do total da venda, independentes dos descontos por item. Cada desconto tem um `id` próprio.
+
+### POST /sale/discount
+
+Adiciona um desconto à venda ativa.
+
+**Corpo da requisição**
+
+```json
+{
+  "id": "desc-001",
+  "description": "Cupom 10%",
+  "value": 5.00,
+  "additionalInfo": null
+}
+```
+
+| Campo | Tipo | Obrigatório | Descrição |
+|-------|------|:-----------:|-----------|
+| `id` | string | **Sim** | Identificador único do desconto |
+| `description` | string | Não | Descrição exibida no terminal |
+| `value` | number | Sim | Valor do desconto em reais (armazenado em módulo) |
+| `additionalInfo` | string | Não | Informação adicional |
+
+**Resposta — 200**
+
+Retorna o **desconto** criado (mesmo formato do corpo).
+
+**Resposta — 400** (desconto duplicado)
+
+```json
+{ "code": 400, "message": "Desconto já existente na venda!" }
+```
+
+#### Exemplos de integração
+
+=== "cURL"
+
+    ```bash
+    curl -u admin:1234 \
+         -H "Content-Type: application/json" \
+         -X POST http://localhost:9050/sale/discount \
+         -d '{"id":"desc-001","description":"Cupom 10%","value":5.00}'
+    ```
+
+=== "Dart"
+
+    ```dart
+    final discount = await TefIP.instance.saleDiscount.post(
+      discount: SaleDiscountModel(id: 'desc-001', description: 'Cupom 10%', value: 5.00),
+    );
+    print(discount.id);
+    ```
+
+=== "JavaScript"
+
+    ```js
+    // TODO: pacote JavaScript ainda não criado — usando fetch diretamente
+    const res = await fetch('http://localhost:9050/sale/discount', {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Basic ' + btoa('admin:1234'),
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id: 'desc-001', description: 'Cupom 10%', value: 5.00 }),
+    });
+    const data = await res.json();
+    ```
+
+=== "PHP"
+
+    ```php
+    <?php
+    // TODO: pacote PHP ainda não criado — usando curl diretamente
+    $ch = curl_init('http://localhost:9050/sale/discount');
+    curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
+    curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([
+        'id' => 'desc-001', 'description' => 'Cupom 10%', 'value' => 5.00,
+    ]));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $response = json_decode(curl_exec($ch), true);
+    curl_close($ch);
+    ```
+
+=== "Ruby"
+
+    ```ruby
+    # TODO: pacote Ruby ainda não criado — usando Net::HTTP diretamente
+    require 'net/http'
+    require 'json'
+
+    uri = URI('http://localhost:9050/sale/discount')
+    req = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
+    req.basic_auth('admin', '1234')
+    req.body = { id: 'desc-001', description: 'Cupom 10%', value: 5.00 }.to_json
+    res = Net::HTTP.start(uri.hostname, uri.port) { |h| h.request(req) }
+    data = JSON.parse(res.body)
+    ```
+
+### PATCH /sale/discount/{discountId}
+
+Atualiza um desconto existente. O `id` no corpo é ignorado — vem do parâmetro de rota. Retorna o **desconto** atualizado.
+
+=== "cURL"
+
+    ```bash
+    curl -u admin:1234 \
+         -H "Content-Type: application/json" \
+         -X PATCH http://localhost:9050/sale/discount/desc-001 \
+         -d '{"value":7.50}'
+    ```
+
+=== "Dart"
+
+    ```dart
+    await TefIP.instance.saleDiscount.patch(
+      discountId: 'desc-001',
+      discount: SaleDiscountModel(id: 'desc-001', value: 7.50),
+    );
+    ```
+
+=== "JavaScript"
+
+    ```js
+    // TODO: pacote JavaScript ainda não criado — usando fetch diretamente
+    const res = await fetch('http://localhost:9050/sale/discount/desc-001', {
+      method: 'PATCH',
+      headers: {
+        'Authorization': 'Basic ' + btoa('admin:1234'),
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ value: 7.50 }),
+    });
+    const data = await res.json();
+    ```
+
+=== "PHP"
+
+    ```php
+    <?php
+    // TODO: pacote PHP ainda não criado — usando curl diretamente
+    $ch = curl_init('http://localhost:9050/sale/discount/desc-001');
+    curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
+    curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PATCH');
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(['value' => 7.50]));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $response = json_decode(curl_exec($ch), true);
+    curl_close($ch);
+    ```
+
+=== "Ruby"
+
+    ```ruby
+    # TODO: pacote Ruby ainda não criado — usando Net::HTTP diretamente
+    require 'net/http'
+    require 'json'
+
+    uri = URI('http://localhost:9050/sale/discount/desc-001')
+    req = Net::HTTP::Patch.new(uri, 'Content-Type' => 'application/json')
+    req.basic_auth('admin', '1234')
+    req.body = { value: 7.50 }.to_json
+    res = Net::HTTP.start(uri.hostname, uri.port) { |h| h.request(req) }
+    data = JSON.parse(res.body)
+    ```
+
+### DELETE /sale/discount/{discountId} · DELETE /sale/discount/clear
+
+`DELETE /sale/discount/{discountId}` remove um desconto; `DELETE /sale/discount/clear` remove todos. Ambos retornam o **cupom completo** (`SaleCoupon`, ver [Forma das respostas](#forma-das-respostas)).
+
+=== "cURL"
+
+    ```bash
+    curl -u admin:1234 -X DELETE http://localhost:9050/sale/discount/desc-001
+    curl -u admin:1234 -X DELETE http://localhost:9050/sale/discount/clear
+    ```
+
+=== "Dart"
+
+    ```dart
+    await TefIP.instance.saleDiscount.delete(discountId: 'desc-001');
+    await TefIP.instance.saleDiscount.clear();
+    ```
+
+=== "JavaScript"
+
+    ```js
+    // TODO: pacote JavaScript ainda não criado — usando fetch diretamente
+    await fetch('http://localhost:9050/sale/discount/desc-001', {
+      method: 'DELETE',
+      headers: { 'Authorization': 'Basic ' + btoa('admin:1234') },
+    });
+    ```
+
+=== "PHP"
+
+    ```php
+    <?php
+    // TODO: pacote PHP ainda não criado — usando curl diretamente
+    $ch = curl_init('http://localhost:9050/sale/discount/desc-001');
+    curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $response = json_decode(curl_exec($ch), true);
+    curl_close($ch);
+    ```
+
+=== "Ruby"
+
+    ```ruby
+    # TODO: pacote Ruby ainda não criado — usando Net::HTTP diretamente
+    require 'net/http'
+    require 'json'
+
+    uri = URI('http://localhost:9050/sale/discount/desc-001')
+    req = Net::HTTP::Delete.new(uri)
+    req.basic_auth('admin', '1234')
+    res = Net::HTTP.start(uri.hostname, uri.port) { |h| h.request(req) }
+    data = JSON.parse(res.body)
+    ```
+
+---
+
+## Acréscimos da venda
+
+Acréscimos são valores somados ao total da venda (ex.: taxa de serviço). Simétricos aos descontos, cada um com `id` próprio.
+
+### POST /sale/addition
+
+Adiciona um acréscimo à venda ativa.
+
+**Corpo da requisição**
+
+```json
+{
+  "id": "acrs-001",
+  "description": "Taxa de serviço 10%",
+  "value": 4.50,
+  "additionalInfo": null
+}
+```
+
+| Campo | Tipo | Obrigatório | Descrição |
+|-------|------|:-----------:|-----------|
+| `id` | string | **Sim** | Identificador único do acréscimo |
+| `description` | string | Não | Descrição exibida no terminal |
+| `value` | number | Sim | Valor do acréscimo em reais (armazenado em módulo) |
+| `additionalInfo` | string | Não | Informação adicional |
+
+**Resposta — 200**
+
+Retorna o **acréscimo** criado (mesmo formato do corpo).
+
+**Resposta — 400** (acréscimo duplicado)
+
+```json
+{ "code": 400, "message": "Acréscimo já existente na venda!" }
+```
+
+#### Exemplos de integração
+
+=== "cURL"
+
+    ```bash
+    curl -u admin:1234 \
+         -H "Content-Type: application/json" \
+         -X POST http://localhost:9050/sale/addition \
+         -d '{"id":"acrs-001","description":"Taxa de serviço 10%","value":4.50}'
+    ```
+
+=== "Dart"
+
+    ```dart
+    final addition = await TefIP.instance.saleAddition.post(
+      addition: SaleAdditionModel(id: 'acrs-001', description: 'Taxa de serviço 10%', value: 4.50),
+    );
+    print(addition.id);
+    ```
+
+=== "JavaScript"
+
+    ```js
+    // TODO: pacote JavaScript ainda não criado — usando fetch diretamente
+    const res = await fetch('http://localhost:9050/sale/addition', {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Basic ' + btoa('admin:1234'),
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id: 'acrs-001', description: 'Taxa de serviço 10%', value: 4.50 }),
+    });
+    const data = await res.json();
+    ```
+
+=== "PHP"
+
+    ```php
+    <?php
+    // TODO: pacote PHP ainda não criado — usando curl diretamente
+    $ch = curl_init('http://localhost:9050/sale/addition');
+    curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
+    curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([
+        'id' => 'acrs-001', 'description' => 'Taxa de serviço 10%', 'value' => 4.50,
+    ]));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $response = json_decode(curl_exec($ch), true);
+    curl_close($ch);
+    ```
+
+=== "Ruby"
+
+    ```ruby
+    # TODO: pacote Ruby ainda não criado — usando Net::HTTP diretamente
+    require 'net/http'
+    require 'json'
+
+    uri = URI('http://localhost:9050/sale/addition')
+    req = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
+    req.basic_auth('admin', '1234')
+    req.body = { id: 'acrs-001', description: 'Taxa de serviço 10%', value: 4.50 }.to_json
+    res = Net::HTTP.start(uri.hostname, uri.port) { |h| h.request(req) }
+    data = JSON.parse(res.body)
+    ```
+
+### PATCH /sale/addition/{additionId}
+
+Atualiza um acréscimo existente. O `id` no corpo é ignorado — vem do parâmetro de rota. Retorna o **acréscimo** atualizado.
+
+=== "cURL"
+
+    ```bash
+    curl -u admin:1234 \
+         -H "Content-Type: application/json" \
+         -X PATCH http://localhost:9050/sale/addition/acrs-001 \
+         -d '{"value":6.00}'
+    ```
+
+=== "Dart"
+
+    ```dart
+    await TefIP.instance.saleAddition.patch(
+      additionId: 'acrs-001',
+      addition: SaleAdditionModel(id: 'acrs-001', value: 6.00),
+    );
+    ```
+
+=== "JavaScript"
+
+    ```js
+    // TODO: pacote JavaScript ainda não criado — usando fetch diretamente
+    const res = await fetch('http://localhost:9050/sale/addition/acrs-001', {
+      method: 'PATCH',
+      headers: {
+        'Authorization': 'Basic ' + btoa('admin:1234'),
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ value: 6.00 }),
+    });
+    const data = await res.json();
+    ```
+
+=== "PHP"
+
+    ```php
+    <?php
+    // TODO: pacote PHP ainda não criado — usando curl diretamente
+    $ch = curl_init('http://localhost:9050/sale/addition/acrs-001');
+    curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
+    curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PATCH');
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(['value' => 6.00]));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $response = json_decode(curl_exec($ch), true);
+    curl_close($ch);
+    ```
+
+=== "Ruby"
+
+    ```ruby
+    # TODO: pacote Ruby ainda não criado — usando Net::HTTP diretamente
+    require 'net/http'
+    require 'json'
+
+    uri = URI('http://localhost:9050/sale/addition/acrs-001')
+    req = Net::HTTP::Patch.new(uri, 'Content-Type' => 'application/json')
+    req.basic_auth('admin', '1234')
+    req.body = { value: 6.00 }.to_json
+    res = Net::HTTP.start(uri.hostname, uri.port) { |h| h.request(req) }
+    data = JSON.parse(res.body)
+    ```
+
+### DELETE /sale/addition/{additionId} · DELETE /sale/addition/clear
+
+`DELETE /sale/addition/{additionId}` remove um acréscimo; `DELETE /sale/addition/clear` remove todos. Ambos retornam o **cupom completo** (`SaleCoupon`, ver [Forma das respostas](#forma-das-respostas)).
+
+=== "cURL"
+
+    ```bash
+    curl -u admin:1234 -X DELETE http://localhost:9050/sale/addition/acrs-001
+    curl -u admin:1234 -X DELETE http://localhost:9050/sale/addition/clear
+    ```
+
+=== "Dart"
+
+    ```dart
+    await TefIP.instance.saleAddition.delete(additionId: 'acrs-001');
+    await TefIP.instance.saleAddition.clear();
+    ```
+
+=== "JavaScript"
+
+    ```js
+    // TODO: pacote JavaScript ainda não criado — usando fetch diretamente
+    await fetch('http://localhost:9050/sale/addition/acrs-001', {
+      method: 'DELETE',
+      headers: { 'Authorization': 'Basic ' + btoa('admin:1234') },
+    });
+    ```
+
+=== "PHP"
+
+    ```php
+    <?php
+    // TODO: pacote PHP ainda não criado — usando curl diretamente
+    $ch = curl_init('http://localhost:9050/sale/addition/acrs-001');
+    curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $response = json_decode(curl_exec($ch), true);
+    curl_close($ch);
+    ```
+
+=== "Ruby"
+
+    ```ruby
+    # TODO: pacote Ruby ainda não criado — usando Net::HTTP diretamente
+    require 'net/http'
+    require 'json'
+
+    uri = URI('http://localhost:9050/sale/addition/acrs-001')
+    req = Net::HTTP::Delete.new(uri)
+    req.basic_auth('admin', '1234')
+    res = Net::HTTP.start(uri.hostname, uri.port) { |h| h.request(req) }
+    data = JSON.parse(res.body)
+    ```
+
+---
+
 ## POST /sale/finalize
 
 Finaliza a venda ativa. Todos os itens e pagamentos adicionados são consolidados.
@@ -892,6 +1646,7 @@ Finaliza a venda ativa. Todos os itens e pagamentos adicionados são consolidado
   "message": "Obrigado pela compra!",
   "showMessage": true,
   "showCloseButton": true,
+  "showResultScreen": true,
   "buttonCloseText": "Fechar",
   "messageInterval": 3000
 }
@@ -902,6 +1657,7 @@ Finaliza a venda ativa. Todos os itens e pagamentos adicionados são consolidado
 | `message` | string | `null` | Mensagem exibida ao finalizar |
 | `showMessage` | bool | `true` | Exibe a mensagem de finalização |
 | `showCloseButton` | bool | `true` | Exibe botão para fechar a tela |
+| `showResultScreen` | bool | `true` | Exibe a tela de resultado da venda |
 | `buttonCloseText` | string | `null` | Texto do botão fechar |
 | `messageInterval` | int | `3000` | Duração (ms) da mensagem exibida |
 

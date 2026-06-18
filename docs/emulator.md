@@ -53,3 +53,6 @@ Escolha a plataforma para desenvolvimento e testes:
 - [Primeiros Passos](getting-started.md) — configure o servidor e faça a primeira requisição
 - [Referência da API: Transações](api/transaction.md) — processe pagamentos e estornos
 - [Referência da API: Status](api/status.md) — monitore e reinicie o servidor remotamente
+
+!!! tip "Dica de validação rápida"
+    Depois da instalação, valide o emulador com `GET /status` em `http://localhost:9050/status` usando Basic Auth. Se precisar investigar comportamento interno, consulte também [Logs](api/logs.md).

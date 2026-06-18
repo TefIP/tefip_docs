@@ -21,8 +21,10 @@ O TEF IP utiliza códigos de status HTTP padrão para indicar o sucesso ou falha
 | `204` | No Content | Sucesso, mas não há conteúdo de retorno (ex.: respostas de CORS). |
 | `400` | Bad Request | O corpo da requisição (JSON/XML/Binário) é inválido ou faltam campos obrigatórios. |
 | `401` | Unauthorized | As credenciais de Basic Auth estão ausentes ou incorretas. |
-| `403` | Forbidden | A operação foi recusada pela adquirente ou as permissões são insuficientes. |
+| `403` | Forbidden | A operação foi recusada pela adquirente ou as permissões são insuficientes (ex.: `/restart` em plataforma não-móvel). |
+| `404` | Not Found | Recurso inexistente: venda, item, pagamento, desconto ou acréscimo não encontrado, ou nenhuma pergunta ativa em `/ask/cancel`. |
 | `409` | Conflict | Você tentou iniciar uma operação que conflita com o estado atual (ex.: iniciar venda com outra aberta). |
+| `499` | Cancelled | Pergunta/formulário (`/ask`, `/ask/form`) cancelado pelo usuário ou via `/ask/cancel`. |
 | `500` | Internal Error | Ocorreu um erro inesperado no servidor. Verifique os logs do dispositivo. |
 | `503` | Service Unavailable | O servidor está ocupado (`isBusy`) ou o aplicativo está em segundo plano (`isActive = false`). |
 

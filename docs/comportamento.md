@@ -136,6 +136,8 @@ Isso é especialmente útil quando o operador minimizou o TEF IP — a notifica�
 
 Nenhuma configuração é necessária — o comportamento é automático.
 
+Se o seu fluxo precisar disparar um alerta manual fora desse comportamento automático, use o endpoint [Notificações → `POST /notification`](api/notification.md).
+
 ---
 
 ## Endpoints sem autenticação

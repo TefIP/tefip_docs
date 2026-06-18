@@ -47,6 +47,9 @@ markdown_extensions:
   - tables
   - attr_list
 
+exclude_docs: |
+  superpowers/
+
 nav:
   - Início: index.md
   - Guia de Integração:
@@ -61,6 +64,8 @@ nav:
     - Visor do Terminal: api/display.md
     - Transações: api/transaction.md
     - Status e Manutenção: api/status.md
+    - Logs: api/logs.md
+    - Notificações: api/notification.md
     - Especificação (Swagger): api/swagger.md
   - SDKs:
     - Visão geral: sdks.md

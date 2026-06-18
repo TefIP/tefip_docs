@@ -1,7 +1,6 @@
 # TEF IP
 
-Aceite pagamentos com qualquer adquirente! Usando uma única API HTTP local.
-Instale no terminal e comece a processar.
+Aceite pagamentos com qualquer adquirente usando uma única API HTTP local. Instale no terminal e comece a processar.
 
 ---
 
@@ -19,8 +18,7 @@ flowchart LR
     tefip -- "JSON" --> PDV
 ```
 
-Seu sistema faz chamadas HTTP para o TEF IP. O TEF IP se comunica com o hardware do adquirente
-e retorna o resultado em JSON — sem nenhuma SDK proprietária no seu lado.
+Seu sistema faz chamadas HTTP para o TEF IP. O TEF IP se comunica com o hardware do adquirente e retorna o resultado em JSON, sem nenhuma SDK proprietária no seu lado.
 
 !!! tip "Sem maquininha? Use o emulador!"
     O TEF IP inclui um **modo emulador** que simula o hardware do adquirente localmente.
@@ -40,14 +38,15 @@ Veja abaixo um pagamento sendo processado no emulador:
 - **Estornos** — Consulte e reverta transações por `referenceId`.
 - **Display** — Exiba textos, imagens, carrosséis ou QR codes na tela do terminal em tempo real.
 - **Perguntas** — Colete dados do cliente direto no terminal: CPF/CNPJ, texto livre, lista de opções, e-mail, CEP e mais.
-- **Impressão** — Imprima imagens, comprovantes personalizados ou cupons fiscais (XML/DANFE).
+- **Impressão** — Imprima imagens, comprovantes personalizados, layouts ACBr ou cupons fiscais (XML/DANFE).
+- **Logs e alertas** — Consulte logs, acompanhe eventos em tempo real e dispare notificações locais ao operador.
 - **Status** — Monitore saúde, tempo de atividade e reinicie o app remotamente.
 
 ---
 
 ## Integração rápida
 
-Qualquer cliente HTTP funciona. Veja um exemplo completo — um PIX de R$ 50,00 — nas linguagens mais comuns:
+Qualquer cliente HTTP funciona. Veja um exemplo completo, um PIX de R$ 50,00, nas linguagens mais comuns:
 
 === "cURL"
 
@@ -163,11 +162,11 @@ Cada build do TEF IP é compilado para um adquirente específico.
 | Linguagem | Pacote | Status |
 |-----------|--------|--------|
 | Dart / Flutter | [`dart_tefip`](https://pub.dev/packages/dart_tefip) | Disponível |
-| JavaScript | — | Em breve |
-| PHP | — | Em breve |
-| Ruby | — | Em breve |
+| JavaScript | — | Sem pacote oficial no momento |
+| PHP | — | Sem pacote oficial no momento |
+| Ruby | — | Sem pacote oficial no momento |
 
-Qualquer cliente HTTP funciona diretamente — os SDKs são conveniência, não requisito.
+Qualquer cliente HTTP funciona diretamente; os SDKs são conveniência, não requisito.
 
 ---
 

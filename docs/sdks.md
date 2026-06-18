@@ -1,34 +1,26 @@
 # SDKs
 
-Os SDKs do TEF IP encapsulam as chamadas HTTP com tipagem, modelos de dados e tratamento de erros — mas são **opcionais**. Qualquer cliente HTTP com Basic Auth integra diretamente à API.
+Os SDKs do TEF IP são opcionais. A API continua sendo HTTP puro com Basic Auth, então qualquer linguagem pode integrar diretamente mesmo sem pacote dedicado.
 
 ---
 
-## SDK ou HTTP direto?
+## Panorama atual
 
-| | SDK oficial | HTTP direto |
-|---|---|---|
-| Tipagem e modelos | Sim | Manual |
-| Tratamento de erros padronizado | Sim | Manual |
-| Dependência externa | Sim | Nenhuma |
-| Linguagens disponíveis | Dart/Flutter (hoje) | Qualquer |
-
-Use o SDK quando estiver desenvolvendo em uma linguagem com pacote disponível. Para outras linguagens, chame a API diretamente — todas as páginas de [API Reference](api/transaction.md) incluem exemplos prontos em JavaScript, PHP e Ruby.
+| Linguagem | Pacote oficial | Status | Documentação |
+|-----------|----------------|--------|--------------|
+| Dart / Flutter | [`dart_tefip`](https://pub.dev/packages/dart_tefip) | Disponível | [SDK Dart](sdk-dart.md) |
+| JavaScript | Não | Sem pacote oficial no momento | [SDK JavaScript](sdk-js.md) |
+| PHP | Não | Sem pacote oficial no momento | [SDK PHP](sdk-php.md) |
+| Ruby | Não | Sem pacote oficial no momento | [SDK Ruby](sdk-ruby.md) |
 
 ---
 
-## Disponíveis
+## Quando usar SDK
 
-| Linguagem | Pacote | Documentação |
-|-----------|--------|--------------|
-| Dart / Flutter | [`dart_tefip`](https://pub.dev/packages/dart_tefip) | [SDK Dart](sdk-dart.md) |
+| Cenário | Recomendação |
+|---------|--------------|
+| App Flutter ou Dart | Use o `dart_tefip` |
+| Backend ou PDV em outra linguagem | Use HTTP direto |
+| Integração rápida ou prova de conceito | Pode começar por cURL/fetch/curl/Net::HTTP |
 
----
-
-## Em desenvolvimento
-
-| Linguagem | Status | Alternativa |
-|-----------|--------|-------------|
-| JavaScript | Em desenvolvimento | [Exemplos com `fetch`](api/transaction.md) |
-| PHP | Em desenvolvimento | [Exemplos com `curl`](api/transaction.md) |
-| Ruby | Em desenvolvimento | [Exemplos com `Net::HTTP`](api/transaction.md) |
+Todas as páginas de [API Reference](api/transaction.md) incluem exemplos prontos em `cURL`, `Dart`, `JavaScript`, `PHP` e `Ruby`.

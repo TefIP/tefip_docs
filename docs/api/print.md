@@ -366,3 +366,122 @@ String com o conteúdo do XML da NF-e.
     res = Net::HTTP.start(uri.hostname, uri.port) { |h| h.request(req) }
     data = JSON.parse(res.body)
     ```
+
+---
+
+## POST /print/acbr
+
+Imprime um layout descrito no formato de **tags ACBr** — texto puro enviado diretamente no corpo da requisição (sem JSON). Útil para reaproveitar layouts de PDV já escritos nesse padrão.
+
+**Corpo da requisição**
+
+Texto puro com as tags ACBr.
+
+| Header | Valor |
+|--------|-------|
+| `Content-Type` | `text/plain` |
+
+**Tags suportadas**
+
+| Categoria | Tags |
+|-----------|------|
+| Estilo | `<n>` negrito · `<i>` itálico · `<s>` sublinhado · `<in>` invertido · `<e>` expandido · `<c>` condensado · `<a>` altura dupla |
+| Alinhamento | `</ce>` centro · `</ae>` esquerda · `</ad>` direita |
+| Estrutura | `</zera>` reset · `</fn>` fonte normal · `</linha_simples>` e `</linha_dupla>` divisórias · `<qrcode>...</qrcode>` QR Code |
+
+!!! note "Tags ignoradas"
+    `</corte_total>`, `</corte>` e `</logo>` são aceitas, mas não produzem efeito no terminal.
+
+**Resposta — 200**
+
+```json
+{ "message": "Impressão realizada com sucesso" }
+```
+
+**Resposta — 400** (nenhum conteúdo enviado)
+
+```json
+{ "code": 400, "message": "Nenhum conteúdo enviado" }
+```
+
+**Resposta — 500** (erro na impressão)
+
+```json
+{ "code": 500, "message": "Erro ao imprimir" }
+```
+
+### Exemplos de integração
+
+=== "cURL"
+
+    ```bash
+    curl -u admin:1234 \
+         -H "Content-Type: text/plain" \
+         -X POST http://localhost:9050/print/acbr \
+         --data-binary $'</ce><n>TEF IP</n>\n</ae>Obrigado pela compra!\n</linha_simples>'
+    ```
+
+=== "Dart"
+
+    ```dart
+    // TODO: o SDK Dart ainda não expõe método para ACBr — usando http diretamente
+    import 'package:http/http.dart' as http;
+
+    final layout = '</ce><n>TEF IP</n>\n</ae>Obrigado pela compra!\n</linha_simples>';
+    await http.post(
+      Uri.parse('http://localhost:9050/print/acbr'),
+      headers: {
+        'Authorization': 'Basic ${base64Encode(utf8.encode('admin:1234'))}',
+        'Content-Type': 'text/plain',
+      },
+      body: layout,
+    );
+    ```
+
+=== "JavaScript"
+
+    ```js
+    // TODO: pacote JavaScript ainda não criado — usando fetch diretamente
+    const layout = '</ce><n>TEF IP</n>\n</ae>Obrigado pela compra!\n</linha_simples>';
+    const res = await fetch('http://localhost:9050/print/acbr', {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Basic ' + btoa('admin:1234'),
+        'Content-Type': 'text/plain',
+      },
+      body: layout,
+    });
+    const data = await res.json();
+    ```
+
+=== "PHP"
+
+    ```php
+    <?php
+    // TODO: pacote PHP ainda não criado — usando curl diretamente
+    $layout = "</ce><n>TEF IP</n>\n</ae>Obrigado pela compra!\n</linha_simples>";
+    $ch = curl_init('http://localhost:9050/print/acbr');
+    curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
+    curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: text/plain']);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $layout);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $response = json_decode(curl_exec($ch), true);
+    curl_close($ch);
+    ```
+
+=== "Ruby"
+
+    ```ruby
+    # TODO: pacote Ruby ainda não criado — usando Net::HTTP diretamente
+    require 'net/http'
+    require 'json'
+
+    layout = "</ce><n>TEF IP</n>\n</ae>Obrigado pela compra!\n</linha_simples>"
+    uri = URI('http://localhost:9050/print/acbr')
+    req = Net::HTTP::Post.new(uri, 'Content-Type' => 'text/plain')
+    req.basic_auth('admin', '1234')
+    req.body = layout
+    res = Net::HTTP.start(uri.hostname, uri.port) { |h| h.request(req) }
+    data = JSON.parse(res.body)
+    ```

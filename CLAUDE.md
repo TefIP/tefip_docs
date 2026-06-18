@@ -15,22 +15,24 @@ POS/PDV System
   → dart_tefip SDK (ou curl / qualquer cliente HTTP)
   → TEF IP HTTP Server (Basic Auth obrigatório)
   → Middleware: auth → cors → json → busy → notification → error handler
-  → Resources: ask | display | sale | print | status | transaction | swagger
+  → Resources: ask | display | sale | print | log | notification | status | transaction | swagger
   → Hardware: Stone, Getnet, Rede
   → Resposta ao POS/PDV
 ```
 
 ## API Endpoint Groups
 
-| Grupo        | Endpoints                                                                                                                                                                                                                        |
-|--------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `ask`        | POST /ask · POST /ask/form · POST /ask/cancel                                                                                                                                                                                    |
-| `display`    | POST /display/image · POST /display/text · POST /display/carousel · POST /display/clear · POST /display/pop                                                                                                                      |
-| `sale`       | POST /sale · PATCH /sale · POST /sale/item · PATCH /sale/item/{id} · DELETE /sale/item/{id} · POST /sale/item/{id}/cancel · POST /sale/payment · PATCH /sale/payment/{id} · DELETE /sale/payment/{id} · POST /sale/finalize · POST /sale/cancel |
-| `print`      | POST /print/image · POST /print/text · POST /print/xml                                                                                                                                                                           |
-| `status`     | GET /status · GET /info · POST /restart                                                                                                                                                                                          |
-| `transaction`| POST /transaction · GET /transaction · GET /transaction/{referenceId} · POST /transaction/{referenceId}/reversal                                                                                                                  |
-| `swagger`    | GET /docs · GET /openapi.bundle.yaml                                                                                                                                                                                             |
+| Grupo | Endpoints |
+|-------|-----------|
+| `ask` | POST /ask · POST /ask/form · POST /ask/cancel |
+| `display` | POST /display/image · POST /display/text · POST /display/carousel · POST /display/clear · POST /display/pop |
+| `sale` | GET /sale · POST /sale · PATCH /sale · DELETE /sale/clear · POST /sale/item · PATCH /sale/item/{id} · DELETE /sale/item/{id} · POST /sale/item/{id}/cancel · DELETE /sale/item/clear · POST /sale/payment · PATCH /sale/payment/{id} · DELETE /sale/payment/{id} · DELETE /sale/payment/clear · POST /sale/discount · PATCH /sale/discount/{id} · DELETE /sale/discount/{id} · DELETE /sale/discount/clear · POST /sale/addition · PATCH /sale/addition/{id} · DELETE /sale/addition/{id} · DELETE /sale/addition/clear · POST /sale/finalize · POST /sale/cancel |
+| `print` | POST /print/image · POST /print/text · POST /print/xml · POST /print/acbr |
+| `log` | GET /logs · GET /logs/stream · GET /logs/zip/download |
+| `notification` | POST /notification |
+| `status` | GET /status · GET /info · POST /restart |
+| `transaction` | POST /transaction · GET /transaction · GET /transaction/{referenceId} · POST /transaction/{referenceId}/reversal |
+| `swagger` | GET /docs · GET /openapi.bundle.yaml |
 
 ## Integration Tab Template
 
@@ -53,7 +55,7 @@ Every endpoint page must include an **Integration Examples** section using `pymd
     TefIP.baseUrl = 'http://localhost:9050';
     TefIP.username = 'admin';
     TefIP.password = '1234';
-    final result = await TefIP.instance.endpoint.method(/* params */);
+    final result = await TefIP.instance.status.get();
     ```
 
 === "JavaScript"
@@ -74,6 +76,7 @@ Every endpoint page must include an **Integration Examples** section using `pymd
 === "PHP"
 
     ```php
+    <?php
     // TODO: pacote PHP ainda não criado — usando curl diretamente
     $ch = curl_init('http://localhost:9050/endpoint');
     curl_setopt($ch, CURLOPT_USERPWD, 'admin:1234');
@@ -110,30 +113,48 @@ O SDK oficial para Dart/Flutter é o [`dart_tefip`](https://pub.dev/packages/dar
 ```dart
 import 'package:dart_tefip/dart_tefip.dart';
 
-// Configurar uma vez (ex.: no main ou antes da primeira chamada)
 TefIP.baseUrl = 'http://localhost:9050';
 TefIP.username = 'admin';
 TefIP.password = '1234';
 
-// Chamar endpoints via TefIP.instance.<grupo>.<método>(...)
 final result = await TefIP.instance.transaction.post(
-  transactionRequest: TransactionRequestModel(type: TefIPTransactionType.pix, amount: 50.00),
+  transactionRequest: TransactionRequestModel(
+    type: TefIPTransactionType.pix,
+    amount: 50.00,
+    referenceId: 'pedido-001',
+  ),
 );
 ```
 
 > **Atenção:** `TefIPClient` **não existe** no SDK. Use sempre `TefIP.instance`.
 
+### Modelos e accessors reais
+
+Ao escrever exemplos Dart, prefira os modelos e accessors reais do SDK:
+
+- `TefIP.instance.transaction.post(transactionRequest: TransactionRequestModel(...))`
+- `TefIP.instance.sale.post(request: SaleStartRequestModel(...))`
+- `TefIP.instance.saleItem.post(item: SaleItemModel(...))`
+- `TefIP.instance.salePayment.post(payment: SalePaymentModel(...))`
+- `TefIP.instance.saleDiscount.post(discount: SaleDiscountModel(...))`
+- `TefIP.instance.saleAddition.post(addition: SaleAdditionModel(...))`
+- `TefIP.instance.ask.post(questionRequest: AskSingleQuestionRequestModel(...))`
+- `TefIP.instance.askForm.post(form: AskFormRequestModel(...))`
+- `TefIP.instance.displayText.post(displayTextRequest: DisplayTextRequestModel(...))`
+- `TefIP.instance.notification.post(request: NotificationRequestModel(...))`
+- `TefIP.instance.log.getAll(...)`, `TefIP.instance.log.stream()`, `TefIP.instance.log.downloadZip(...)`
+
 ## Authoring Rules
 
 1. **Estrutura de página de endpoint:** intro curta em prosa → tabela/bloco JSON de request e response → seção `### Exemplos de integração` (H3, por endpoint) com o tab template acima.
-   - **Configuração Dart:** o bloco Dart do **primeiro endpoint da página** deve incluir as 3 linhas de configuração (`TefIP.baseUrl`, `TefIP.username`, `TefIP.password`) com o comentário `// pub.dev/packages/dart_tefip — configure uma vez; demais exemplos nesta página omitem esta etapa`. Os **demais endpoints da mesma página** omitem essas linhas e mostram apenas a chamada.
-2. **Autenticação:** adicione um admonition antes do primeiro endpoint de cada página:
+2. **Configuração Dart:** o bloco Dart do **primeiro endpoint da página** deve incluir as 3 linhas de configuração (`TefIP.baseUrl`, `TefIP.username`, `TefIP.password`) com o comentário `// pub.dev/packages/dart_tefip — configure uma vez; demais exemplos nesta página omitem esta etapa`.
+3. **Autenticação:** adicione um admonition antes do primeiro endpoint de cada página:
    ```markdown
    !!! warning "Autenticação"
        Todas as requisições exigem Basic Auth. Use as credenciais configuradas no TEF IP (`admin` / senha definida na instalação).
    ```
-3. **Nomes de tab consistentes:** use exatamente `cURL`, `Dart`, `JavaScript`, `PHP`, `Ruby` em todo o site para que o `content.tabs.link` sincronize corretamente.
-4. **Idioma:** toda a documentação é escrita em **português do Brasil**.
+4. **Nomes de tab consistentes:** use exatamente `cURL`, `Dart`, `JavaScript`, `PHP`, `Ruby` em todo o site para que o `content.tabs.link` sincronize corretamente.
+5. **Idioma:** toda a documentação é escrita em **português do Brasil**.
 
 ## MkDocs Material Notes
 
@@ -171,18 +192,26 @@ mkdocs gh-deploy
 ```
 mkdocs.yml
 docs/
-  index.md              homepage
-  getting-started.md    instalação e primeira requisição
-  emulator.md           emulador local para testes sem hardware
-  assets/               imagens, GIFs, diagramas
+  index.md
+  getting-started.md
+  comportamento.md
+  emulator.md
+  sdks.md
+  sdk-dart.md
+  sdk-js.md
+  sdk-php.md
+  sdk-ruby.md
+  assets/
   api/
-    ask.md              POST /ask · POST /ask/form · POST /ask/cancel
-    display.md          POST /display/image · text · carousel · clear · pop
-    sale.md             POST/PATCH /sale · item · payment · finalize · cancel
-    print.md            POST /print/image · text · xml
-    status.md           GET /status · /info · POST /restart
-    transaction.md      POST/GET /transaction · reversal
-    swagger.md          GET /docs · /openapi.bundle.yaml
+    ask.md
+    display.md
+    logs.md
+    notification.md
+    sale.md
+    print.md
+    status.md
+    transaction.md
+    swagger.md
 ```
 
 ## Media Assets

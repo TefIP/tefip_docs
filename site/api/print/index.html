@@ -839,6 +839,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#post-printacbr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /print/acbr
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="POST /print/acbr">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemplos-de-integracao_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemplos de integração
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -919,6 +947,62 @@
     
   
     Status e Manutenção
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notificações
   
 
     
@@ -1430,6 +1514,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#post-printacbr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /print/acbr
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="POST /print/acbr">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemplos-de-integracao_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemplos de integração
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1775,6 +1887,130 @@
 <a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="n">req</span><span class="o">.</span><span class="n">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xml</span>
 <a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">uri</span><span class="o">.</span><span class="n">hostname</span><span class="p">,</span><span class="w"> </span><span class="n">uri</span><span class="o">.</span><span class="n">port</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">|</span><span class="n">h</span><span class="o">|</span><span class="w"> </span><span class="n">h</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">req</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
 <a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<hr />
+<h2 id="post-printacbr">POST /print/acbr</h2>
+<p>Imprime um layout descrito no formato de <strong>tags ACBr</strong> — texto puro enviado diretamente no corpo da requisição (sem JSON). Útil para reaproveitar layouts de PDV já escritos nesse padrão.</p>
+<p><strong>Corpo da requisição</strong></p>
+<p>Texto puro com as tags ACBr.</p>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Content-Type</code></td>
+<td><code>text/plain</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tags suportadas</strong></p>
+<table>
+<thead>
+<tr>
+<th>Categoria</th>
+<th>Tags</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Estilo</td>
+<td><code>&lt;n&gt;</code> negrito · <code>&lt;i&gt;</code> itálico · <code>&lt;s&gt;</code> sublinhado · <code>&lt;in&gt;</code> invertido · <code>&lt;e&gt;</code> expandido · <code>&lt;c&gt;</code> condensado · <code>&lt;a&gt;</code> altura dupla</td>
+</tr>
+<tr>
+<td>Alinhamento</td>
+<td><code>&lt;/ce&gt;</code> centro · <code>&lt;/ae&gt;</code> esquerda · <code>&lt;/ad&gt;</code> direita</td>
+</tr>
+<tr>
+<td>Estrutura</td>
+<td><code>&lt;/zera&gt;</code> reset · <code>&lt;/fn&gt;</code> fonte normal · <code>&lt;/linha_simples&gt;</code> e <code>&lt;/linha_dupla&gt;</code> divisórias · <code>&lt;qrcode&gt;...&lt;/qrcode&gt;</code> QR Code</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Tags ignoradas</p>
+<p><code>&lt;/corte_total&gt;</code>, <code>&lt;/corte&gt;</code> e <code>&lt;/logo&gt;</code> são aceitas, mas não produzem efeito no terminal.</p>
+</div>
+<p><strong>Resposta — 200</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Impressão realizada com sucesso&quot;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p><strong>Resposta — 400</strong> (nenhum conteúdo enviado)</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Nenhum conteúdo enviado&quot;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p><strong>Resposta — 500</strong> (erro na impressão)</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Erro ao imprimir&quot;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<h3 id="exemplos-de-integracao_3">Exemplos de integração</h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:5"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">cURL</label><label for="__tabbed_4_2">Dart</label><label for="__tabbed_4_3">JavaScript</label><label for="__tabbed_4_4">PHP</label><label for="__tabbed_4_5">Ruby</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>curl<span class="w"> </span>-u<span class="w"> </span>admin:1234<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="w">     </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: text/plain&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="w">     </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:9050/print/acbr<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="w">     </span>--data-binary<span class="w"> </span><span class="s1">$&#39;&lt;/ce&gt;&lt;n&gt;TEF IP&lt;/n&gt;\n&lt;/ae&gt;Obrigado pela compra!\n&lt;/linha_simples&gt;&#39;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="c1">// TODO: o SDK Dart ainda não expõe método para ACBr — usando http diretamente</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="k">import</span><span class="w"> </span><span class="s1">&#39;package:http/http.dart&#39;</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">http</span><span class="p">;</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="kd">final</span><span class="w"> </span><span class="n">layout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&lt;/ce&gt;&lt;n&gt;TEF IP&lt;/n&gt;</span><span class="se">\n</span><span class="s1">&lt;/ae&gt;Obrigado pela compra!</span><span class="se">\n</span><span class="s1">&lt;/linha_simples&gt;&#39;</span><span class="p">;</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="kd">await</span><span class="w"> </span><span class="n">http</span><span class="p">.</span><span class="n">post</span><span class="p">(</span>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="w">  </span><span class="n">Uri</span><span class="p">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;http://localhost:9050/print/acbr&#39;</span><span class="p">),</span>
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="w">  </span><span class="nl">headers:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a><span class="w">    </span><span class="s1">&#39;Authorization&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Basic </span><span class="si">${</span><span class="n">base64Encode</span><span class="p">(</span><span class="n">utf8</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;admin:1234&#39;</span><span class="p">))</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a><span class="w">    </span><span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;text/plain&#39;</span><span class="p">,</span>
+<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a><span class="w">  </span><span class="nl">body:</span><span class="w"> </span><span class="n">layout</span><span class="p">,</span>
+<a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a><span class="p">);</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="c1">// TODO: pacote JavaScript ainda não criado — usando fetch diretamente</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">layout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&lt;/ce&gt;&lt;n&gt;TEF IP&lt;/n&gt;\n&lt;/ae&gt;Obrigado pela compra!\n&lt;/linha_simples&gt;&#39;</span><span class="p">;</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;http://localhost:9050/print/acbr&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="w">  </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="w">  </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a><span class="w">    </span><span class="s1">&#39;Authorization&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Basic &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">btoa</span><span class="p">(</span><span class="s1">&#39;admin:1234&#39;</span><span class="p">),</span>
+<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a><span class="w">    </span><span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;text/plain&#39;</span><span class="p">,</span>
+<a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a><span class="w">  </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nx">layout</span><span class="p">,</span>
+<a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a><span class="p">});</span>
+<a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="c1">// TODO: pacote PHP ainda não criado — usando curl diretamente</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="nv">$layout</span> <span class="o">=</span> <span class="s2">&quot;&lt;/ce&gt;&lt;n&gt;TEF IP&lt;/n&gt;</span><span class="se">\n</span><span class="s2">&lt;/ae&gt;Obrigado pela compra!</span><span class="se">\n</span><span class="s2">&lt;/linha_simples&gt;&quot;</span><span class="p">;</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">(</span><span class="s1">&#39;http://localhost:9050/print/acbr&#39;</span><span class="p">);</span>
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_USERPWD</span><span class="p">,</span> <span class="s1">&#39;admin:1234&#39;</span><span class="p">);</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Content-Type: text/plain&#39;</span><span class="p">]);</span>
+<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_POST</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+<a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nv">$layout</span><span class="p">);</span>
+<a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+<a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a><span class="nv">$response</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">),</span> <span class="k">true</span><span class="p">);</span>
+<a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a><span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="c1"># TODO: pacote Ruby ainda não criado — usando Net::HTTP diretamente</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="nb">require</span><span class="w"> </span><span class="s1">&#39;net/http&#39;</span>
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="nb">require</span><span class="w"> </span><span class="s1">&#39;json&#39;</span>
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a><span class="n">layout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;/ce&gt;&lt;n&gt;TEF IP&lt;/n&gt;</span><span class="se">\n</span><span class="s2">&lt;/ae&gt;Obrigado pela compra!</span><span class="se">\n</span><span class="s2">&lt;/linha_simples&gt;&quot;</span>
+<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a><span class="n">uri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">URI</span><span class="p">(</span><span class="s1">&#39;http://localhost:9050/print/acbr&#39;</span><span class="p">)</span>
+<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a><span class="n">req</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Content-Type&#39;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;text/plain&#39;</span><span class="p">)</span>
+<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a><span class="n">req</span><span class="o">.</span><span class="n">basic_auth</span><span class="p">(</span><span class="s1">&#39;admin&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;1234&#39;</span><span class="p">)</span>
+<a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a><span class="n">req</span><span class="o">.</span><span class="n">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">layout</span>
+<a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">uri</span><span class="o">.</span><span class="n">hostname</span><span class="p">,</span><span class="w"> </span><span class="n">uri</span><span class="o">.</span><span class="n">port</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">|</span><span class="n">h</span><span class="o">|</span><span class="w"> </span><span class="n">h</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">req</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
 </code></pre></div>
 </div>
 </div>

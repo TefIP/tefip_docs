@@ -43,8 +43,10 @@ Inicia um pagamento no terminal. O TEF IP aguarda o app estar em primeiro plano 
 
 | Valor | Descrição |
 |-------|-----------|
+| `"01"` | Dinheiro |
 | `"03"` | Crédito |
 | `"04"` | Débito |
+| `"05"` | Cartão-presente |
 | `"17"` | PIX |
 | `"99"` | Desconhecido |
 
@@ -61,7 +63,11 @@ Inicia um pagamento no terminal. O TEF IP aguarda o app estar em primeiro plano 
 ```json
 {
   "nsu": "123456",
-  "message": "Transação aprovada",
+  "cnpj": "05481336000137",
+  "cAut": "123456",
+  "txid": null,
+  "tBand": "01",
+  "tPag": "17",
   "details": {}
 }
 ```
@@ -69,7 +75,11 @@ Inicia um pagamento no terminal. O TEF IP aguarda o app estar em primeiro plano 
 | Campo | Tipo | Descrição |
 |-------|------|-----------|
 | `nsu` | string | Número sequencial único gerado pelo adquirente |
-| `message` | string | Mensagem de status da transação |
+| `cnpj` | string | CNPJ do adquirente/emissor retornado pelo terminal |
+| `cAut` | string | Código de autorização — presente em **crédito/débito**; `null` em PIX |
+| `txid` | string | Identificador da transação — presente apenas em **PIX**; `null` nos demais tipos |
+| `tBand` | string | Bandeira do cartão retornada pelo adquirente |
+| `tPag` | string | Código do tipo de pagamento (ver tabela de `tPag`) |
 | `details` | object | Dados adicionais retornados pelo adquirente |
 
 **Resposta — 503** (app em segundo plano)
@@ -106,7 +116,9 @@ Inicia um pagamento no terminal. O TEF IP aguarda o app estar em primeiro plano 
         referenceId: 'pedido-001',
       ),
     );
-    print(result.nsu);
+    print(result.nsu);          // NSU do adquirente
+    print(result.txid);         // preenchido em PIX
+    print(result.cAut);         // preenchido em crédito/débito
     ```
 
 === "JavaScript"
@@ -172,7 +184,11 @@ Array de transações, cada uma com a mesma estrutura do retorno de `POST /trans
 [
   {
     "nsu": "123456",
-    "message": "Transação aprovada",
+    "cnpj": "05481336000137",
+    "cAut": "123456",
+    "txid": null,
+    "tBand": "01",
+    "tPag": "17",
     "details": {}
   }
 ]
@@ -251,7 +267,11 @@ Busca uma transação específica pelo identificador externo informado no moment
 ```json
 {
   "nsu": "123456",
-  "message": "Transação aprovada",
+  "cnpj": "05481336000137",
+  "cAut": "123456",
+  "txid": null,
+  "tBand": "01",
+  "tPag": "17",
   "details": {}
 }
 ```
@@ -333,7 +353,11 @@ Mesma estrutura de `POST /transaction`.
 ```json
 {
   "nsu": "123456",
-  "message": "Estorno aprovado",
+  "cnpj": "05481336000137",
+  "cAut": "123456",
+  "txid": null,
+  "tBand": "01",
+  "tPag": "17",
   "details": {}
 }
 ```
@@ -360,7 +384,7 @@ Mesma estrutura de `POST /transaction`.
 
     ```dart
     final result = await TefIP.instance.reversal.post(referenceId: 'pedido-001');
-    print(result.message);
+    print(result.nsu);
     ```
 
 === "JavaScript"

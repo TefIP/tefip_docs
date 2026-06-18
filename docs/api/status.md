@@ -186,9 +186,9 @@ Retorna informações detalhadas sobre o aplicativo e o dispositivo, incluindo o
 
 ## POST /restart
 
-Reinicia o aplicativo TEF IP remotamente. Disponível **apenas em dispositivos Android**.
+Reinicia o aplicativo TEF IP remotamente. Disponível **apenas em dispositivos móveis (Android ou iOS)**.
 
-!!! warning "Somente Android"
+!!! warning "Somente dispositivos móveis"
     Em plataformas não-móveis (Windows, emulador de desktop), este endpoint retorna `403`.
 
 **Resposta — 200**

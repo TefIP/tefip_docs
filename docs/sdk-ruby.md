@@ -1,11 +1,8 @@
 # SDK Ruby
 
-!!! info "Em desenvolvimento"
-    O pacote Ruby para o TEF IP ainda não está disponível.
+Não existe pacote oficial Ruby para o TEF IP neste momento.
 
-Enquanto isso, use a API diretamente via `Net::HTTP` — todas as páginas de [API Reference](api/transaction.md) incluem exemplos prontos em Ruby.
-
-**Exemplo rápido:**
+Enquanto isso, a integração recomendada é chamar a API diretamente com `Net::HTTP` ou outro cliente HTTP, usando Basic Auth.
 
 ```ruby
 require 'net/http'
@@ -18,4 +15,4 @@ res = Net::HTTP.start(uri.hostname, uri.port) { |h| h.request(req) }
 data = JSON.parse(res.body)
 ```
 
-Acompanhe as novidades na [página de SDKs](sdks.md).
+Os exemplos completos por endpoint estão nas páginas de [API Reference](api/transaction.md). O panorama geral fica em [SDKs](sdks.md).
