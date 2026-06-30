@@ -937,6 +937,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../api/logs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/notification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notificações
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../api/swagger/" class="md-nav__link">
         
   
@@ -1579,6 +1635,7 @@
 <p>Sempre que o TEF IP recebe um comando do PDV, ele exibe automaticamente uma notificação no terminal alertando o operador para restaurar o aplicativo.</p>
 <p>Isso é especialmente útil quando o operador minimizou o TEF IP — a notificação serve como aviso para que o app volte ao primeiro plano antes do tempo limite de 15 segundos expirar.</p>
 <p>Nenhuma configuração é necessária — o comportamento é automático.</p>
+<p>Se o seu fluxo precisar disparar um alerta manual fora desse comportamento automático, use o endpoint <a href="../api/notification/">Notificações → <code>POST /notification</code></a>.</p>
 <hr />
 <h2 id="endpoints-sem-autenticacao">Endpoints sem autenticação</h2>
 <p>A maioria dos endpoints exige Basic Auth. As únicas exceções são:</p>

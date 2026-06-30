@@ -764,6 +764,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../api/logs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/notification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notificações
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../api/swagger/" class="md-nav__link">
         
   
@@ -916,10 +972,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sdk-ou-http-direto" class="md-nav__link">
+  <a href="#panorama-atual" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SDK ou HTTP direto?
+        Panorama atual
       
     </span>
   </a>
@@ -927,21 +983,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#disponiveis" class="md-nav__link">
+  <a href="#quando-usar-sdk" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Disponíveis
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#em-desenvolvimento" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Em desenvolvimento
+        Quando usar SDK
       
     </span>
   </a>
@@ -1218,10 +1263,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sdk-ou-http-direto" class="md-nav__link">
+  <a href="#panorama-atual" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SDK ou HTTP direto?
+        Panorama atual
       
     </span>
   </a>
@@ -1229,21 +1274,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#disponiveis" class="md-nav__link">
+  <a href="#quando-usar-sdk" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Disponíveis
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#em-desenvolvimento" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Em desenvolvimento
+        Quando usar SDK
       
     </span>
   </a>
@@ -1268,48 +1302,15 @@
 
 
 <h1 id="sdks">SDKs</h1>
-<p>Os SDKs do TEF IP encapsulam as chamadas HTTP com tipagem, modelos de dados e tratamento de erros — mas são <strong>opcionais</strong>. Qualquer cliente HTTP com Basic Auth integra diretamente à API.</p>
+<p>Os SDKs do TEF IP são opcionais. A API continua sendo HTTP puro com Basic Auth, então qualquer linguagem pode integrar diretamente mesmo sem pacote dedicado.</p>
 <hr />
-<h2 id="sdk-ou-http-direto">SDK ou HTTP direto?</h2>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>SDK oficial</th>
-<th>HTTP direto</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Tipagem e modelos</td>
-<td>Sim</td>
-<td>Manual</td>
-</tr>
-<tr>
-<td>Tratamento de erros padronizado</td>
-<td>Sim</td>
-<td>Manual</td>
-</tr>
-<tr>
-<td>Dependência externa</td>
-<td>Sim</td>
-<td>Nenhuma</td>
-</tr>
-<tr>
-<td>Linguagens disponíveis</td>
-<td>Dart/Flutter (hoje)</td>
-<td>Qualquer</td>
-</tr>
-</tbody>
-</table>
-<p>Use o SDK quando estiver desenvolvendo em uma linguagem com pacote disponível. Para outras linguagens, chame a API diretamente — todas as páginas de <a href="../api/transaction/">API Reference</a> incluem exemplos prontos em JavaScript, PHP e Ruby.</p>
-<hr />
-<h2 id="disponiveis">Disponíveis</h2>
+<h2 id="panorama-atual">Panorama atual</h2>
 <table>
 <thead>
 <tr>
 <th>Linguagem</th>
-<th>Pacote</th>
+<th>Pacote oficial</th>
+<th>Status</th>
 <th>Documentação</th>
 </tr>
 </thead>
@@ -1317,38 +1318,54 @@
 <tr>
 <td>Dart / Flutter</td>
 <td><a href="https://pub.dev/packages/dart_tefip"><code>dart_tefip</code></a></td>
+<td>Disponível</td>
 <td><a href="../sdk-dart/">SDK Dart</a></td>
+</tr>
+<tr>
+<td>JavaScript</td>
+<td>Não</td>
+<td>Sem pacote oficial no momento</td>
+<td><a href="../sdk-js/">SDK JavaScript</a></td>
+</tr>
+<tr>
+<td>PHP</td>
+<td>Não</td>
+<td>Sem pacote oficial no momento</td>
+<td><a href="../sdk-php/">SDK PHP</a></td>
+</tr>
+<tr>
+<td>Ruby</td>
+<td>Não</td>
+<td>Sem pacote oficial no momento</td>
+<td><a href="../sdk-ruby/">SDK Ruby</a></td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="em-desenvolvimento">Em desenvolvimento</h2>
+<h2 id="quando-usar-sdk">Quando usar SDK</h2>
 <table>
 <thead>
 <tr>
-<th>Linguagem</th>
-<th>Status</th>
-<th>Alternativa</th>
+<th>Cenário</th>
+<th>Recomendação</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>JavaScript</td>
-<td>Em desenvolvimento</td>
-<td><a href="../api/transaction/">Exemplos com <code>fetch</code></a></td>
+<td>App Flutter ou Dart</td>
+<td>Use o <code>dart_tefip</code></td>
 </tr>
 <tr>
-<td>PHP</td>
-<td>Em desenvolvimento</td>
-<td><a href="../api/transaction/">Exemplos com <code>curl</code></a></td>
+<td>Backend ou PDV em outra linguagem</td>
+<td>Use HTTP direto</td>
 </tr>
 <tr>
-<td>Ruby</td>
-<td>Em desenvolvimento</td>
-<td><a href="../api/transaction/">Exemplos com <code>Net::HTTP</code></a></td>
+<td>Integração rápida ou prova de conceito</td>
+<td>Pode começar por cURL/fetch/curl/Net::HTTP</td>
 </tr>
 </tbody>
 </table>
+<p>Todas as páginas de <a href="../api/transaction/">API Reference</a> incluem exemplos prontos em <code>cURL</code>, <code>Dart</code>, <code>JavaScript</code>, <code>PHP</code> e <code>Ruby</code>.</p>
 
 
 

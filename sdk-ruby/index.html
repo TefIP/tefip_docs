@@ -764,6 +764,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../api/logs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/notification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notificações
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../api/swagger/" class="md-nav__link">
         
   
@@ -1157,12 +1213,8 @@
 
 
 <h1 id="sdk-ruby">SDK Ruby</h1>
-<div class="admonition info">
-<p class="admonition-title">Em desenvolvimento</p>
-<p>O pacote Ruby para o TEF IP ainda não está disponível.</p>
-</div>
-<p>Enquanto isso, use a API diretamente via <code>Net::HTTP</code> — todas as páginas de <a href="../api/transaction/">API Reference</a> incluem exemplos prontos em Ruby.</p>
-<p><strong>Exemplo rápido:</strong></p>
+<p>Não existe pacote oficial Ruby para o TEF IP neste momento.</p>
+<p>Enquanto isso, a integração recomendada é chamar a API diretamente com <code>Net::HTTP</code> ou outro cliente HTTP, usando Basic Auth.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">require</span><span class="w"> </span><span class="s1">&#39;net/http&#39;</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">require</span><span class="w"> </span><span class="s1">&#39;json&#39;</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
@@ -1172,7 +1224,7 @@
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">uri</span><span class="o">.</span><span class="n">hostname</span><span class="p">,</span><span class="w"> </span><span class="n">uri</span><span class="o">.</span><span class="n">port</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">|</span><span class="n">h</span><span class="o">|</span><span class="w"> </span><span class="n">h</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">req</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
 </code></pre></div>
-<p>Acompanhe as novidades na <a href="../sdks/">página de SDKs</a>.</p>
+<p>Os exemplos completos por endpoint estão nas páginas de <a href="../api/transaction/">API Reference</a>. O panorama geral fica em <a href="../sdks/">SDKs</a>.</p>
 
 
 
