@@ -2,8 +2,23 @@
 
 Aceite pagamentos com qualquer adquirente usando uma única API HTTP local. Instale no terminal e comece a processar.
 
----
+## O que você pode fazer
 
+- **Pagamentos** — Crédito, débito, PIX, dinheiro, voucher, cartão-presente; parcelamento pelo lojista ou pela emissora.
+- **Vendas** — Monte um carrinho com itens e adicione múltiplas formas de pagamento; finalize com uma chamada.
+- **Estornos** — Consulte e reverta transações por `referenceId`.
+- **Display** — Exiba textos, imagens, carrosséis ou QR codes na tela do terminal em tempo real.
+- **Perguntas** — Colete dados do cliente direto no terminal: CPF/CNPJ, texto livre, lista de opções, e-mail, CEP e mais.
+- **Impressão** — Imprima imagens, comprovantes personalizados, layouts ACBr ou cupons fiscais (XML/DANFE).
+- **Logs e alertas** — Consulte logs, acompanhe eventos em tempo real e dispare notificações locais ao operador.
+- **Status** — Monitore saúde, tempo de atividade e reinicie o app remotamente.
+
+Veja abaixo um pagamento sendo processado no emulador:
+
+![GIF do terminal processando pagamento manual](assets/gif/emulador-terminal-pagamento-manual.gif){ style="display: block; margin: 0 auto;" }
+
+
+---
 ## Como funciona
 
 ```mermaid
@@ -25,22 +40,6 @@ Seu sistema faz chamadas HTTP para o TEF IP. O TEF IP se comunica com o hardware
     Você pode desenvolver e testar toda a integração sem nenhum terminal físico.
     [Clique aqui para saber como usar o emulador](emulator.md)
 
-Veja abaixo um pagamento sendo processado no emulador:
-
-![GIF do terminal processando pagamento manual](assets/gif/emulador-terminal-pagamento-manual.gif){ style="display: block; margin: 0 auto;" }
-
----
-
-## O que você pode fazer
-
-- **Pagamentos** — Crédito, débito, PIX, dinheiro, voucher, cartão-presente; parcelamento pelo lojista ou pela emissora.
-- **Vendas** — Monte um carrinho com itens e adicione múltiplas formas de pagamento; finalize com uma chamada.
-- **Estornos** — Consulte e reverta transações por `referenceId`.
-- **Display** — Exiba textos, imagens, carrosséis ou QR codes na tela do terminal em tempo real.
-- **Perguntas** — Colete dados do cliente direto no terminal: CPF/CNPJ, texto livre, lista de opções, e-mail, CEP e mais.
-- **Impressão** — Imprima imagens, comprovantes personalizados, layouts ACBr ou cupons fiscais (XML/DANFE).
-- **Logs e alertas** — Consulte logs, acompanhe eventos em tempo real e dispare notificações locais ao operador.
-- **Status** — Monitore saúde, tempo de atividade e reinicie o app remotamente.
 
 ---
 

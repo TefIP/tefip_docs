@@ -1,1429 +1,1473 @@
-
 <!doctype html>
 <html lang="pt" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      
-      
-      
-        <link rel="canonical" href="https://tefip.github.io/tefip_docs/sdks/">
-      
-      
-        <link rel="prev" href="../api/swagger/">
-      
-      
-        <link rel="next" href="../sdk-dart/">
-      
-      
-        
-      
-      
-      <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
-    
-    
-      
-        <title>Visão geral - TEF IP Docs</title>
-      
-    
-    
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
-      
-        
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
-      
-      
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
 
 
-    
-    
-      
-    
-    
-      
-        
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DM+Sans:300,300i,400,400i,700,700i%7CDM+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"DM Sans";--md-code-font:"DM Mono"}</style>
-      
-    
-    
-      <link rel="stylesheet" href="../styles/extra.css">
-    
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-    
-      
 
-    
-    
-  </head>
-  
-  
-    
-    
-      
-    
-    
-    
-    
-    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
-  
-    
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <div data-md-component="skip">
-      
-        
-        <a href="#sdks" class="md-skip">
-          Pular para conteúdo
-        </a>
-      
-    </div>
-    <div data-md-component="announce">
-      
-    </div>
-    
-    
-      
+  <link rel="canonical" href="https://tefip.github.io/tefip_docs/sdks/">
 
-<header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
-    <a href=".." title="TEF IP Docs" class="md-header__button md-logo" aria-label="TEF IP Docs" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
+  <link rel="prev" href="../api/swagger/">
+
+
+  <link rel="next" href="../sdk-dart/">
+
+
+
+
+
+  <link rel="icon" href="../assets/images/favicon.png">
+  <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+
+
+
+  <title>Visão geral - TEF IP Docs</title>
+
+
+
+  <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+
+
+  <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=DM+Sans:300,300i,400,400i,700,700i%7CDM+Mono:400,400i,700,700i&display=fallback">
+  <style>
+    :root {
+      --md-text-font: "DM Sans";
+      --md-code-font: "DM Mono"
+    }
+  </style>
+
+
+
+  <link rel="stylesheet" href="../styles/extra.css">
+
+  <script>__md_scope = new URL("..", location), __md_hash = e => [...e].reduce(((e, _) => (e << 5) - e + _.charCodeAt(0)), 0), __md_get = (e, _ = localStorage, t = __md_scope) => JSON.parse(_.getItem(t.pathname + "." + e)), __md_set = (e, _, t = localStorage, a = __md_scope) => { try { t.setItem(a.pathname + "." + e, JSON.stringify(_)) } catch (e) { } }</script>
+
+
+
+
+
+</head>
+
+
+
+
+
+
+
+
+
+<body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
+
+
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+  <label class="md-overlay" for="__drawer"></label>
+  <div data-md-component="skip">
+
+
+    <a href="#sdks" class="md-skip">
+      Pular para conteúdo
     </a>
-    <label class="md-header__button md-icon" for="__drawer">
-      
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
-    </label>
-    <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
-            TEF IP Docs
-          </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
-            
-              Visão geral
-            
-          </span>
-        </div>
-      </div>
-    </div>
-    
-      
-        <form class="md-header__option" data-md-component="palette">
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Mudar para modo claro"  type="radio" name="__palette" id="__palette_0">
-    
-      <label class="md-header__button md-icon" title="Mudar para modo claro" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+
+  </div>
+  <div data-md-component="announce">
+
+  </div>
+
+
+
+
+  <header class="md-header" data-md-component="header">
+    <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+      <a href=".." title="TEF IP Docs" class="md-header__button md-logo" aria-label="TEF IP Docs"
+        data-md-component="logo">
+
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path
+            d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54" />
+        </svg>
+
+      </a>
+      <label class="md-header__button md-icon" for="__drawer">
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z" />
+        </svg>
       </label>
-    
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Mudar para modo escuro"  type="radio" name="__palette" id="__palette_1">
-    
-      <label class="md-header__button md-icon" title="Mudar para modo escuro" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
-      </label>
-    
-  
-</form>
-      
-    
-    
-      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
-    
-    
-    
-      
-      
-        <label class="md-header__button md-icon" for="__search">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        </label>
-        <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Pesquisar">
-        
-        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-        </button>
-      </nav>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Inicializando busca
+      <div class="md-header__title" data-md-component="header-title">
+        <div class="md-header__ellipsis">
+          <div class="md-header__topic">
+            <span class="md-ellipsis">
+              TEF IP Docs
+            </span>
           </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
+          <div class="md-header__topic" data-md-component="header-topic">
+            <span class="md-ellipsis">
+
+              Visão geral
+
+            </span>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-      
-    
-    
-  </nav>
-  
-</header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
-        
-          
-            
-<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
-  <div class="md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
-        
-  
-  
-    
-  
-  Início
 
-      </a>
-    </li>
-  
 
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../getting-started/" class="md-tabs__link">
-          
-  
-  
-  Guia de Integração
+      <form class="md-header__option" data-md-component="palette">
 
-        </a>
-      </li>
-    
-  
 
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../api/erros/" class="md-tabs__link">
-          
-  
-  
-  API Reference
 
-        </a>
-      </li>
-    
-  
 
-      
-        
-  
-  
-  
-    
-  
-  
-    
-    
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
-          
-  
-  
-  SDKs
+        <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom"
+          data-md-color-accent="custom" aria-label="Mudar para modo claro" type="radio" name="__palette"
+          id="__palette_0">
 
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../suporte/versoes-requisitos/" class="md-tabs__link">
-          
-  
-  
-  Suporte e Operações
-
-        </a>
-      </li>
-    
-  
-
-      
-    </ul>
-  </div>
-</nav>
-          
-        
-      
-      <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
-          
-            
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-
-  
-
-
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href=".." title="TEF IP Docs" class="md-nav__button md-logo" aria-label="TEF IP Docs" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
-
-    </a>
-    TEF IP Docs
-  </label>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Início
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Guia de Integração
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Guia de Integração
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../getting-started/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Primeiros Passos
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../emulator/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Testando com Emulador
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../comportamento/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Comportamento
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    API Reference
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    API Reference
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/erros/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Visão Geral de Erros
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/sale/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Vendas
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/ask/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Coleta de Dados
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/print/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Impressão
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/display/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Visor do Terminal
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/transaction/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Transações
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/status/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Status e Manutenção
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/logs/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Logs
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/notification/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Notificações
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/swagger/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Especificação (Swagger)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    
-    
-    
-    
-      
-        
-        
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    SDKs
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    SDKs
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Visão geral
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
+        <label class="md-header__button md-icon" title="Mudar para modo claro" for="__palette_1" hidden>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path
+              d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z" />
+          </svg>
         </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Visão geral
-  
 
-    
-  </span>
-  
-  
 
-      </a>
-      
-        
 
-<nav class="md-nav md-nav--secondary" aria-label="Índice">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Índice
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#panorama-atual" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Panorama atual
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quando-usar-sdk" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Quando usar SDK
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../sdk-dart/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Dart (Oficial)
-  
 
-    
-  </span>
-  
-  
+        <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom"
+          data-md-color-accent="custom" aria-label="Mudar para modo escuro" type="radio" name="__palette"
+          id="__palette_1">
 
-      </a>
-    </li>
-  
+        <label class="md-header__button md-icon" title="Mudar para modo escuro" for="__palette_0" hidden>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path
+              d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z" />
+          </svg>
+        </label>
 
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../sdk-js/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    JavaScript
-  
 
-    
-  </span>
-  
-  
+      </form>
 
-      </a>
-    </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../sdk-php/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    PHP
-  
 
-    
-  </span>
-  
-  
+      <script>var palette = __md_get("__palette"); if (palette && palette.color) { if ("(prefers-color-scheme)" === palette.color.media) { var media = matchMedia("(prefers-color-scheme: light)"), input = document.querySelector(media.matches ? "[data-md-color-media='(prefers-color-scheme: light)']" : "[data-md-color-media='(prefers-color-scheme: dark)']"); palette.color.media = input.getAttribute("data-md-color-media"), palette.color.scheme = input.getAttribute("data-md-color-scheme"), palette.color.primary = input.getAttribute("data-md-color-primary"), palette.color.accent = input.getAttribute("data-md-color-accent") } for (var [key, value] of Object.entries(palette.color)) document.body.setAttribute("data-md-color-" + key, value) }</script>
 
-      </a>
-    </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../sdk-ruby/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Ruby
-  
 
-    
-  </span>
-  
-  
 
-      </a>
-    </li>
-  
 
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
+      <label class="md-header__button md-icon" for="__search">
 
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Suporte e Operações
-  
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path
+            d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5" />
+        </svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+        <label class="md-search__overlay" for="__search"></label>
+        <div class="md-search__inner" role="search">
+          <form class="md-search__form" name="search">
+            <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar"
+              autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false"
+              data-md-component="search-query" required>
+            <label class="md-search__icon md-icon" for="__search">
 
-    
-  </span>
-  
-  
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5" />
+              </svg>
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Suporte e Operações
-  
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z" />
+              </svg>
+            </label>
+            <nav class="md-search__options" aria-label="Pesquisar">
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../suporte/versoes-requisitos/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Versões e Requisitos
-  
+              <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
 
-    
-  </span>
-  
-  
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path
+                    d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                </svg>
+              </button>
+            </nav>
 
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../suporte/resolucao-de-problemas/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Resolução de Problemas
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-  </ul>
-</nav>
-                  </div>
+          </form>
+          <div class="md-search__output">
+            <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+              <div class="md-search-result" data-md-component="search-result">
+                <div class="md-search-result__meta">
+                  Inicializando busca
                 </div>
+                <ol class="md-search-result__list" role="presentation"></ol>
               </div>
-            
-            
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="Índice">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Índice
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#panorama-atual" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Panorama atual
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quando-usar-sdk" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Quando usar SDK
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          
-            <div class="md-content" data-md-component="content">
-              
-              <article class="md-content__inner md-typeset">
-                
-                  
-
-
-
-<h1 id="sdks">SDKs</h1>
-<p>Os SDKs do TEF IP são opcionais. A API continua sendo HTTP puro com Basic Auth, então qualquer linguagem pode integrar diretamente mesmo sem pacote dedicado.</p>
-<hr />
-<h2 id="panorama-atual">Panorama atual</h2>
-<table>
-<thead>
-<tr>
-<th>Linguagem</th>
-<th>Pacote oficial</th>
-<th>Status</th>
-<th>Documentação</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Dart / Flutter</td>
-<td><a href="https://pub.dev/packages/dart_tefip"><code>dart_tefip</code></a></td>
-<td>Disponível</td>
-<td><a href="../sdk-dart/">SDK Dart</a></td>
-</tr>
-<tr>
-<td>JavaScript</td>
-<td>Não</td>
-<td>Sem pacote oficial no momento</td>
-<td><a href="../sdk-js/">SDK JavaScript</a></td>
-</tr>
-<tr>
-<td>PHP</td>
-<td>Não</td>
-<td>Sem pacote oficial no momento</td>
-<td><a href="../sdk-php/">SDK PHP</a></td>
-</tr>
-<tr>
-<td>Ruby</td>
-<td>Não</td>
-<td>Sem pacote oficial no momento</td>
-<td><a href="../sdk-ruby/">SDK Ruby</a></td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="quando-usar-sdk">Quando usar SDK</h2>
-<table>
-<thead>
-<tr>
-<th>Cenário</th>
-<th>Recomendação</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>App Flutter ou Dart</td>
-<td>Use o <code>dart_tefip</code></td>
-</tr>
-<tr>
-<td>Backend ou PDV em outra linguagem</td>
-<td>Use HTTP direto</td>
-</tr>
-<tr>
-<td>Integração rápida ou prova de conceito</td>
-<td>Pode começar por cURL/fetch/curl/Net::HTTP</td>
-</tr>
-</tbody>
-</table>
-<p>Todas as páginas de <a href="../api/transaction/">API Reference</a> incluem exemplos prontos em <code>cURL</code>, <code>Dart</code>, <code>JavaScript</code>, <code>PHP</code> e <code>Ruby</code>.</p>
-
-
-
-
-
-
-
-
-
-
-
-
-                
-              </article>
             </div>
-          
-          
-  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
-
-<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+          </div>
         </div>
-        
-      </main>
-      
-        <footer class="md-footer">
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-copyright">
-  
-  
-    Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-      Material for MkDocs
-    </a>
-  
-</div>
-      
-    </div>
+      </div>
+
+
+
+    </nav>
+
+  </header>
+
+  <div class="md-container" data-md-component="container">
+
+
+
+
+
+    <nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+      <div class="md-grid">
+        <ul class="md-tabs__list">
+
+
+
+
+
+
+          <li class="md-tabs__item">
+            <a href=".." class="md-tabs__link">
+
+
+
+
+
+              Início
+
+            </a>
+          </li>
+
+
+
+
+
+
+
+
+
+
+          <li class="md-tabs__item">
+            <a href="../getting-started/" class="md-tabs__link">
+
+
+
+              Guia de Integração
+
+            </a>
+          </li>
+
+
+
+
+
+
+
+
+
+
+
+          <li class="md-tabs__item">
+            <a href="../api/erros/" class="md-tabs__link">
+
+
+
+              API Reference
+
+            </a>
+          </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <li class="md-tabs__item md-tabs__item--active">
+            <a href="./" class="md-tabs__link">
+
+
+
+              SDKs
+
+            </a>
+          </li>
+
+
+
+
+
+
+
+
+
+
+
+          <li class="md-tabs__item">
+            <a href="../suporte/versoes/" class="md-tabs__link">
+
+
+
+              Suporte e Operações
+
+            </a>
+          </li>
+
+
+
+
+        </ul>
+      </div>
+    </nav>
+
+
+
+    <main class="md-main" data-md-component="main">
+      <div class="md-main__inner md-grid">
+
+
+
+        <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+          <div class="md-sidebar__scrollwrap">
+            <div class="md-sidebar__inner">
+
+
+
+
+
+
+              <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
+                <label class="md-nav__title" for="__drawer">
+                  <a href=".." title="TEF IP Docs" class="md-nav__button md-logo" aria-label="TEF IP Docs"
+                    data-md-component="logo">
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <path
+                        d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54" />
+                    </svg>
+
+                  </a>
+                  TEF IP Docs
+                </label>
+
+                <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+
+                  <li class="md-nav__item">
+                    <a href=".." class="md-nav__link">
+
+
+
+                      <span class="md-ellipsis">
+
+
+                        Início
+
+
+
+                      </span>
+
+
+
+                    </a>
+                  </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  <li class="md-nav__item md-nav__item--nested">
+
+
+
+                    <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
+
+
+                    <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+
+
+
+                      <span class="md-ellipsis">
+
+
+                        Guia de Integração
+
+
+
+                      </span>
+
+
+
+                      <span class="md-nav__icon md-icon"></span>
+                    </label>
+
+                    <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+                      <label class="md-nav__title" for="__nav_2">
+                        <span class="md-nav__icon md-icon"></span>
+
+
+                        Guia de Integração
+
+
+                      </label>
+                      <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+
+                        <li class="md-nav__item">
+                          <a href="../getting-started/" class="md-nav__link">
+
+
+
+                            <span class="md-ellipsis">
+
+
+                              Primeiros Passos
+
+
+
+                            </span>
+
+
+
+                          </a>
+                        </li>
+
+
+
+
+
+
+
+
+
+
+                        <li class="md-nav__item">
+                          <a href="../emulator/" class="md-nav__link">
+
+
+
+                            <span class="md-ellipsis">
+
+
+                              Testando com Emulador
+
+
+
+                            </span>
+
+
+
+                          </a>
+                        </li>
+
+
+
+
+
+
+
+
+
+
+                        <li class="md-nav__item">
+                          <a href="../comportamento/" class="md-nav__link">
+
+
+
+                            <span class="md-ellipsis">
+
+
+                              Comportamento
+
+
+
+                            </span>
+
+
+
+                          </a>
+                        </li>
+
+
+
+
+                      </ul>
+                    </nav>
+
+                  </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  <li class="md-nav__item md-nav__item--nested">
+
+
+
+                    <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
+
+
+                    <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+
+
+
+                      <span class="md-ellipsis">
+
+
+                        API Reference
+
+
+
+                      </span>
+
+
+
+                      <span class="md-nav__icon md-icon"></span>
+                    </label>
+
+                    <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+                      <label class="md-nav__title" for="__nav_3">
+                        <span class="md-nav__icon md-icon"></span>
+
+
+                        API Reference
+
+
+                      </label>
+                      <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+
+                        <li class="md-nav__item">
+                          <a href="../api/erros/" class="md-nav__link">
+
+
+
+                            <span class="md-ellipsis">
+
+
+                              Visão Geral de Erros
+
+
+
+                            </span>
+
+
+
+                          </a>
+                        </li>
+
+
+
+
+
+
+
+
+
+
+                        <li class="md-nav__item">
+                          <a href="../api/sale/" class="md-nav__link">
+
+
+
+                            <span class="md-ellipsis">
+
+
+                              Vendas
+
+
+
+                            </span>
+
+
+
+                          </a>
+                        </li>
+
+
+
+
+
+
+
+
+
+
+                        <li class="md-nav__item">
+                          <a href="../api/ask/" class="md-nav__link">
+
+
+
+                            <span class="md-ellipsis">
+
+
+                              Coleta de Dados
+
+
+
+                            </span>
+
+
+
+                          </a>
+                        </li>
+
+
+
+
+
+
+
+
+
+
+                        <li class="md-nav__item">
+                          <a href="../api/print/" class="md-nav__link">
+
+
+
+                            <span class="md-ellipsis">
+
+
+                              Impressão
+
+
+
+                            </span>
+
+
+
+                          </a>
+                        </li>
+
+
+
+
+
+
+
+
+
+
+                        <li class="md-nav__item">
+                          <a href="../api/display/" class="md-nav__link">
+
+
+
+                            <span class="md-ellipsis">
+
+
+                              Visor do Terminal
+
+
+
+                            </span>
+
+
+
+                          </a>
+                        </li>
+
+
+
+
+
+
+
+
+
+
+                        <li class="md-nav__item">
+                          <a href="../api/transaction/" class="md-nav__link">
+
+
+
+                            <span class="md-ellipsis">
+
+
+                              Transações
+
+
+
+                            </span>
+
+
+
+                          </a>
+                        </li>
+
+
+
+
+
+
+
+
+
+
+                        <li class="md-nav__item">
+                          <a href="../api/status/" class="md-nav__link">
+
+
+
+                            <span class="md-ellipsis">
+
+
+                              Status e Manutenção
+
+
+
+                            </span>
+
+
+
+                          </a>
+                        </li>
+
+
+
+
+
+
+
+
+
+
+                        <li class="md-nav__item">
+                          <a href="../api/logs/" class="md-nav__link">
+
+
+
+                            <span class="md-ellipsis">
+
+
+                              Logs
+
+
+
+                            </span>
+
+
+
+                          </a>
+                        </li>
+
+
+
+
+
+
+
+
+
+
+                        <li class="md-nav__item">
+                          <a href="../api/notification/" class="md-nav__link">
+
+
+
+                            <span class="md-ellipsis">
+
+
+                              Notificações
+
+
+
+                            </span>
+
+
+
+                          </a>
+                        </li>
+
+
+
+
+
+
+
+
+
+
+                        <li class="md-nav__item">
+                          <a href="../api/swagger/" class="md-nav__link">
+
+
+
+                            <span class="md-ellipsis">
+
+
+                              Especificação (Swagger)
+
+
+
+                            </span>
+
+
+
+                          </a>
+                        </li>
+
+
+
+
+                      </ul>
+                    </nav>
+
+                  </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+
+
+
+                    <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+
+
+                    <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+
+
+
+                      <span class="md-ellipsis">
+
+
+                        SDKs
+
+
+
+                      </span>
+
+
+
+                      <span class="md-nav__icon md-icon"></span>
+                    </label>
+
+                    <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+                      <label class="md-nav__title" for="__nav_4">
+                        <span class="md-nav__icon md-icon"></span>
+
+
+                        SDKs
+
+
+                      </label>
+                      <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+
+
+
+                        <li class="md-nav__item md-nav__item--active">
+
+                          <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+
+
+
+
+
+                          <label class="md-nav__link md-nav__link--active" for="__toc">
+
+
+
+                            <span class="md-ellipsis">
+
+
+                              Visão geral
+
+
+
+                            </span>
+
+
+
+                            <span class="md-nav__icon md-icon"></span>
+                          </label>
+
+                          <a href="./" class="md-nav__link md-nav__link--active">
+
+
+
+                            <span class="md-ellipsis">
+
+
+                              Visão geral
+
+
+
+                            </span>
+
+
+
+                          </a>
+
+
+
+                          <nav class="md-nav md-nav--secondary" aria-label="Índice">
+
+
+
+
+
+
+                            <label class="md-nav__title" for="__toc">
+                              <span class="md-nav__icon md-icon"></span>
+                              Índice
+                            </label>
+                            <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+
+                              <li class="md-nav__item">
+                                <a href="#panorama-atual" class="md-nav__link">
+                                  <span class="md-ellipsis">
+
+                                    Panorama atual
+
+                                  </span>
+                                </a>
+
+                              </li>
+
+                              <li class="md-nav__item">
+                                <a href="#quando-usar-sdk" class="md-nav__link">
+                                  <span class="md-ellipsis">
+
+                                    Quando usar SDK
+
+                                  </span>
+                                </a>
+
+                              </li>
+
+                            </ul>
+
+                          </nav>
+
+                        </li>
+
+
+
+
+
+
+
+
+
+
+                        <li class="md-nav__item">
+                          <a href="../sdk-dart/" class="md-nav__link">
+
+
+
+                            <span class="md-ellipsis">
+
+
+                              Dart (Oficial)
+
+
+
+                            </span>
+
+
+
+                          </a>
+                        </li>
+
+
+
+
+
+
+
+
+
+
+                        <li class="md-nav__item">
+                          <a href="../sdk-js/" class="md-nav__link">
+
+
+
+                            <span class="md-ellipsis">
+
+
+                              JavaScript
+
+
+
+                            </span>
+
+
+
+                          </a>
+                        </li>
+
+
+
+
+
+
+
+
+
+
+                        <li class="md-nav__item">
+                          <a href="../sdk-php/" class="md-nav__link">
+
+
+
+                            <span class="md-ellipsis">
+
+
+                              PHP
+
+
+
+                            </span>
+
+
+
+                          </a>
+                        </li>
+
+
+
+
+
+
+
+
+
+
+                        <li class="md-nav__item">
+                          <a href="../sdk-ruby/" class="md-nav__link">
+
+
+
+                            <span class="md-ellipsis">
+
+
+                              Ruby
+
+
+
+                            </span>
+
+
+
+                          </a>
+                        </li>
+
+
+
+
+                      </ul>
+                    </nav>
+
+                  </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  <li class="md-nav__item md-nav__item--nested">
+
+
+
+                    <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5">
+
+
+                    <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+
+
+
+                      <span class="md-ellipsis">
+
+
+                        Suporte e Operações
+
+
+
+                      </span>
+
+
+
+                      <span class="md-nav__icon md-icon"></span>
+                    </label>
+
+                    <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+                      <label class="md-nav__title" for="__nav_5">
+                        <span class="md-nav__icon md-icon"></span>
+
+
+                        Suporte e Operações
+
+
+                      </label>
+                      <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+
+                        <li class="md-nav__item">
+                          <a href="../suporte/versoes/" class="md-nav__link">
+
+
+
+                            <span class="md-ellipsis">
+
+
+                              Versões
+
+
+
+                            </span>
+
+
+
+                          </a>
+                        </li>
+
+
+
+
+
+
+
+
+
+
+                        <li class="md-nav__item">
+                          <a href="../suporte/resolucao-de-problemas/" class="md-nav__link">
+
+
+
+                            <span class="md-ellipsis">
+
+
+                              Resolução de Problemas
+
+
+
+                            </span>
+
+
+
+                          </a>
+                        </li>
+
+
+
+
+                      </ul>
+                    </nav>
+
+                  </li>
+
+
+
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+          <div class="md-sidebar__scrollwrap">
+            <div class="md-sidebar__inner">
+
+
+              <nav class="md-nav md-nav--secondary" aria-label="Índice">
+
+
+
+
+
+
+                <label class="md-nav__title" for="__toc">
+                  <span class="md-nav__icon md-icon"></span>
+                  Índice
+                </label>
+                <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+
+                  <li class="md-nav__item">
+                    <a href="#panorama-atual" class="md-nav__link">
+                      <span class="md-ellipsis">
+
+                        Panorama atual
+
+                      </span>
+                    </a>
+
+                  </li>
+
+                  <li class="md-nav__item">
+                    <a href="#quando-usar-sdk" class="md-nav__link">
+                      <span class="md-ellipsis">
+
+                        Quando usar SDK
+
+                      </span>
+                    </a>
+
+                  </li>
+
+                </ul>
+
+              </nav>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="md-content" data-md-component="content">
+
+          <article class="md-content__inner md-typeset">
+
+
+
+
+
+            <h1 id="sdks">SDKs</h1>
+            <p>Os SDKs do TEF IP são opcionais. A API continua sendo HTTP puro com Basic Auth, então qualquer linguagem
+              pode integrar diretamente mesmo sem pacote dedicado.</p>
+            <hr />
+            <h2 id="panorama-atual">Panorama atual</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Linguagem</th>
+                  <th>Pacote oficial</th>
+                  <th>Status</th>
+                  <th>Documentação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Dart / Flutter</td>
+                  <td><a href="https://pub.dev/packages/dart_tefip"><code>dart_tefip</code></a></td>
+                  <td>Disponível</td>
+                  <td><a href="../sdk-dart/">SDK Dart</a></td>
+                </tr>
+                <tr>
+                  <td>JavaScript</td>
+                  <td>Não</td>
+                  <td>Sem pacote oficial no momento</td>
+                  <td><a href="../sdk-js/">SDK JavaScript</a></td>
+                </tr>
+                <tr>
+                  <td>PHP</td>
+                  <td>Não</td>
+                  <td>Sem pacote oficial no momento</td>
+                  <td><a href="../sdk-php/">SDK PHP</a></td>
+                </tr>
+                <tr>
+                  <td>Ruby</td>
+                  <td>Não</td>
+                  <td>Sem pacote oficial no momento</td>
+                  <td><a href="../sdk-ruby/">SDK Ruby</a></td>
+                </tr>
+              </tbody>
+            </table>
+            <hr />
+            <h2 id="quando-usar-sdk">Quando usar SDK</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Cenário</th>
+                  <th>Recomendação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>App Flutter ou Dart</td>
+                  <td>Use o <code>dart_tefip</code></td>
+                </tr>
+                <tr>
+                  <td>Backend ou PDV em outra linguagem</td>
+                  <td>Use HTTP direto</td>
+                </tr>
+                <tr>
+                  <td>Integração rápida ou prova de conceito</td>
+                  <td>Pode começar por cURL/fetch/curl/Net::HTTP</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>Todas as páginas de <a href="../api/transaction/">API Reference</a> incluem exemplos prontos em
+              <code>cURL</code>, <code>Dart</code>, <code>JavaScript</code>, <code>PHP</code> e <code>Ruby</code>.
+            </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+          </article>
+        </div>
+
+
+        <script>var tabs = __md_get("__tabs"); if (Array.isArray(tabs)) e: for (var set of document.querySelectorAll(".tabbed-set")) { var labels = set.querySelector(".tabbed-labels"); for (var tab of tabs) for (var label of labels.getElementsByTagName("label")) if (label.innerText.trim() === tab) { var input = document.getElementById(label.htmlFor); input.checked = !0; continue e } }</script>
+
+        <script>var target = document.getElementById(location.hash.slice(1)); target && target.name && (target.checked = target.name.startsWith("__tabbed_"))</script>
+      </div>
+
+    </main>
+
+    <footer class="md-footer">
+
+      <div class="md-footer-meta md-typeset">
+        <div class="md-footer-meta__inner md-grid">
+          <div class="md-copyright">
+
+
+            Made with
+            <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+              Material for MkDocs
+            </a>
+
+          </div>
+
+        </div>
+      </div>
+    </footer>
+
   </div>
-</footer>
-      
-    </div>
-    <div class="md-dialog" data-md-component="dialog">
-      <div class="md-dialog__inner md-typeset"></div>
-    </div>
-    
-    
-    
-      
-      
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.tabs.link", "navigation.tabs", "navigation.sections", "search.highlight"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
-    
-    
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
-      
-        <script src="../scripts/extra.js"></script>
-      
-    
-  </body>
+  <div class="md-dialog" data-md-component="dialog">
+    <div class="md-dialog__inner md-typeset"></div>
+  </div>
+
+
+
+
+
+  <script id="__config"
+    type="application/json">{"annotate": null, "base": "..", "features": ["content.tabs.link", "navigation.tabs", "navigation.sections", "search.highlight"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+
+
+  <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+
+  <script src="../scripts/extra.js"></script>
+
+
+</body>
+
 </html>
