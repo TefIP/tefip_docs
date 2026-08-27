@@ -1,1516 +1,1526 @@
+
 <!doctype html>
 <html lang="pt" class="no-js">
-
-<head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-
-
-
-  <link rel="canonical" href="https://tefip.github.io/tefip_docs/api/ask/">
-
-
-  <link rel="prev" href="../sale/">
-
-
-  <link rel="next" href="../print/">
-
-
-
-
-
-  <link rel="icon" href="../../assets/images/favicon.png">
-  <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
-
-
-
-  <title>Coleta de Dados - TEF IP Docs</title>
-
-
-
-  <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
-
-
-  <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
-
-
-
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://tefip.github.io/tefip_docs/api/ask/">
+      
+      
+        <link rel="prev" href="../sale/">
+      
+      
+        <link rel="next" href="../print/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+    
+    
+      
+        <title>Coleta de Dados - TEF IP Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
 
 
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DM+Sans:300,300i,400,400i,700,700i%7CDM+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"DM Sans";--md-code-font:"DM Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../styles/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
 
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#perguntas-ask" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
 
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="TEF IP Docs" class="md-header__button md-logo" aria-label="TEF IP Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
-
-
-
-
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css?family=DM+Sans:300,300i,400,400i,700,700i%7CDM+Mono:400,400i,700,700i&display=fallback">
-  <style>
-    :root {
-      --md-text-font: "DM Sans";
-      --md-code-font: "DM Mono"
-    }
-  </style>
-
-
-
-  <link rel="stylesheet" href="../../styles/extra.css">
-
-  <script>__md_scope = new URL("../..", location), __md_hash = e => [...e].reduce(((e, _) => (e << 5) - e + _.charCodeAt(0)), 0), __md_get = (e, _ = localStorage, t = __md_scope) => JSON.parse(_.getItem(t.pathname + "." + e)), __md_set = (e, _, t = localStorage, a = __md_scope) => { try { t.setItem(a.pathname + "." + e, JSON.stringify(_)) } catch (e) { } }</script>
-
-
-
-
-
-</head>
-
-
-
-
-
-
-
-
-
-<body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
-
-
-  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-  <label class="md-overlay" for="__drawer"></label>
-  <div data-md-component="skip">
-
-
-    <a href="#perguntas-ask" class="md-skip">
-      Pular para conteúdo
     </a>
-
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TEF IP Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Coleta de Dados
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Mudar para modo claro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo claro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Mudar para modo escuro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo escuro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
   </div>
-  <div data-md-component="announce">
-
-  </div>
-
-
-
-
-  <header class="md-header" data-md-component="header">
-    <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
-      <a href="../.." title="TEF IP Docs" class="md-header__button md-logo" aria-label="TEF IP Docs"
-        data-md-component="logo">
-
-
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path
-            d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54" />
-        </svg>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Início
 
       </a>
-      <label class="md-header__button md-icon" for="__drawer">
+    </li>
+  
 
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z" />
-        </svg>
-      </label>
-      <div class="md-header__title" data-md-component="header-title">
-        <div class="md-header__ellipsis">
-          <div class="md-header__topic">
-            <span class="md-ellipsis">
-              TEF IP Docs
-            </span>
-          </div>
-          <div class="md-header__topic" data-md-component="header-topic">
-            <span class="md-ellipsis">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../getting-started/" class="md-tabs__link">
+          
+  
+  
+  Guia de Integração
 
-              Coleta de Dados
+        </a>
+      </li>
+    
+  
 
-            </span>
-          </div>
-        </div>
-      </div>
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../erros/" class="md-tabs__link">
+          
+  
+  
+  API Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../sdks/" class="md-tabs__link">
+          
+  
+  
+  SDKs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../suporte/versoes/" class="md-tabs__link">
+          
+  
+  
+  Suporte e Operações
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
 
 
-      <form class="md-header__option" data-md-component="palette">
+  
 
 
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="TEF IP Docs" class="md-nav__button md-logo" aria-label="TEF IP Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
+    </a>
+    TEF IP Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
 
-        <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom"
-          data-md-color-accent="custom" aria-label="Mudar para modo claro" type="radio" name="__palette"
-          id="__palette_0">
+    
+  </span>
+  
+  
 
-        <label class="md-header__button md-icon" title="Mudar para modo claro" for="__palette_1" hidden>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path
-              d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z" />
-          </svg>
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guia de Integração
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guia de Integração
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Primeiros Passos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../emulator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testando com Emulador
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../comportamento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Comportamento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../erros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visão Geral de Erros
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sale/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vendas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coleta de Dados
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
         </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coleta de Dados
+  
 
+    
+  </span>
+  
+  
 
+      </a>
+      
+        
 
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#como-funciona" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Como funciona
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post-ask" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /ask
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="POST /ask">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemplos-de-integracao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemplos de integração
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post-askform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /ask/form
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="POST /ask/form">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemplos-de-integracao_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemplos de integração
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post-askcancel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /ask/cancel
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="POST /ask/cancel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemplos-de-integracao_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemplos de integração
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
 
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../print/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Impressão
+  
 
-        <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom"
-          data-md-color-accent="custom" aria-label="Mudar para modo escuro" type="radio" name="__palette"
-          id="__palette_1">
+    
+  </span>
+  
+  
 
-        <label class="md-header__button md-icon" title="Mudar para modo escuro" for="__palette_0" hidden>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path
-              d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z" />
-          </svg>
-        </label>
+      </a>
+    </li>
+  
 
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../display/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visor do Terminal
+  
 
-      </form>
+    
+  </span>
+  
+  
 
+      </a>
+    </li>
+  
 
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transaction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Transações
+  
 
-      <script>var palette = __md_get("__palette"); if (palette && palette.color) { if ("(prefers-color-scheme)" === palette.color.media) { var media = matchMedia("(prefers-color-scheme: light)"), input = document.querySelector(media.matches ? "[data-md-color-media='(prefers-color-scheme: light)']" : "[data-md-color-media='(prefers-color-scheme: dark)']"); palette.color.media = input.getAttribute("data-md-color-media"), palette.color.scheme = input.getAttribute("data-md-color-scheme"), palette.color.primary = input.getAttribute("data-md-color-primary"), palette.color.accent = input.getAttribute("data-md-color-accent") } for (var [key, value] of Object.entries(palette.color)) document.body.setAttribute("data-md-color-" + key, value) }</script>
+    
+  </span>
+  
+  
 
+      </a>
+    </li>
+  
 
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Status e Manutenção
+  
 
+    
+  </span>
+  
+  
 
+      </a>
+    </li>
+  
 
-      <label class="md-header__button md-icon" for="__search">
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logs
+  
 
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path
-            d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5" />
-        </svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
-        <label class="md-search__overlay" for="__search"></label>
-        <div class="md-search__inner" role="search">
-          <form class="md-search__form" name="search">
-            <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar"
-              autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false"
-              data-md-component="search-query" required>
-            <label class="md-search__icon md-icon" for="__search">
+    
+  </span>
+  
+  
 
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path
-                  d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5" />
-              </svg>
+      </a>
+    </li>
+  
 
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z" />
-              </svg>
-            </label>
-            <nav class="md-search__options" aria-label="Pesquisar">
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notificações
+  
 
-              <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+    
+  </span>
+  
+  
 
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path
-                    d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-                </svg>
-              </button>
-            </nav>
+      </a>
+    </li>
+  
 
-          </form>
-          <div class="md-search__output">
-            <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
-              <div class="md-search-result" data-md-component="search-result">
-                <div class="md-search-result__meta">
-                  Inicializando busca
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../swagger/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Especificação (Swagger)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../djmonitor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integração com DJMonitor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../xpos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integração com Xpos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDKs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SDKs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sdks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visão geral
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sdk-dart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dart (Oficial)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sdk-js/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JavaScript
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sdk-php/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PHP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sdk-ruby/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ruby
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Suporte e Operações
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Suporte e Operações
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../suporte/versoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Versões
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../suporte/resolucao-de-problemas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resolução de Problemas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
                 </div>
-                <ol class="md-search-result__list" role="presentation"></ol>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
 
-
-
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#como-funciona" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Como funciona
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post-ask" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /ask
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="POST /ask">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemplos-de-integracao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemplos de integração
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
     </nav>
-
-  </header>
-
-  <div class="md-container" data-md-component="container">
-
-
-
-
-
-    <nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
-      <div class="md-grid">
-        <ul class="md-tabs__list">
-
-
-
-
-
-
-          <li class="md-tabs__item">
-            <a href="../.." class="md-tabs__link">
-
-
-
-
-
-              Início
-
-            </a>
-          </li>
-
-
-
-
-
-
-
-
-
-
-          <li class="md-tabs__item">
-            <a href="../../getting-started/" class="md-tabs__link">
-
-
-
-              Guia de Integração
-
-            </a>
-          </li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-          <li class="md-tabs__item md-tabs__item--active">
-            <a href="../erros/" class="md-tabs__link">
-
-
-
-              API Reference
-
-            </a>
-          </li>
-
-
-
-
-
-
-
-
-
-
-
-          <li class="md-tabs__item">
-            <a href="../../sdks/" class="md-tabs__link">
-
-
-
-              SDKs
-
-            </a>
-          </li>
-
-
-
-
-
-
-
-
-
-
-
-          <li class="md-tabs__item">
-            <a href="../../suporte/versoes/" class="md-tabs__link">
-
-
-
-              Suporte e Operações
-
-            </a>
-          </li>
-
-
-
-
-        </ul>
-      </div>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post-askform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /ask/form
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="POST /ask/form">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemplos-de-integracao_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemplos de integração
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
     </nav>
-
-
-
-    <main class="md-main" data-md-component="main">
-      <div class="md-main__inner md-grid">
-
-
-
-        <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
-          <div class="md-sidebar__scrollwrap">
-            <div class="md-sidebar__inner">
-
-
-
-
-
-
-              <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
-                <label class="md-nav__title" for="__drawer">
-                  <a href="../.." title="TEF IP Docs" class="md-nav__button md-logo" aria-label="TEF IP Docs"
-                    data-md-component="logo">
-
-
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                      <path
-                        d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54" />
-                    </svg>
-
-                  </a>
-                  TEF IP Docs
-                </label>
-
-                <ul class="md-nav__list" data-md-scrollfix>
-
-
-
-
-
-
-
-                  <li class="md-nav__item">
-                    <a href="../.." class="md-nav__link">
-
-
-
-                      <span class="md-ellipsis">
-
-
-                        Início
-
-
-
-                      </span>
-
-
-
-                    </a>
-                  </li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                  <li class="md-nav__item md-nav__item--nested">
-
-
-
-                    <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
-
-
-                    <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
-
-
-
-                      <span class="md-ellipsis">
-
-
-                        Guia de Integração
-
-
-
-                      </span>
-
-
-
-                      <span class="md-nav__icon md-icon"></span>
-                    </label>
-
-                    <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-                      <label class="md-nav__title" for="__nav_2">
-                        <span class="md-nav__icon md-icon"></span>
-
-
-                        Guia de Integração
-
-
-                      </label>
-                      <ul class="md-nav__list" data-md-scrollfix>
-
-
-
-
-
-
-
-                        <li class="md-nav__item">
-                          <a href="../../getting-started/" class="md-nav__link">
-
-
-
-                            <span class="md-ellipsis">
-
-
-                              Primeiros Passos
-
-
-
-                            </span>
-
-
-
-                          </a>
-                        </li>
-
-
-
-
-
-
-
-
-
-
-                        <li class="md-nav__item">
-                          <a href="../../emulator/" class="md-nav__link">
-
-
-
-                            <span class="md-ellipsis">
-
-
-                              Testando com Emulador
-
-
-
-                            </span>
-
-
-
-                          </a>
-                        </li>
-
-
-
-
-
-
-
-
-
-
-                        <li class="md-nav__item">
-                          <a href="../../comportamento/" class="md-nav__link">
-
-
-
-                            <span class="md-ellipsis">
-
-
-                              Comportamento
-
-
-
-                            </span>
-
-
-
-                          </a>
-                        </li>
-
-
-
-
-                      </ul>
-                    </nav>
-
-                  </li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                  <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-
-
-
-                    <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
-
-
-                    <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
-
-
-
-                      <span class="md-ellipsis">
-
-
-                        API Reference
-
-
-
-                      </span>
-
-
-
-                      <span class="md-nav__icon md-icon"></span>
-                    </label>
-
-                    <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-                      <label class="md-nav__title" for="__nav_3">
-                        <span class="md-nav__icon md-icon"></span>
-
-
-                        API Reference
-
-
-                      </label>
-                      <ul class="md-nav__list" data-md-scrollfix>
-
-
-
-
-
-
-
-                        <li class="md-nav__item">
-                          <a href="../erros/" class="md-nav__link">
-
-
-
-                            <span class="md-ellipsis">
-
-
-                              Visão Geral de Erros
-
-
-
-                            </span>
-
-
-
-                          </a>
-                        </li>
-
-
-
-
-
-
-
-
-
-
-                        <li class="md-nav__item">
-                          <a href="../sale/" class="md-nav__link">
-
-
-
-                            <span class="md-ellipsis">
-
-
-                              Vendas
-
-
-
-                            </span>
-
-
-
-                          </a>
-                        </li>
-
-
-
-
-
-
-
-
-
-
-
-
-                        <li class="md-nav__item md-nav__item--active">
-
-                          <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-
-
-
-
-
-                          <label class="md-nav__link md-nav__link--active" for="__toc">
-
-
-
-                            <span class="md-ellipsis">
-
-
-                              Coleta de Dados
-
-
-
-                            </span>
-
-
-
-                            <span class="md-nav__icon md-icon"></span>
-                          </label>
-
-                          <a href="./" class="md-nav__link md-nav__link--active">
-
-
-
-                            <span class="md-ellipsis">
-
-
-                              Coleta de Dados
-
-
-
-                            </span>
-
-
-
-                          </a>
-
-
-
-                          <nav class="md-nav md-nav--secondary" aria-label="Índice">
-
-
-
-
-
-
-                            <label class="md-nav__title" for="__toc">
-                              <span class="md-nav__icon md-icon"></span>
-                              Índice
-                            </label>
-                            <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-
-                              <li class="md-nav__item">
-                                <a href="#como-funciona" class="md-nav__link">
-                                  <span class="md-ellipsis">
-
-                                    Como funciona
-
-                                  </span>
-                                </a>
-
-                              </li>
-
-                              <li class="md-nav__item">
-                                <a href="#post-ask" class="md-nav__link">
-                                  <span class="md-ellipsis">
-
-                                    POST /ask
-
-                                  </span>
-                                </a>
-
-                                <nav class="md-nav" aria-label="POST /ask">
-                                  <ul class="md-nav__list">
-
-                                    <li class="md-nav__item">
-                                      <a href="#exemplos-de-integracao" class="md-nav__link">
-                                        <span class="md-ellipsis">
-
-                                          Exemplos de integração
-
-                                        </span>
-                                      </a>
-
-                                    </li>
-
-                                  </ul>
-                                </nav>
-
-                              </li>
-
-                              <li class="md-nav__item">
-                                <a href="#post-askform" class="md-nav__link">
-                                  <span class="md-ellipsis">
-
-                                    POST /ask/form
-
-                                  </span>
-                                </a>
-
-                                <nav class="md-nav" aria-label="POST /ask/form">
-                                  <ul class="md-nav__list">
-
-                                    <li class="md-nav__item">
-                                      <a href="#exemplos-de-integracao_1" class="md-nav__link">
-                                        <span class="md-ellipsis">
-
-                                          Exemplos de integração
-
-                                        </span>
-                                      </a>
-
-                                    </li>
-
-                                  </ul>
-                                </nav>
-
-                              </li>
-
-                              <li class="md-nav__item">
-                                <a href="#post-askcancel" class="md-nav__link">
-                                  <span class="md-ellipsis">
-
-                                    POST /ask/cancel
-
-                                  </span>
-                                </a>
-
-                                <nav class="md-nav" aria-label="POST /ask/cancel">
-                                  <ul class="md-nav__list">
-
-                                    <li class="md-nav__item">
-                                      <a href="#exemplos-de-integracao_2" class="md-nav__link">
-                                        <span class="md-ellipsis">
-
-                                          Exemplos de integração
-
-                                        </span>
-                                      </a>
-
-                                    </li>
-
-                                  </ul>
-                                </nav>
-
-                              </li>
-
-                            </ul>
-
-                          </nav>
-
-                        </li>
-
-
-
-
-
-
-
-
-
-
-                        <li class="md-nav__item">
-                          <a href="../print/" class="md-nav__link">
-
-
-
-                            <span class="md-ellipsis">
-
-
-                              Impressão
-
-
-
-                            </span>
-
-
-
-                          </a>
-                        </li>
-
-
-
-
-
-
-
-
-
-
-                        <li class="md-nav__item">
-                          <a href="../display/" class="md-nav__link">
-
-
-
-                            <span class="md-ellipsis">
-
-
-                              Visor do Terminal
-
-
-
-                            </span>
-
-
-
-                          </a>
-                        </li>
-
-
-
-
-
-
-
-
-
-
-                        <li class="md-nav__item">
-                          <a href="../transaction/" class="md-nav__link">
-
-
-
-                            <span class="md-ellipsis">
-
-
-                              Transações
-
-
-
-                            </span>
-
-
-
-                          </a>
-                        </li>
-
-
-
-
-
-
-
-
-
-
-                        <li class="md-nav__item">
-                          <a href="../status/" class="md-nav__link">
-
-
-
-                            <span class="md-ellipsis">
-
-
-                              Status e Manutenção
-
-
-
-                            </span>
-
-
-
-                          </a>
-                        </li>
-
-
-
-
-
-
-
-
-
-
-                        <li class="md-nav__item">
-                          <a href="../logs/" class="md-nav__link">
-
-
-
-                            <span class="md-ellipsis">
-
-
-                              Logs
-
-
-
-                            </span>
-
-
-
-                          </a>
-                        </li>
-
-
-
-
-
-
-
-
-
-
-                        <li class="md-nav__item">
-                          <a href="../notification/" class="md-nav__link">
-
-
-
-                            <span class="md-ellipsis">
-
-
-                              Notificações
-
-
-
-                            </span>
-
-
-
-                          </a>
-                        </li>
-
-
-
-
-
-
-
-
-
-
-                        <li class="md-nav__item">
-                          <a href="../swagger/" class="md-nav__link">
-
-
-
-                            <span class="md-ellipsis">
-
-
-                              Especificação (Swagger)
-
-
-
-                            </span>
-
-
-
-                          </a>
-                        </li>
-
-
-
-
-                      </ul>
-                    </nav>
-
-                  </li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                  <li class="md-nav__item md-nav__item--nested">
-
-
-
-                    <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
-
-
-                    <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
-
-
-
-                      <span class="md-ellipsis">
-
-
-                        SDKs
-
-
-
-                      </span>
-
-
-
-                      <span class="md-nav__icon md-icon"></span>
-                    </label>
-
-                    <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-                      <label class="md-nav__title" for="__nav_4">
-                        <span class="md-nav__icon md-icon"></span>
-
-
-                        SDKs
-
-
-                      </label>
-                      <ul class="md-nav__list" data-md-scrollfix>
-
-
-
-
-
-
-
-                        <li class="md-nav__item">
-                          <a href="../../sdks/" class="md-nav__link">
-
-
-
-                            <span class="md-ellipsis">
-
-
-                              Visão geral
-
-
-
-                            </span>
-
-
-
-                          </a>
-                        </li>
-
-
-
-
-
-
-
-
-
-
-                        <li class="md-nav__item">
-                          <a href="../../sdk-dart/" class="md-nav__link">
-
-
-
-                            <span class="md-ellipsis">
-
-
-                              Dart (Oficial)
-
-
-
-                            </span>
-
-
-
-                          </a>
-                        </li>
-
-
-
-
-
-
-
-
-
-
-                        <li class="md-nav__item">
-                          <a href="../../sdk-js/" class="md-nav__link">
-
-
-
-                            <span class="md-ellipsis">
-
-
-                              JavaScript
-
-
-
-                            </span>
-
-
-
-                          </a>
-                        </li>
-
-
-
-
-
-
-
-
-
-
-                        <li class="md-nav__item">
-                          <a href="../../sdk-php/" class="md-nav__link">
-
-
-
-                            <span class="md-ellipsis">
-
-
-                              PHP
-
-
-
-                            </span>
-
-
-
-                          </a>
-                        </li>
-
-
-
-
-
-
-
-
-
-
-                        <li class="md-nav__item">
-                          <a href="../../sdk-ruby/" class="md-nav__link">
-
-
-
-                            <span class="md-ellipsis">
-
-
-                              Ruby
-
-
-
-                            </span>
-
-
-
-                          </a>
-                        </li>
-
-
-
-
-                      </ul>
-                    </nav>
-
-                  </li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                  <li class="md-nav__item md-nav__item--nested">
-
-
-
-                    <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5">
-
-
-                    <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
-
-
-
-                      <span class="md-ellipsis">
-
-
-                        Suporte e Operações
-
-
-
-                      </span>
-
-
-
-                      <span class="md-nav__icon md-icon"></span>
-                    </label>
-
-                    <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-                      <label class="md-nav__title" for="__nav_5">
-                        <span class="md-nav__icon md-icon"></span>
-
-
-                        Suporte e Operações
-
-
-                      </label>
-                      <ul class="md-nav__list" data-md-scrollfix>
-
-
-
-
-
-
-
-                        <li class="md-nav__item">
-                          <a href="../../suporte/versoes/" class="md-nav__link">
-
-
-
-                            <span class="md-ellipsis">
-
-
-                              Versões
-
-
-
-                            </span>
-
-
-
-                          </a>
-                        </li>
-
-
-
-
-
-
-
-
-
-
-                        <li class="md-nav__item">
-                          <a href="../../suporte/resolucao-de-problemas/" class="md-nav__link">
-
-
-
-                            <span class="md-ellipsis">
-
-
-                              Resolução de Problemas
-
-
-
-                            </span>
-
-
-
-                          </a>
-                        </li>
-
-
-
-
-                      </ul>
-                    </nav>
-
-                  </li>
-
-
-
-                </ul>
-              </nav>
-            </div>
-          </div>
-        </div>
-
-
-
-        <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
-          <div class="md-sidebar__scrollwrap">
-            <div class="md-sidebar__inner">
-
-
-              <nav class="md-nav md-nav--secondary" aria-label="Índice">
-
-
-
-
-
-
-                <label class="md-nav__title" for="__toc">
-                  <span class="md-nav__icon md-icon"></span>
-                  Índice
-                </label>
-                <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-
-                  <li class="md-nav__item">
-                    <a href="#como-funciona" class="md-nav__link">
-                      <span class="md-ellipsis">
-
-                        Como funciona
-
-                      </span>
-                    </a>
-
-                  </li>
-
-                  <li class="md-nav__item">
-                    <a href="#post-ask" class="md-nav__link">
-                      <span class="md-ellipsis">
-
-                        POST /ask
-
-                      </span>
-                    </a>
-
-                    <nav class="md-nav" aria-label="POST /ask">
-                      <ul class="md-nav__list">
-
-                        <li class="md-nav__item">
-                          <a href="#exemplos-de-integracao" class="md-nav__link">
-                            <span class="md-ellipsis">
-
-                              Exemplos de integração
-
-                            </span>
-                          </a>
-
-                        </li>
-
-                      </ul>
-                    </nav>
-
-                  </li>
-
-                  <li class="md-nav__item">
-                    <a href="#post-askform" class="md-nav__link">
-                      <span class="md-ellipsis">
-
-                        POST /ask/form
-
-                      </span>
-                    </a>
-
-                    <nav class="md-nav" aria-label="POST /ask/form">
-                      <ul class="md-nav__list">
-
-                        <li class="md-nav__item">
-                          <a href="#exemplos-de-integracao_1" class="md-nav__link">
-                            <span class="md-ellipsis">
-
-                              Exemplos de integração
-
-                            </span>
-                          </a>
-
-                        </li>
-
-                      </ul>
-                    </nav>
-
-                  </li>
-
-                  <li class="md-nav__item">
-                    <a href="#post-askcancel" class="md-nav__link">
-                      <span class="md-ellipsis">
-
-                        POST /ask/cancel
-
-                      </span>
-                    </a>
-
-                    <nav class="md-nav" aria-label="POST /ask/cancel">
-                      <ul class="md-nav__list">
-
-                        <li class="md-nav__item">
-                          <a href="#exemplos-de-integracao_2" class="md-nav__link">
-                            <span class="md-ellipsis">
-
-                              Exemplos de integração
-
-                            </span>
-                          </a>
-
-                        </li>
-
-                      </ul>
-                    </nav>
-
-                  </li>
-
-                </ul>
-
-              </nav>
-            </div>
-          </div>
-        </div>
-
-
-
-        <div class="md-content" data-md-component="content">
-
-          <article class="md-content__inner md-typeset">
-
-
-
-
-
-            <h1 id="perguntas-ask">Perguntas (Ask)</h1>
-            <p>Endpoints para exibir perguntas interativas na tela do terminal e coletar respostas do cliente — CPF,
-              e-mail, texto livre, listas de opções e muito mais.</p>
-            <div class="admonition warning">
-              <p class="admonition-title">Autenticação</p>
-              <p>Todas as requisições exigem Basic Auth. Use as credenciais configuradas no TEF IP (<code>admin</code> /
-                senha definida na instalação).</p>
-            </div>
-            <hr />
-            <h2 id="como-funciona">Como funciona</h2>
-            <p>A requisição HTTP fica <strong>aberta</strong> até o usuário confirmar ou cancelar no terminal — ou o PDV
-              enviar <code>POST /ask/cancel</code>. Use <strong>Pergunta Única</strong> (<code>/ask</code>) para campos
-              avulsos e <strong>Formulário</strong> (<code>/ask/form</code>) para coletar vários campos em sequência; as
-              respostas chegam todas juntas ao final.</p>
-            <div class="admonition info">
-              <p class="admonition-title">Timeout</p>
-              <p>Configure o timeout do cliente para pelo menos <strong>60 segundos</strong>, pois a resposta depende da
-                interação humana no terminal.</p>
-            </div>
-            <hr />
-            <h2 id="post-ask">POST /ask</h2>
-            <p>Exibe uma única pergunta na tela do terminal e aguarda a resposta do cliente.</p>
-            <p><strong>Corpo da requisição</strong></p>
-            <div class="highlight">
-              <pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post-askcancel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /ask/cancel
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="POST /ask/cancel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemplos-de-integracao_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemplos de integração
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="perguntas-ask">Perguntas (Ask)</h1>
+<p>Endpoints para exibir perguntas interativas na tela do terminal e coletar respostas do cliente — CPF, e-mail, texto livre, listas de opções e muito mais.</p>
+<div class="admonition warning">
+<p class="admonition-title">Autenticação</p>
+<p>Todas as requisições exigem Basic Auth. Use as credenciais configuradas no TEF IP (<code>admin</code> / senha definida na instalação).</p>
+</div>
+<hr />
+<h2 id="como-funciona">Como funciona</h2>
+<p>A requisição HTTP fica <strong>aberta</strong> até o usuário confirmar ou cancelar no terminal — ou o PDV enviar <code>POST /ask/cancel</code>. Use <strong>Pergunta Única</strong> (<code>/ask</code>) para campos avulsos e <strong>Formulário</strong> (<code>/ask/form</code>) para coletar vários campos em sequência; as respostas chegam todas juntas ao final.</p>
+<div class="admonition info">
+<p class="admonition-title">Timeout</p>
+<p>Configure o timeout do cliente para pelo menos <strong>60 segundos</strong>, pois a resposta depende da interação humana no terminal.</p>
+</div>
+<hr />
+<h2 id="post-ask">POST /ask</h2>
+<p>Exibe uma única pergunta na tela do terminal e aguarda a resposta do cliente.</p>
+<p><strong>Corpo da requisição</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">&quot;buttonText&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Confirmar&quot;</span><span class="p">,</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nt">&quot;showCancelButton&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
@@ -1534,298 +1544,282 @@
 <a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span><span class="nt">&quot;options&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
 <a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="p">}</span>
-</code></pre>
-            </div>
-            <p><strong>Campos de <code>parameters</code></strong></p>
-            <table>
-              <thead>
-                <tr>
-                  <th>Campo</th>
-                  <th>Tipo</th>
-                  <th>Padrão</th>
-                  <th>Descrição</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><code>buttonText</code></td>
-                  <td>string</td>
-                  <td><code>"Confirmar"</code></td>
-                  <td>Texto do botão de confirmação</td>
-                </tr>
-                <tr>
-                  <td><code>showCancelButton</code></td>
-                  <td>bool</td>
-                  <td><code>false</code></td>
-                  <td>Exibe botão de cancelamento</td>
-                </tr>
-                <tr>
-                  <td><code>buttonCancelText</code></td>
-                  <td>string</td>
-                  <td><code>"Cancelar"</code></td>
-                  <td>Texto do botão de cancelamento</td>
-                </tr>
-                <tr>
-                  <td><code>showSuccessMessage</code></td>
-                  <td>bool</td>
-                  <td><code>false</code></td>
-                  <td>Exibe tela de sucesso após confirmação</td>
-                </tr>
-                <tr>
-                  <td><code>successMessage</code></td>
-                  <td>string</td>
-                  <td><code>null</code></td>
-                  <td>Mensagem de sucesso personalizada</td>
-                </tr>
-                <tr>
-                  <td><code>successMessageInterval</code></td>
-                  <td>int</td>
-                  <td><code>3000</code></td>
-                  <td>Duração (ms) da tela de sucesso</td>
-                </tr>
-                <tr>
-                  <td><code>confirmAnswer</code></td>
-                  <td>bool</td>
-                  <td><code>false</code></td>
-                  <td>Exige confirmação antes de submeter a resposta</td>
-                </tr>
-              </tbody>
-            </table>
-            <p><strong>Campos de <code>question</code></strong></p>
-            <table>
-              <thead>
-                <tr>
-                  <th>Campo</th>
-                  <th>Tipo</th>
-                  <th>Padrão</th>
-                  <th>Descrição</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><code>id</code></td>
-                  <td>int</td>
-                  <td><code>0</code></td>
-                  <td>Identificador da pergunta</td>
-                </tr>
-                <tr>
-                  <td><code>question</code></td>
-                  <td>string</td>
-                  <td><code>null</code></td>
-                  <td>Texto exibido na tela (se <code>null</code>, usa prompt padrão do tipo)</td>
-                </tr>
-                <tr>
-                  <td><code>type</code></td>
-                  <td>string</td>
-                  <td><code>"TEXT"</code></td>
-                  <td>Tipo de entrada (ver tabela abaixo)</td>
-                </tr>
-                <tr>
-                  <td><code>required</code></td>
-                  <td>bool</td>
-                  <td><code>false</code></td>
-                  <td>Resposta obrigatória</td>
-                </tr>
-                <tr>
-                  <td><code>minLength</code></td>
-                  <td>int</td>
-                  <td><code>0</code></td>
-                  <td>Comprimento mínimo da resposta</td>
-                </tr>
-                <tr>
-                  <td><code>maxLength</code></td>
-                  <td>int</td>
-                  <td><code>255</code></td>
-                  <td>Comprimento máximo da resposta</td>
-                </tr>
-                <tr>
-                  <td><code>defaultValue</code></td>
-                  <td>string</td>
-                  <td><code>null</code></td>
-                  <td>Valor pré-preenchido no campo</td>
-                </tr>
-                <tr>
-                  <td><code>mask</code></td>
-                  <td>string</td>
-                  <td><code>null</code></td>
-                  <td>Máscara de entrada (ex.: <code>"###.###.###-##"</code>)</td>
-                </tr>
-                <tr>
-                  <td><code>regex</code></td>
-                  <td>string</td>
-                  <td><code>null</code></td>
-                  <td>Regex de validação personalizado</td>
-                </tr>
-                <tr>
-                  <td><code>errorMessage</code></td>
-                  <td>string</td>
-                  <td><code>null</code></td>
-                  <td>Mensagem de erro quando a validação falha</td>
-                </tr>
-                <tr>
-                  <td><code>options</code></td>
-                  <td>array</td>
-                  <td><code>null</code></td>
-                  <td>Opções selecionáveis (obrigatório para <code>LIST</code> e <code>BUTTON</code>)</td>
-                </tr>
-              </tbody>
-            </table>
-            <p><strong>Tipos de entrada (<code>type</code>)</strong></p>
-            <table>
-              <thead>
-                <tr>
-                  <th>Valor</th>
-                  <th>Descrição</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><code>"TEXT"</code></td>
-                  <td>Texto livre</td>
-                </tr>
-                <tr>
-                  <td><code>"NUMBER"</code></td>
-                  <td>Somente números</td>
-                </tr>
-                <tr>
-                  <td><code>"PHONE"</code></td>
-                  <td>Número de telefone</td>
-                </tr>
-                <tr>
-                  <td><code>"CPF"</code></td>
-                  <td>CPF (com validação)</td>
-                </tr>
-                <tr>
-                  <td><code>"CNPJ"</code></td>
-                  <td>CNPJ (com validação)</td>
-                </tr>
-                <tr>
-                  <td><code>"CPFORCNPJ"</code></td>
-                  <td>CPF ou CNPJ</td>
-                </tr>
-                <tr>
-                  <td><code>"EMAIL"</code></td>
-                  <td>E-mail (com validação)</td>
-                </tr>
-                <tr>
-                  <td><code>"CEP"</code></td>
-                  <td>CEP (com validação)</td>
-                </tr>
-                <tr>
-                  <td><code>"DATE"</code></td>
-                  <td>Data</td>
-                </tr>
-                <tr>
-                  <td><code>"TIME"</code></td>
-                  <td>Hora</td>
-                </tr>
-                <tr>
-                  <td><code>"MONEY"</code></td>
-                  <td>Valor monetário</td>
-                </tr>
-                <tr>
-                  <td><code>"REGEX"</code></td>
-                  <td>Validação por regex personalizado</td>
-                </tr>
-                <tr>
-                  <td><code>"LIST"</code></td>
-                  <td>Lista de opções (requer <code>options</code>)</td>
-                </tr>
-                <tr>
-                  <td><code>"BUTTON"</code></td>
-                  <td>Botões de opção (requer <code>options</code>)</td>
-                </tr>
-              </tbody>
-            </table>
-            <p><strong>Formato de <code>options</code></strong> (obrigatório para <code>LIST</code> e
-              <code>BUTTON</code>)
-            </p>
-            <div class="highlight">
-              <pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">[</span>
+</code></pre></div>
+<p><strong>Campos de <code>parameters</code></strong></p>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Padrão</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>buttonText</code></td>
+<td>string</td>
+<td><code>"Confirmar"</code></td>
+<td>Texto do botão de confirmação</td>
+</tr>
+<tr>
+<td><code>showCancelButton</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Exibe botão de cancelamento</td>
+</tr>
+<tr>
+<td><code>buttonCancelText</code></td>
+<td>string</td>
+<td><code>"Cancelar"</code></td>
+<td>Texto do botão de cancelamento</td>
+</tr>
+<tr>
+<td><code>showSuccessMessage</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Exibe tela de sucesso após confirmação</td>
+</tr>
+<tr>
+<td><code>successMessage</code></td>
+<td>string</td>
+<td><code>null</code></td>
+<td>Mensagem de sucesso personalizada</td>
+</tr>
+<tr>
+<td><code>successMessageInterval</code></td>
+<td>int</td>
+<td><code>3000</code></td>
+<td>Duração (ms) da tela de sucesso</td>
+</tr>
+<tr>
+<td><code>confirmAnswer</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Exige confirmação antes de submeter a resposta</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Campos de <code>question</code></strong></p>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Padrão</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>int</td>
+<td><code>0</code></td>
+<td>Identificador da pergunta</td>
+</tr>
+<tr>
+<td><code>question</code></td>
+<td>string</td>
+<td><code>null</code></td>
+<td>Texto exibido na tela (se <code>null</code>, usa prompt padrão do tipo)</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td><code>"TEXT"</code></td>
+<td>Tipo de entrada (ver tabela abaixo)</td>
+</tr>
+<tr>
+<td><code>required</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Resposta obrigatória</td>
+</tr>
+<tr>
+<td><code>minLength</code></td>
+<td>int</td>
+<td><code>0</code></td>
+<td>Comprimento mínimo da resposta</td>
+</tr>
+<tr>
+<td><code>maxLength</code></td>
+<td>int</td>
+<td><code>255</code></td>
+<td>Comprimento máximo da resposta</td>
+</tr>
+<tr>
+<td><code>defaultValue</code></td>
+<td>string</td>
+<td><code>null</code></td>
+<td>Valor pré-preenchido no campo</td>
+</tr>
+<tr>
+<td><code>mask</code></td>
+<td>string</td>
+<td><code>null</code></td>
+<td>Máscara de entrada (ex.: <code>"###.###.###-##"</code>)</td>
+</tr>
+<tr>
+<td><code>regex</code></td>
+<td>string</td>
+<td><code>null</code></td>
+<td>Regex de validação personalizado</td>
+</tr>
+<tr>
+<td><code>errorMessage</code></td>
+<td>string</td>
+<td><code>null</code></td>
+<td>Mensagem de erro quando a validação falha</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td>array</td>
+<td><code>null</code></td>
+<td>Opções selecionáveis (obrigatório para <code>LIST</code> e <code>BUTTON</code>)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tipos de entrada (<code>type</code>)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Valor</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>"TEXT"</code></td>
+<td>Texto livre</td>
+</tr>
+<tr>
+<td><code>"NUMBER"</code></td>
+<td>Somente números</td>
+</tr>
+<tr>
+<td><code>"PHONE"</code></td>
+<td>Número de telefone</td>
+</tr>
+<tr>
+<td><code>"CPF"</code></td>
+<td>CPF (com validação)</td>
+</tr>
+<tr>
+<td><code>"CNPJ"</code></td>
+<td>CNPJ (com validação)</td>
+</tr>
+<tr>
+<td><code>"CPFORCNPJ"</code></td>
+<td>CPF ou CNPJ</td>
+</tr>
+<tr>
+<td><code>"EMAIL"</code></td>
+<td>E-mail (com validação)</td>
+</tr>
+<tr>
+<td><code>"CEP"</code></td>
+<td>CEP (com validação)</td>
+</tr>
+<tr>
+<td><code>"DATE"</code></td>
+<td>Data</td>
+</tr>
+<tr>
+<td><code>"TIME"</code></td>
+<td>Hora</td>
+</tr>
+<tr>
+<td><code>"MONEY"</code></td>
+<td>Valor monetário</td>
+</tr>
+<tr>
+<td><code>"REGEX"</code></td>
+<td>Validação por regex personalizado</td>
+</tr>
+<tr>
+<td><code>"LIST"</code></td>
+<td>Lista de opções (requer <code>options</code>)</td>
+</tr>
+<tr>
+<td><code>"BUTTON"</code></td>
+<td>Botões de opção (requer <code>options</code>)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Formato de <code>options</code></strong> (obrigatório para <code>LIST</code> e <code>BUTTON</code>)</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">[</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Sim&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sim&quot;</span><span class="w"> </span><span class="p">},</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Não&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nao&quot;</span><span class="w"> </span><span class="p">}</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">]</span>
-</code></pre>
-            </div>
-            <table>
-              <thead>
-                <tr>
-                  <th>Campo</th>
-                  <th>Tipo</th>
-                  <th>Descrição</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><code>id</code></td>
-                  <td>int</td>
-                  <td>Identificador único da opção</td>
-                </tr>
-                <tr>
-                  <td><code>name</code></td>
-                  <td>string</td>
-                  <td>Texto exibido na tela</td>
-                </tr>
-                <tr>
-                  <td><code>value</code></td>
-                  <td>string</td>
-                  <td>Valor retornado quando a opção é selecionada</td>
-                </tr>
-              </tbody>
-            </table>
-            <p><strong>Resposta — 200</strong></p>
-            <div class="highlight">
-              <pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>int</td>
+<td>Identificador único da opção</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>Texto exibido na tela</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td>string</td>
+<td>Valor retornado quando a opção é selecionada</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Resposta — 200</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;12345678900&quot;</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">}</span>
-</code></pre>
-            </div>
-            <table>
-              <thead>
-                <tr>
-                  <th>Campo</th>
-                  <th>Tipo</th>
-                  <th>Descrição</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><code>id</code></td>
-                  <td>int</td>
-                  <td>Identificador da pergunta respondida</td>
-                </tr>
-                <tr>
-                  <td><code>value</code></td>
-                  <td>string</td>
-                  <td>Resposta fornecida pelo cliente</td>
-                </tr>
-              </tbody>
-            </table>
-            <h3 id="exemplos-de-integracao">Exemplos de integração</h3>
-            <div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1"
-                name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input
-                id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1"
-                type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" />
-              <div class="tabbed-labels"><label for="__tabbed_1_1">cURL</label><label
-                  for="__tabbed_1_2">Dart</label><label for="__tabbed_1_3">JavaScript</label><label
-                  for="__tabbed_1_4">PHP</label><label for="__tabbed_1_5">Ruby</label></div>
-              <div class="tabbed-content">
-                <div class="tabbed-block">
-                  <div class="highlight">
-                    <pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>curl<span class="w"> </span>-u<span class="w"> </span>admin:1234<span class="w"> </span><span class="se">\</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>int</td>
+<td>Identificador da pergunta respondida</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td>string</td>
+<td>Resposta fornecida pelo cliente</td>
+</tr>
+</tbody>
+</table>
+<h3 id="exemplos-de-integracao">Exemplos de integração</h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">cURL</label><label for="__tabbed_1_2">Dart</label><label for="__tabbed_1_3">JavaScript</label><label for="__tabbed_1_4">PHP</label><label for="__tabbed_1_5">Ruby</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>curl<span class="w"> </span>-u<span class="w"> </span>admin:1234<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">     </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">     </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:9050/ask<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">     </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="s1">       &quot;parameters&quot;: { &quot;buttonText&quot;: &quot;Confirmar&quot; },</span>
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="s1">       &quot;question&quot;: { &quot;type&quot;: &quot;CPF&quot;, &quot;question&quot;: &quot;Informe seu CPF&quot; }</span>
 <a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="s1">     }&#39;</span>
-</code></pre>
-                  </div>
-                </div>
-                <div class="tabbed-block">
-                  <div class="highlight">
-                    <pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// pub.dev/packages/dart_tefip — configure uma vez; demais exemplos nesta página omitem esta etapa</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// pub.dev/packages/dart_tefip — configure uma vez; demais exemplos nesta página omitem esta etapa</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">TefIP</span><span class="p">.</span><span class="n">baseUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;http://localhost:9050&#39;</span><span class="p">;</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">TefIP</span><span class="p">.</span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="p">;</span>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">TefIP</span><span class="p">.</span><span class="n">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;1234&#39;</span><span class="p">;</span>
@@ -1839,12 +1833,10 @@
 <a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">  </span><span class="p">),</span>
 <a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="p">);</span>
 <a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="n">print</span><span class="p">(</span><span class="n">answer</span><span class="p">.</span><span class="n">value</span><span class="p">);</span>
-</code></pre>
-                  </div>
-                </div>
-                <div class="tabbed-block">
-                  <div class="highlight">
-                    <pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// TODO: pacote JavaScript ainda não criado — usando fetch diretamente</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// TODO: pacote JavaScript ainda não criado — usando fetch diretamente</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;http://localhost:9050/ask&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;POST&#39;</span><span class="p">,</span>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
@@ -1857,12 +1849,10 @@
 <a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">  </span><span class="p">}),</span>
 <a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="p">});</span>
 <a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-</code></pre>
-                  </div>
-                </div>
-                <div class="tabbed-block">
-                  <div class="highlight">
-                    <pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="cp">&lt;?php</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="cp">&lt;?php</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1">// TODO: pacote PHP ainda não criado — usando curl diretamente</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">(</span><span class="s1">&#39;http://localhost:9050/ask&#39;</span><span class="p">);</span>
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_USERPWD</span><span class="p">,</span> <span class="s1">&#39;admin:1234&#39;</span><span class="p">);</span>
@@ -1875,12 +1865,10 @@
 <a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
 <a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="nv">$response</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">),</span> <span class="k">true</span><span class="p">);</span>
 <a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
-</code></pre>
-                  </div>
-                </div>
-                <div class="tabbed-block">
-                  <div class="highlight">
-                    <pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># TODO: pacote Ruby ainda não criado — usando Net::HTTP diretamente</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># TODO: pacote Ruby ainda não criado — usando Net::HTTP diretamente</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">require</span><span class="w"> </span><span class="s1">&#39;net/http&#39;</span>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nb">require</span><span class="w"> </span><span class="s1">&#39;json&#39;</span>
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
@@ -1893,24 +1881,19 @@
 <a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="p">}</span><span class="o">.</span><span class="n">to_json</span>
 <a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">uri</span><span class="o">.</span><span class="n">hostname</span><span class="p">,</span><span class="w"> </span><span class="n">uri</span><span class="o">.</span><span class="n">port</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">|</span><span class="n">h</span><span class="o">|</span><span class="w"> </span><span class="n">h</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">req</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
 <a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
-</code></pre>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <hr />
-            <h2 id="post-askform">POST /ask/form</h2>
-            <p>Exibe um formulário com múltiplas perguntas em sequência. O cliente responde cada uma antes de passar
-              para a próxima.</p>
-            <div class="admonition tip">
-              <p class="admonition-title">IDs automáticos</p>
-              <p>Se todas as perguntas tiverem <code>id: 0</code>, o TEF IP atribui IDs sequenciais automaticamente (0,
-                1, 2…). Se quiser IDs personalizados, cada pergunta deve ter um <code>id</code> único — duplicatas
-                retornam <code>400</code>.</p>
-            </div>
-            <p><strong>Corpo da requisição</strong></p>
-            <div class="highlight">
-              <pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="p">{</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<hr />
+<h2 id="post-askform">POST /ask/form</h2>
+<p>Exibe um formulário com múltiplas perguntas em sequência. O cliente responde cada uma antes de passar para a próxima.</p>
+<div class="admonition tip">
+<p class="admonition-title">IDs automáticos</p>
+<p>Se todas as perguntas tiverem <code>id: 0</code>, o TEF IP atribui IDs sequenciais automaticamente (0, 1, 2…). Se quiser IDs personalizados, cada pergunta deve ter um <code>id</code> único — duplicatas retornam <code>400</code>.</p>
+</div>
+<p><strong>Corpo da requisição</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="p">{</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="nt">&quot;buttonText&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Próximo&quot;</span><span class="p">,</span>
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span><span class="nt">&quot;showCancelButton&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
@@ -1941,41 +1924,25 @@
 <a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a><span class="w">    </span><span class="p">}</span>
 <a id="__codelineno-8-30" name="__codelineno-8-30" href="#__codelineno-8-30"></a><span class="w">  </span><span class="p">]</span>
 <a id="__codelineno-8-31" name="__codelineno-8-31" href="#__codelineno-8-31"></a><span class="p">}</span>
-</code></pre>
-            </div>
-            <p><strong>Resposta — 200</strong></p>
-            <p>Array com a resposta de cada pergunta, na mesma ordem.</p>
-            <div class="highlight">
-              <pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">[</span>
+</code></pre></div>
+<p><strong>Resposta — 200</strong></p>
+<p>Array com a resposta de cada pergunta, na mesma ordem.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">[</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;João Silva&quot;</span><span class="w"> </span><span class="p">},</span>
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;12345678900&quot;</span><span class="w"> </span><span class="p">},</span>
 <a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pix&quot;</span><span class="w"> </span><span class="p">}</span>
 <a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="p">]</span>
-</code></pre>
-            </div>
-            <p><strong>Resposta — 400</strong></p>
-            <p>
-            <div class="highlight">
-              <pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Nenhuma pergunta recebida&quot;</span><span class="w"> </span><span class="p">}</span>
-</code></pre>
-            </div>
-            <div class="highlight">
-              <pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Existem perguntas com IDs duplicados no formulário&quot;</span><span class="w"> </span><span class="p">}</span>
-</code></pre>
-            </div>
-            </p>
-            <h3 id="exemplos-de-integracao_1">Exemplos de integração</h3>
-            <div class="tabbed-set tabbed-alternate" data-tabs="2:5"><input checked="checked" id="__tabbed_2_1"
-                name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input
-                id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2"
-                type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" />
-              <div class="tabbed-labels"><label for="__tabbed_2_1">cURL</label><label
-                  for="__tabbed_2_2">Dart</label><label for="__tabbed_2_3">JavaScript</label><label
-                  for="__tabbed_2_4">PHP</label><label for="__tabbed_2_5">Ruby</label></div>
-              <div class="tabbed-content">
-                <div class="tabbed-block">
-                  <div class="highlight">
-                    <pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>curl<span class="w"> </span>-u<span class="w"> </span>admin:1234<span class="w"> </span><span class="se">\</span>
+</code></pre></div>
+<p><strong>Resposta — 400</strong></p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Nenhuma pergunta recebida&quot;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Existem perguntas com IDs duplicados no formulário&quot;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div></p>
+<h3 id="exemplos-de-integracao_1">Exemplos de integração</h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:5"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">cURL</label><label for="__tabbed_2_2">Dart</label><label for="__tabbed_2_3">JavaScript</label><label for="__tabbed_2_4">PHP</label><label for="__tabbed_2_5">Ruby</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>curl<span class="w"> </span>-u<span class="w"> </span>admin:1234<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">     </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">     </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:9050/ask/form<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">     </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
@@ -1985,12 +1952,10 @@
 <a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="s1">         { &quot;id&quot;: 2, &quot;question&quot;: &quot;CPF&quot;,  &quot;type&quot;: &quot;CPF&quot;  }</span>
 <a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="s1">       ]</span>
 <a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="s1">     }&#39;</span>
-</code></pre>
-                  </div>
-                </div>
-                <div class="tabbed-block">
-                  <div class="highlight">
-                    <pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kd">final</span><span class="w"> </span><span class="n">answers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">await</span><span class="w"> </span><span class="n">TefIP</span><span class="p">.</span><span class="n">instance</span><span class="p">.</span><span class="n">askForm</span><span class="p">.</span><span class="n">post</span><span class="p">(</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kd">final</span><span class="w"> </span><span class="n">answers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">await</span><span class="w"> </span><span class="n">TefIP</span><span class="p">.</span><span class="n">instance</span><span class="p">.</span><span class="n">askForm</span><span class="p">.</span><span class="n">post</span><span class="p">(</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">  </span><span class="nl">form:</span><span class="w"> </span><span class="n">AskFormRequestModel</span><span class="p">(</span>
 <a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">    </span><span class="nl">parameters:</span><span class="w"> </span><span class="n">AskParametersModel</span><span class="p">(</span><span class="nl">buttonText:</span><span class="w"> </span><span class="s1">&#39;Próximo&#39;</span><span class="p">),</span>
 <a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">    </span><span class="nl">questions:</span><span class="w"> </span><span class="p">[</span>
@@ -2002,12 +1967,10 @@
 <a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">final</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">answers</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="w">  </span><span class="n">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">${</span><span class="n">a</span><span class="p">.</span><span class="n">id</span><span class="si">}</span><span class="s1">: </span><span class="si">${</span><span class="n">a</span><span class="p">.</span><span class="n">value</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">);</span>
 <a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="p">}</span>
-</code></pre>
-                  </div>
-                </div>
-                <div class="tabbed-block">
-                  <div class="highlight">
-                    <pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1">// TODO: pacote JavaScript ainda não criado — usando fetch diretamente</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1">// TODO: pacote JavaScript ainda não criado — usando fetch diretamente</span>
 <a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;http://localhost:9050/ask/form&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">  </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;POST&#39;</span><span class="p">,</span>
 <a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">  </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
@@ -2023,12 +1986,10 @@
 <a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="w">  </span><span class="p">}),</span>
 <a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="p">});</span>
 <a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-</code></pre>
-                  </div>
-                </div>
-                <div class="tabbed-block">
-                  <div class="highlight">
-                    <pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="cp">&lt;?php</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="cp">&lt;?php</span>
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="c1">// TODO: pacote PHP ainda não criado — usando curl diretamente</span>
 <a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">(</span><span class="s1">&#39;http://localhost:9050/ask/form&#39;</span><span class="p">);</span>
 <a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_USERPWD</span><span class="p">,</span> <span class="s1">&#39;admin:1234&#39;</span><span class="p">);</span>
@@ -2044,12 +2005,10 @@
 <a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
 <a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="nv">$response</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">),</span> <span class="k">true</span><span class="p">);</span>
 <a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
-</code></pre>
-                  </div>
-                </div>
-                <div class="tabbed-block">
-                  <div class="highlight">
-                    <pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># TODO: pacote Ruby ainda não criado — usando Net::HTTP diretamente</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># TODO: pacote Ruby ainda não criado — usando Net::HTTP diretamente</span>
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="nb">require</span><span class="w"> </span><span class="s1">&#39;net/http&#39;</span>
 <a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="nb">require</span><span class="w"> </span><span class="s1">&#39;json&#39;</span>
 <a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>
@@ -2065,47 +2024,33 @@
 <a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="p">}</span><span class="o">.</span><span class="n">to_json</span>
 <a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">uri</span><span class="o">.</span><span class="n">hostname</span><span class="p">,</span><span class="w"> </span><span class="n">uri</span><span class="o">.</span><span class="n">port</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">|</span><span class="n">h</span><span class="o">|</span><span class="w"> </span><span class="n">h</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">req</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
 <a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
-</code></pre>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <hr />
-            <h2 id="post-askcancel">POST /ask/cancel</h2>
-            <p>Cancela a pergunta ou formulário em exibição no momento.</p>
-            <p>Não há corpo na requisição.</p>
-            <p><strong>Resposta — 200</strong></p>
-            <div class="highlight">
-              <pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="p">{</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<hr />
+<h2 id="post-askcancel">POST /ask/cancel</h2>
+<p>Cancela a pergunta ou formulário em exibição no momento.</p>
+<p>Não há corpo na requisição.</p>
+<p><strong>Resposta — 200</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="p">{</span>
 <a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">  </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Pergunta cancelada com sucesso&quot;</span>
 <a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="p">}</span>
-</code></pre>
-            </div>
-            <h3 id="exemplos-de-integracao_2">Exemplos de integração</h3>
-            <div class="tabbed-set tabbed-alternate" data-tabs="3:5"><input checked="checked" id="__tabbed_3_1"
-                name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input
-                id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3"
-                type="radio" /><input id="__tabbed_3_5" name="__tabbed_3" type="radio" />
-              <div class="tabbed-labels"><label for="__tabbed_3_1">cURL</label><label
-                  for="__tabbed_3_2">Dart</label><label for="__tabbed_3_3">JavaScript</label><label
-                  for="__tabbed_3_4">PHP</label><label for="__tabbed_3_5">Ruby</label></div>
-              <div class="tabbed-content">
-                <div class="tabbed-block">
-                  <div class="highlight">
-                    <pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>curl<span class="w"> </span>-u<span class="w"> </span>admin:1234<span class="w"> </span><span class="se">\</span>
+</code></pre></div>
+<h3 id="exemplos-de-integracao_2">Exemplos de integração</h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:5"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><input id="__tabbed_3_5" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">cURL</label><label for="__tabbed_3_2">Dart</label><label for="__tabbed_3_3">JavaScript</label><label for="__tabbed_3_4">PHP</label><label for="__tabbed_3_5">Ruby</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>curl<span class="w"> </span>-u<span class="w"> </span>admin:1234<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">     </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:9050/ask/cancel
-</code></pre>
-                  </div>
-                </div>
-                <div class="tabbed-block">
-                  <div class="highlight">
-                    <pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kd">await</span><span class="w"> </span><span class="n">TefIP</span><span class="p">.</span><span class="n">instance</span><span class="p">.</span><span class="n">askCancel</span><span class="p">.</span><span class="n">post</span><span class="p">();</span>
-</code></pre>
-                  </div>
-                </div>
-                <div class="tabbed-block">
-                  <div class="highlight">
-                    <pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1">// TODO: pacote JavaScript ainda não criado — usando fetch diretamente</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kd">await</span><span class="w"> </span><span class="n">TefIP</span><span class="p">.</span><span class="n">instance</span><span class="p">.</span><span class="n">askCancel</span><span class="p">.</span><span class="n">post</span><span class="p">();</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1">// TODO: pacote JavaScript ainda não criado — usando fetch diretamente</span>
 <a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;http://localhost:9050/ask/cancel&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">  </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;POST&#39;</span><span class="p">,</span>
 <a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="w">  </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
@@ -2113,12 +2058,10 @@
 <a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="w">  </span><span class="p">},</span>
 <a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="p">});</span>
 <a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-</code></pre>
-                  </div>
-                </div>
-                <div class="tabbed-block">
-                  <div class="highlight">
-                    <pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="cp">&lt;?php</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="cp">&lt;?php</span>
 <a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="c1">// TODO: pacote PHP ainda não criado — usando curl diretamente</span>
 <a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">(</span><span class="s1">&#39;http://localhost:9050/ask/cancel&#39;</span><span class="p">);</span>
 <a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_USERPWD</span><span class="p">,</span> <span class="s1">&#39;admin:1234&#39;</span><span class="p">);</span>
@@ -2126,12 +2069,10 @@
 <a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
 <a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="nv">$response</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">),</span> <span class="k">true</span><span class="p">);</span>
 <a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
-</code></pre>
-                  </div>
-                </div>
-                <div class="tabbed-block">
-                  <div class="highlight">
-                    <pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># TODO: pacote Ruby ainda não criado — usando Net::HTTP diretamente</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># TODO: pacote Ruby ainda não criado — usando Net::HTTP diretamente</span>
 <a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="nb">require</span><span class="w"> </span><span class="s1">&#39;net/http&#39;</span>
 <a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="nb">require</span><span class="w"> </span><span class="s1">&#39;json&#39;</span>
 <a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>
@@ -2140,71 +2081,68 @@
 <a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="n">req</span><span class="o">.</span><span class="n">basic_auth</span><span class="p">(</span><span class="s1">&#39;admin&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;1234&#39;</span><span class="p">)</span>
 <a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">uri</span><span class="o">.</span><span class="n">hostname</span><span class="p">,</span><span class="w"> </span><span class="n">uri</span><span class="o">.</span><span class="n">port</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">|</span><span class="n">h</span><span class="o">|</span><span class="w"> </span><span class="n">h</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">req</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
 <a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
-</code></pre>
-                  </div>
-                </div>
-              </div>
+</code></pre></div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
             </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-          </article>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
-
-
-        <script>var tabs = __md_get("__tabs"); if (Array.isArray(tabs)) e: for (var set of document.querySelectorAll(".tabbed-set")) { var labels = set.querySelector(".tabbed-labels"); for (var tab of tabs) for (var label of labels.getElementsByTagName("label")) if (label.innerText.trim() === tab) { var input = document.getElementById(label.htmlFor); input.checked = !0; continue e } }</script>
-
-        <script>var target = document.getElementById(location.hash.slice(1)); target && target.name && (target.checked = target.name.startsWith("__tabbed_"))</script>
-      </div>
-
-    </main>
-
-    <footer class="md-footer">
-
-      <div class="md-footer-meta md-typeset">
-        <div class="md-footer-meta__inner md-grid">
-          <div class="md-copyright">
-
-
-            Made with
-            <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-              Material for MkDocs
-            </a>
-
-          </div>
-
-        </div>
-      </div>
-    </footer>
-
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
   </div>
-  <div class="md-dialog" data-md-component="dialog">
-    <div class="md-dialog__inner md-typeset"></div>
-  </div>
-
-
-
-
-
-  <script id="__config"
-    type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link", "navigation.tabs", "navigation.sections", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
-
-
-  <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
-
-  <script src="../../scripts/extra.js"></script>
-
-
-</body>
-
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link", "navigation.tabs", "navigation.sections", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../scripts/extra.js"></script>
+      
+    
+  </body>
 </html>
