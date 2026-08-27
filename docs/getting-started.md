@@ -7,6 +7,21 @@ Este guia leva você da instalação até a primeira resposta real do terminal d
 - **Hardware:** terminal Android compatível (Stone, Getnet ou Rede) **ou** computador com Windows 10 ou superior
 - **Rede local:** o PDV e o terminal devem estar na mesma rede (ou usar `localhost` quando o TEF IP rodar na mesma máquina)
 
+
+### No Terminal Adquirente (SmartPOS)
+
+1. **Conectividade**: O terminal deve estar na mesma rede Wi-Fi que o PDV.
+2. **IP Estático**: Recomenda-se configurar um IP fixo para o terminal no roteador para evitar que o PDV perca a conexão.
+3. **Apps de Apoio**: Garanta que as dependências externas listadas na tabela acima estejam instaladas e atualizadas.
+4. **Permissões**: Ao abrir o TEF IP pela primeira vez, aceite todas as permissões de rede, telefone e armazenamento.
+
+### No Windows (Emulador)
+
+1. **Porta 9050**: Certifique-se de que a porta `9050` está aberta no Firewall do Windows para conexões de entrada.
+2. **Basic Auth**: Configure o usuário e senha desejados no arquivo de configurações do app.
+3. **Visual C++ Redistributable**: Pode ser necessário para a execução do app em algumas versões do Windows.
+
+---
 ## Instalação
 
 ### Terminais Android (Adquirentes)

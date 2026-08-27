@@ -67,6 +67,8 @@ nav:
     - Logs: api/logs.md
     - Notificações: api/notification.md
     - Especificação (Swagger): api/swagger.md
+    - Integração com DJMonitor: api/djmonitor.md
+    - Integração com Xpos: api/xpos.md
   - SDKs:
     - Visão geral: sdks.md
     - Dart (Oficial): sdk-dart.md
@@ -74,5 +76,5 @@ nav:
     - PHP: sdk-php.md
     - Ruby: sdk-ruby.md
   - Suporte e Operações:
-    - Versões e Requisitos: suporte/versoes-requisitos.md
+    - Versões: suporte/versoes.md
     - Resolução de Problemas: suporte/resolucao-de-problemas.md
