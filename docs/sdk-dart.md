@@ -229,6 +229,9 @@ try {
 | `TefIPTransactionType.credit` | `"03"` | Crédito |
 | `TefIPTransactionType.debit` | `"04"` | Débito |
 | `TefIPTransactionType.pix` | `"17"` | PIX |
+| `TefIPTransactionType.voucherFood` | `"10"` | Vale alimentação |
+| `TefIPTransactionType.voucherMeal` | `"11"` | Vale refeição |
+| `TefIPTransactionType.voucherFuel` | `"13"` | Vale combustível |
 | `TefIPTransactionType.unknown` | `"99"` | Desconhecido |
 
 ### `TefIPInstallmentType`

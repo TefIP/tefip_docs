@@ -867,7 +867,10 @@ Adiciona uma forma de pagamento à venda ativa.
 | `"04"` | `debit` | Débito |
 | `"05"` | `gift` | Cartão-presente |
 | `"17"` | `pix` · `veroWallet` | PIX / Carteira digital Vero |
-| `"99"` | `unknown` · `voucher` · `adm` · `cancel` · `cancelDigitalWallet` | Demais tipos |
+| `"10"` | — | Vale alimentação |
+| `"11"` | — | Vale refeição |
+| `"13"` | — | Vale combustível |
+| `"99"` | `unknown` · `adm` · `cancel` · `cancelDigitalWallet` | Demais tipos |
 
 !!! warning "Envie o código numérico, não o nome"
     No JSON cru, `tPag` deve ser o **código numérico** (`"17"`), não o nome (`"pix"`). Um nome não reconhecido é interpretado como `"99"` (desconhecido). No SDK Dart, use o enum `TefIPSalePaymentType.pix` — ele converte para o código automaticamente.

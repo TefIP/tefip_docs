@@ -47,6 +47,9 @@ Inicia um pagamento no terminal. O TEF IP aguarda o app estar em primeiro plano 
 | `"03"` | Crédito |
 | `"04"` | Débito |
 | `"05"` | Cartão-presente |
+| `"10"` | Vale alimentação |
+| `"11"` | Vale refeição |
+| `"13"` | Vale combustível |
 | `"17"` | PIX |
 | `"99"` | Desconhecido |
 
@@ -57,6 +60,27 @@ Inicia um pagamento no terminal. O TEF IP aguarda o app estar em primeiro plano 
 | `"single"` | Pagamento à vista (padrão) |
 | `"seller"` | Parcelado pelo lojista (sem juros ao comprador) |
 | `"buyer"` | Parcelado pelo comprador (juros ao comprador) |
+
+**Exemplo de requisição — vale-alimentação (`tPag` `"10"`)**
+
+```json
+{
+  "tPag": "10",
+  "amount": 80.00,
+  "referenceId": "pedido-002",
+  "installments": 1,
+  "installmentType": "single"
+}
+```
+
+```bash
+curl -u admin:1234 \
+     -H "Content-Type: application/json" \
+     -X POST http://localhost:9050/transaction \
+     -d '{"tPag":"10","amount":80.00,"referenceId":"pedido-002"}'
+```
+
+Para vale-refeição use `"tPag": "11"`; para vale-combustível, `"tPag": "13"`. O restante do corpo é igual.
 
 **Resposta — 200**
 
