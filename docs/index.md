@@ -4,14 +4,17 @@ Aceite pagamentos com qualquer adquirente usando uma única API HTTP local. Inst
 
 ## O que você pode fazer
 
-- **Pagamentos** — Crédito, débito, PIX, dinheiro, voucher, cartão-presente; parcelamento pelo lojista ou pela emissora.
-- **Vendas** — Monte um carrinho com itens e adicione múltiplas formas de pagamento; finalize com uma chamada.
-- **Estornos** — Consulte e reverta transações por `referenceId`.
-- **Display** — Exiba textos, imagens, carrosséis ou QR codes na tela do terminal em tempo real.
-- **Perguntas** — Colete dados do cliente direto no terminal: CPF/CNPJ, texto livre, lista de opções, e-mail, CEP e mais.
-- **Impressão** — Imprima imagens, comprovantes personalizados, layouts ACBr ou cupons fiscais (XML/DANFE).
-- **Logs e alertas** — Consulte logs, acompanhe eventos em tempo real e dispare notificações locais ao operador.
-- **Status** — Monitore saúde, tempo de atividade e reinicie o app remotamente.
+| Para | Use | Detalhes |
+|------|-----|----------|
+| Cobrar no crédito, débito, PIX, dinheiro ou vale, à vista ou parcelado | `POST /transaction` | [Transações](api/transaction.md) |
+| Consultar um pagamento pelo `referenceId` | `GET /transaction/{referenceId}` | [Transações](api/transaction.md) |
+| Estornar um pagamento | `POST /transaction/{referenceId}/reversal` | [Transações](api/transaction.md) |
+| Mostrar ao cliente a venda sendo montada, com itens, descontos e pagamentos | `/sale` | [Vendas](api/sale.md) |
+| Pedir CPF/CNPJ, e-mail, CEP, texto livre ou uma escolha ao operador | `POST /ask` | [Coleta de Dados](api/ask.md) |
+| Exibir texto, imagem ou carrossel na tela do terminal | `/display` | [Visor do Terminal](api/display.md) |
+| Imprimir comprovantes, imagens, layouts ACBr ou o DANFE da NFC-e | `/print` | [Impressão](api/print.md) |
+| Acompanhar logs em tempo real e avisar o operador | `/logs`, `/notification` | [Logs](api/logs.md) |
+| Verificar se o terminal está online e reiniciar o app | `/status`, `/restart` | [Status e Manutenção](api/status.md) |
 
 Veja abaixo um pagamento sendo processado no emulador:
 
@@ -127,32 +130,20 @@ Qualquer cliente HTTP funciona. Veja um exemplo completo, um PIX de R$ 50,00, na
 
 ## Adquirentes suportados
 
-Cada build do TEF IP é compilado para um adquirente específico.
+Cada build do TEF IP é compilado para um adquirente e um modelo de terminal. A API é a mesma em todos: seu PDV não muda ao trocar de adquirente ou de maquininha.
 
-<div class="grid cards">
-  <ul>
-   <li>
-        <a href="https://www.stone.com.br" target="_blank" style="display: block;">
-            <strong>Stone</strong>
-        </a>
-    </li>
-    <li>
-        <a href="https://www.getnet.com.br" target="_blank" style="display: block;">
-            <strong>Getnet</strong>
-        </a>
-    </li>
-    <li>
-        <a href="https://www.userede.com.br" target="_blank" style="display: block;">
-            <strong>Rede</strong>
-        </a>
-    </li>
-    <li>
-        <a href="https://pagseguro.uol.com.br" target="_blank" style="display: block;">
-            <strong>PagSeguro</strong>
-        </a>
-    </li>
-  </ul>
-</div>
+| Adquirente | Terminais |
+|------------|-----------|
+| Stone | SmartPOS Stone, L400 |
+| Rede | SmartPOS Rede, L400, N960K |
+| Cielo | SmartPOS Cielo |
+| Getnet | SmartPOS Getnet |
+| PagSeguro | SmartPOS PagSeguro |
+| Sicoob | Tectoy (Sunmi), DX8000, X990 |
+| Vero | SmartPOS Vero |
+| SiTef (multiadquirente) | Gertec GPOS700, Gertec GPOS720, L400 |
+
+Não encontrou seu terminal? Fale com o suporte: novos modelos entram como um novo build, sem mudança na API.
 
 ---
 
@@ -169,10 +160,6 @@ Qualquer cliente HTTP funciona diretamente; os SDKs são conveniência, não req
 
 ---
 
-## Próximos Passos
+## Próximos passos
 
-Novo por aqui? Comece pelo guia:
-
-**[Primeiros Passos →](getting-started.md)**
-
-Instale o TEF IP, verifique a conexão e faça sua primeira requisição em menos de 10 minutos.
+Novo por aqui? O guia de [Primeiros Passos](getting-started.md) mostra como instalar o TEF IP, verificar a conexão e fazer a primeira requisição em menos de 10 minutos.

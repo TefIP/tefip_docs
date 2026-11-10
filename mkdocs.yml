@@ -5,32 +5,32 @@ theme:
   name: material
   language: pt-BR
   palette:
-    - scheme: slate
-      primary: custom
-      accent: custom
-      toggle:
-        icon: material/brightness-4
-        name: Mudar para modo claro
-    - scheme: default
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
       primary: custom
       accent: custom
       toggle:
         icon: material/brightness-7
         name: Mudar para modo escuro
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-4
+        name: Mudar para modo claro
   font:
-    text: DM Sans
-    code: DM Mono
+    text: IBM Plex Sans
+    code: IBM Plex Mono
   features:
     - content.tabs.link
+    - content.code.copy
     - navigation.tabs
     - navigation.sections
     - search.highlight
 
 extra_css:
   - styles/extra.css
-
-extra_javascript:
-  - scripts/extra.js
 
 markdown_extensions:
   - pymdownx.tabbed:

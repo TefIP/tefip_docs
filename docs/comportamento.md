@@ -44,7 +44,7 @@ Uma venda é uma **sessão aberta** que agrega itens e formas de pagamento antes
 !!! info "Venda e transação são independentes"
     A venda registra **o quê** foi vendido e **como** foi pago — mas não processa o pagamento financeiro. O débito no cartão ou PIX é feito separadamente via `POST /transaction`.
 
-Veja o [ciclo de vida completo e os endpoints de venda →](api/sale.md)
+Veja o [ciclo de vida completo e os endpoints de venda](api/sale.md)
 
 ---
 
@@ -65,7 +65,7 @@ Use o cancelamento quando o item precisar aparecer no documento fiscal mesmo sem
 
 O TEF IP pode exibir perguntas no display do terminal (CPF, texto livre, listas, e-mail, CEP…) e coletar respostas sem que o PDV precise de tela própria. A conexão HTTP fica aberta até o usuário confirmar ou cancelar.
 
-Veja os endpoints e tipos de campo disponíveis em [Perguntas (Ask) →](api/ask.md)
+Veja os endpoints e tipos de campo disponíveis em [Perguntas (Ask)](api/ask.md)
 
 ---
 
@@ -166,4 +166,4 @@ O TEF IP aceita requisições de qualquer origem. Nenhuma configuração adicion
 
 ## Respostas de erro
 
-Todos os erros retornam `{ "code": <status>, "message": "..." }`. Veja a [Visão Geral de Erros →](api/erros.md) para a referência completa de códigos HTTP e sugestões de tratamento.
+Todos os erros retornam `{ "code": <status>, "message": "..." }`. Veja a [Visão Geral de Erros](api/erros.md) para a referência completa de códigos HTTP e sugestões de tratamento.

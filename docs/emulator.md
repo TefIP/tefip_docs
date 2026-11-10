@@ -3,7 +3,7 @@
 O TEF IP inclui um **modo emulador** que simula o hardware do adquirente localmente — sem precisar de nenhum terminal físico. É a forma mais rápida de desenvolver e testar toda a integração com o TEF IP.
 
 !!! warning "Não usar em produção"
-    O build com emulador é destinado exclusivamente a **desenvolvimento e testes**. Para uso em produção, utilize o app distribuído pelo seu adquirente no terminal Android correspondente (Stone, Getnet ou Rede).
+    O build com emulador é destinado exclusivamente a **desenvolvimento e testes**. Para uso em produção, utilize o app distribuído pelo seu adquirente no terminal Android correspondente (veja os [adquirentes suportados](index.md#adquirentes-suportados)).
 
 Veja abaixo um pagamento sendo processado no emulador:
 

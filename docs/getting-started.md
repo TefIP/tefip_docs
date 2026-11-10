@@ -4,7 +4,7 @@ Este guia leva você da instalação até a primeira resposta real do terminal d
 
 ## Pré-requisitos
 
-- **Hardware:** terminal Android compatível (Stone, Getnet ou Rede) **ou** computador com Windows 10 ou superior
+- **Hardware:** terminal Android compatível (veja os [adquirentes suportados](index.md#adquirentes-suportados)) **ou** computador com Windows 10 ou superior
 - **Rede local:** o PDV e o terminal devem estar na mesma rede (ou usar `localhost` quando o TEF IP rodar na mesma máquina)
 
 
@@ -48,7 +48,7 @@ Caso encontre alguma dificuldade, entre em contato com o nosso [SUPORTE](https:/
 O APK Android disponível na [página do Emulador](emulator.md#download) é o build com emulador de hardware — destinado a **desenvolvimento e testes** sem terminal físico.
 
 !!! warning "Não usar em produção"
-    Este APK **não deve ser instalado em terminais físicos de produção** (Stone, Getnet, Rede). Para terminais físicos, obtenha o app pelo canal do seu adquirente conforme descrito acima.
+    Este APK **não deve ser instalado em terminais físicos de produção**. Para terminais físicos, obtenha o app pelo canal do seu adquirente conforme descrito acima.
 
 
 ## Iniciando o servidor
